@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -75,7 +75,7 @@ public class SefHomePage {
 		btnNewButton_1.setBounds(418, 242, 117, 25);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnIzvjestaji = new JButton("Izvjestaji");
+		JButton btnIzvjestaji = new JButton("Izvještaji");
 		btnIzvjestaji.setBounds(312, 192, 218, 25);
 		frame.getContentPane().add(btnIzvjestaji);
 		

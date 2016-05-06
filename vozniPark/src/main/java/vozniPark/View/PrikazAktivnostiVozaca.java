@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
@@ -55,7 +55,7 @@ public class PrikazAktivnostiVozaca {
 		
 		
 		
-		JLabel lblIzvjetajO = new JLabel("Izvještaj o aktivnostima vozača");
+		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti vozača");
 		lblIzvjetajO.setBounds(10, 11, 229, 14);
 		frame.getContentPane().add(lblIzvjetajO);
 		

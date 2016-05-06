@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -54,7 +54,7 @@ public class VozacHomePage {
 		frame.getContentPane().add(btnOdjavaPreuzetogVozila);
 		
 		JButton btnOdjaviSe = new JButton("Odjavi se");
-		btnOdjaviSe.setBounds(450, 182, 117, 25);
+		btnOdjaviSe.setBounds(440, 176, 117, 25);
 		frame.getContentPane().add(btnOdjaviSe);
 	}
 

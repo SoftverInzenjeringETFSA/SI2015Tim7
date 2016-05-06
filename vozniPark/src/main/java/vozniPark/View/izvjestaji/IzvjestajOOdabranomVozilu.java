@@ -1,4 +1,4 @@
-package vozniPark.forme.izvjestaji;
+package vozniPark.View.izvjestaji;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,12 +7,11 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.JComboBox;
 
 public class IzvjestajOOdabranomVozilu {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTable table;
@@ -58,16 +57,6 @@ public class IzvjestajOOdabranomVozilu {
 		lblVozilo.setBounds(54, 39, 45, 14);
 		frame.getContentPane().add(lblVozilo);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(100, 36, 173, 20);
-		frame.getContentPane().add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(100, 64, 173, 20);
-		frame.getContentPane().add(textField_1);
-		
 		JLabel lblBrojRegistracije = new JLabel("Registracija:");
 		lblBrojRegistracije.setBounds(20, 66, 89, 14);
 		frame.getContentPane().add(lblBrojRegistracije);
@@ -110,6 +99,14 @@ public class IzvjestajOOdabranomVozilu {
         Object[][] data1 ={};
 		table_1 = new JTable(data1,columnNames1);
 		scrollPane_1.setViewportView(table_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(100, 36, 173, 20);
+		frame.getContentPane().add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(100, 63, 173, 20);
+		frame.getContentPane().add(comboBox_1);
 		
 		
 	}

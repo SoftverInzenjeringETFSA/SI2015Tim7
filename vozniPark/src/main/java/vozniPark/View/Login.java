@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

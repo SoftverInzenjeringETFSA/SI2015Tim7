@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,12 +9,15 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class PrikazPodatakaOVozacima {
+public class PregledVozaca {
 
 	private JFrame frame;
 	private JTable table_1;
 	private JLabel lblOdaberiteVozaaZa;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -23,7 +26,7 @@ public class PrikazPodatakaOVozacima {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrikazPodatakaOVozacima window = new PrikazPodatakaOVozacima();
+					PregledVozaca window = new PregledVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +38,7 @@ public class PrikazPodatakaOVozacima {
 	/**
 	 * Create the application.
 	 */
-	public PrikazPodatakaOVozacima() {
+	public PregledVozaca() {
 		initialize();
 	}
 
@@ -78,21 +81,30 @@ public class PrikazPodatakaOVozacima {
 		
 		lblOdaberiteVozaaZa = new JLabel("Odaberite voza\u010Da za prikaz podataka:");
 		lblOdaberiteVozaaZa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JButton btnNewButton = new JButton("Prikaži podatke");
+		
+		btnNewButton_1 = new JButton("Prikaz aktivnosti");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(144)
-							.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(187)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(44)
-							.addComponent(lblOdaberiteVozaaZa)))
-					.addContainerGap(142, Short.MAX_VALUE))
+							.addComponent(lblOdaberiteVozaaZa))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(144)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
+								.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(144, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -102,11 +114,15 @@ public class PrikazPodatakaOVozacima {
 					.addGap(45)
 					.addComponent(lblOdaberiteVozaaZa)
 					.addGap(52)
-					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(66, Short.MAX_VALUE))
+					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton_1))
+					.addContainerGap(53, Short.MAX_VALUE))
 		);
 		
-		JLabel lblPodaciOVozau = new JLabel("Podaci o voza\u010Dima");
+		JLabel lblPodaciOVozau = new JLabel("Pregled vozača");
 		lblPodaciOVozau.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(lblPodaciOVozau);
 		frame.getContentPane().setLayout(groupLayout);

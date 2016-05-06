@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PregledVozila {
+public class PregledSlobodnihVozila {
 
 	private JFrame frmPregledSlobodnihVozila;
 	private JTable table;
@@ -27,7 +27,7 @@ public class PregledVozila {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PregledVozila window = new PregledVozila();
+					PregledSlobodnihVozila window = new PregledSlobodnihVozila();
 					window.frmPregledSlobodnihVozila.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class PregledVozila {
 	/**
 	 * Create the application.
 	 */
-	public PregledVozila() {
+	public PregledSlobodnihVozila() {
 		initialize();
 	}
 

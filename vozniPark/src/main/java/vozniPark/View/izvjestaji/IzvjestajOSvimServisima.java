@@ -1,4 +1,4 @@
-package vozniPark.forme.izvjestaji;
+package vozniPark.View.izvjestaji;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 
 import java.awt.EventQueue;
 
@@ -11,11 +11,11 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class PrijavljivanjePreuzetogVozila {
 
 	private JFrame frmPrij;
-	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 
@@ -67,12 +67,6 @@ public class PrijavljivanjePreuzetogVozila {
 		lblVrijemePreuzimanja.setBounds(29, 98, 124, 25);
 		frmPrij.getContentPane().add(lblVrijemePreuzimanja);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setBounds(177, 28, 161, 20);
-		frmPrij.getContentPane().add(textField);
-		textField.setColumns(10);
-		
 		textField_1 = new JTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_1.setBounds(177, 64, 161, 20);
@@ -92,5 +86,9 @@ public class PrijavljivanjePreuzetogVozila {
 		});
 		btnNewButton.setBounds(39, 134, 299, 23);
 		frmPrij.getContentPane().add(btnNewButton);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(177, 28, 161, 20);
+		frmPrij.getContentPane().add(comboBox);
 	}
 }

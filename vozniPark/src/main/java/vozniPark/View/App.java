@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 
 /**
  * Hello world!

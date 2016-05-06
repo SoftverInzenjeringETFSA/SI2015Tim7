@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 
 import java.awt.EventQueue;
 
@@ -11,16 +11,17 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class OdjavljivanjePreuzetogVozila {
 
 	private JFrame frmOdjavljivanjePreuzetogVozila;
-	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -85,11 +86,6 @@ public class OdjavljivanjePreuzetogVozila {
 		lblPotronjaGorivaopcionalno.setBounds(10, 253, 171, 25);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(lblPotronjaGorivaopcionalno);
 		
-		textField = new JTextField();
-		textField.setBounds(218, 31, 185, 20);
-		frmOdjavljivanjePreuzetogVozila.getContentPane().add(textField);
-		textField.setColumns(10);
-		
 		textField_1 = new JTextField();
 		textField_1.setBounds(218, 67, 185, 20);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(textField_1);
@@ -122,5 +118,9 @@ public class OdjavljivanjePreuzetogVozila {
 		textField_5.setBounds(218, 175, 185, 69);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(218, 31, 185, 20);
+		frmOdjavljivanjePreuzetogVozila.getContentPane().add(comboBox);
 	}
 }

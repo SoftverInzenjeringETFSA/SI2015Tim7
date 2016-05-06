@@ -1,4 +1,4 @@
-package vozniPark.forme;
+package vozniPark.View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,6 +27,7 @@ public class EvidencijaServisa {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTable table_2;
+	private JTextField textField_6;
 
 	/**
 	 * Launch the application.
@@ -80,42 +81,44 @@ public class EvidencijaServisa {
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setForeground(Color.BLACK);
-		separator.setBounds(120, 8, 8, 17);
+		separator.setBounds(99, 8, 8, 17);
 		panel.add(separator);
 		
 		JLabel lblOpisVozila = new JLabel("Opis vozila");
-		lblOpisVozila.setBounds(170, 8, 79, 14);
+		lblOpisVozila.setBounds(217, 8, 79, 14);
 		panel.add(lblOpisVozila);
 		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(344, 36, 46, 14);
-		panel.add(lblStatus);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(410, 33, 125, 20);
-		panel.add(comboBox);
-		
 		JLabel lblDatum = new JLabel("Datum:");
-		lblDatum.setBounds(344, 91, 46, 14);
+		lblDatum.setBounds(341, 46, 46, 14);
 		panel.add(lblDatum);
 		
 		textField = new JTextField();
-		textField.setBounds(410, 88, 125, 20);
+		textField.setBounds(410, 43, 125, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblVrijeme = new JLabel("Vrijeme:");
-		lblVrijeme.setBounds(341, 148, 56, 14);
+		lblVrijeme.setBounds(341, 125, 56, 14);
 		panel.add(lblVrijeme);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(410, 145, 125, 20);
+		textField_1.setBounds(410, 122, 125, 20);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JButton btnPotvrdi = new JButton("Potvrdi");
 		btnPotvrdi.setBounds(410, 207, 125, 23);
 		panel.add(btnPotvrdi);		
+		
+		JLabel lblNazivVozila = new JLabel("Naziv vozila");
+		lblNazivVozila.setBounds(117, 8, 71, 14);
+		panel.add(lblNazivVozila);
+		
+		JSeparator separator_8 = new JSeparator();
+		separator_8.setOrientation(SwingConstants.VERTICAL);
+		separator_8.setForeground(Color.BLACK);
+		separator_8.setBounds(199, 8, 8, 17);
+		panel.add(separator_8);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Odjava vozila sa servisa", null, panel_1, null);
@@ -126,29 +129,21 @@ public class EvidencijaServisa {
 		panel_1.add(table_1);
 		
 		JLabel label_1 = new JLabel("Opis vozila");
-		label_1.setBounds(170, 8, 79, 14);
+		label_1.setBounds(217, 8, 79, 14);
 		panel_1.add(label_1);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setOrientation(SwingConstants.VERTICAL);
 		separator_1.setForeground(Color.BLACK);
-		separator_1.setBounds(120, 8, 8, 17);
+		separator_1.setBounds(99, 8, 8, 17);
 		panel_1.add(separator_1);
 		
 		JLabel label = new JLabel("Registracija");
 		label.setBounds(15, 8, 92, 14);
 		panel_1.add(label);
 		
-		JLabel label_2 = new JLabel("Status:");
-		label_2.setBounds(352, 36, 56, 14);
-		panel_1.add(label_2);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(410, 33, 125, 20);
-		panel_1.add(comboBox_1);
-		
 		JLabel label_3 = new JLabel("Datum:");
-		label_3.setBounds(352, 66, 55, 14);
+		label_3.setBounds(365, 67, 35, 14);
 		panel_1.add(label_3);
 		
 		textField_2 = new JTextField();
@@ -157,7 +152,7 @@ public class EvidencijaServisa {
 		panel_1.add(textField_2);
 		
 		JLabel label_4 = new JLabel("Vrijeme:");
-		label_4.setBounds(345, 96, 58, 14);
+		label_4.setBounds(361, 96, 39, 14);
 		panel_1.add(label_4);
 		
 		textField_3 = new JTextField();
@@ -170,7 +165,7 @@ public class EvidencijaServisa {
 		panel_1.add(button);
 		
 		JLabel lblCijena = new JLabel("Cijena:");
-		lblCijena.setBounds(354, 125, 46, 14);
+		lblCijena.setBounds(365, 125, 35, 14);
 		panel_1.add(lblCijena);
 		
 		textField_4 = new JTextField();
@@ -179,13 +174,32 @@ public class EvidencijaServisa {
 		textField_4.setColumns(10);
 		
 		JLabel lblOpisServisa = new JLabel("Opis servisa:");
-		lblOpisServisa.setBounds(320, 152, 80, 14);
+		lblOpisServisa.setBounds(338, 153, 62, 14);
 		panel_1.add(lblOpisServisa);
 		
 		textField_5 = new JTextField();
 		textField_5.setBounds(410, 149, 125, 47);
 		panel_1.add(textField_5);
 		textField_5.setColumns(10);
+		
+		JLabel lblNazivVozila_1 = new JLabel("Naziv vozila");
+		lblNazivVozila_1.setBounds(117, 8, 71, 14);
+		panel_1.add(lblNazivVozila_1);
+		
+		JSeparator separator_9 = new JSeparator();
+		separator_9.setOrientation(SwingConstants.VERTICAL);
+		separator_9.setForeground(Color.BLACK);
+		separator_9.setBounds(199, 8, 8, 17);
+		panel_1.add(separator_9);
+		
+		JLabel lblServisiranoKod_1 = new JLabel("Servisirano kod:");
+		lblServisiranoKod_1.setBounds(322, 36, 78, 14);
+		panel_1.add(lblServisiranoKod_1);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(410, 33, 125, 20);
+		panel_1.add(textField_6);
+		textField_6.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Prikaz svih servisa za sva vozila", null, panel_2, null);
