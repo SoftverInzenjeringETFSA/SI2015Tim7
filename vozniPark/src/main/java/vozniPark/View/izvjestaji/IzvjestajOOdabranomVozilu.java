@@ -8,8 +8,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import org.apache.log4j.Logger;
+
+import vozniPark.View.Login;
 
 public class IzvjestajOOdabranomVozilu {
+
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 	private JTextField textField_2;
@@ -27,7 +32,8 @@ public class IzvjestajOOdabranomVozilu {
 					IzvjestajOOdabranomVozilu window = new IzvjestajOOdabranomVozilu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

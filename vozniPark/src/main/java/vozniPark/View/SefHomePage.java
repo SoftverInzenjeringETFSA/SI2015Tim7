@@ -6,8 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.apache.log4j.Logger;
 
 public class SefHomePage {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 
@@ -21,7 +24,8 @@ public class SefHomePage {
 					SefHomePage window = new SefHomePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

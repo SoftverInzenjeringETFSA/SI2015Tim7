@@ -4,8 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import org.apache.log4j.Logger;
 
 public class OdabirIzvjestaja {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frmIzvjetaji;
 
@@ -19,7 +22,8 @@ public class OdabirIzvjestaja {
 					OdabirIzvjestaja window = new OdabirIzvjestaja();
 					window.frmIzvjetaji.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});

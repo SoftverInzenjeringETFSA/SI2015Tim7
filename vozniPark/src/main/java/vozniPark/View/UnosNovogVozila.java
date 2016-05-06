@@ -8,8 +8,11 @@ import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import org.apache.log4j.Logger;
 
 public class UnosNovogVozila {
+
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 	private JTextField textField;
@@ -32,7 +35,8 @@ public class UnosNovogVozila {
 					UnosNovogVozila window = new UnosNovogVozila();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

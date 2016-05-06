@@ -13,8 +13,11 @@ import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.apache.log4j.Logger;
 
 public class UnosNovogVozaca {
+
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 
@@ -28,7 +31,8 @@ public class UnosNovogVozaca {
 					UnosNovogVozaca window = new UnosNovogVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

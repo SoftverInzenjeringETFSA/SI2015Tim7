@@ -12,8 +12,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import org.apache.log4j.Logger;
 
 public class PrijavljivanjePreuzetogVozila {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frmPrij;
 	private JTextField textField_1;
@@ -29,7 +32,8 @@ public class PrijavljivanjePreuzetogVozila {
 					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila();
 					window.frmPrij.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});

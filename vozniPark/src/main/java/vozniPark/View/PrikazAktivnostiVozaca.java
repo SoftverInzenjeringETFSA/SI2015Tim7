@@ -9,8 +9,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 public class PrikazAktivnostiVozaca {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 	private JTable table;
@@ -26,7 +29,8 @@ public class PrikazAktivnostiVozaca {
 					PrikazAktivnostiVozaca window = new PrikazAktivnostiVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

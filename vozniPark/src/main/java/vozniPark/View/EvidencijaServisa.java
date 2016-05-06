@@ -11,11 +11,11 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
-
+import org.apache.log4j.Logger;
 
 public class EvidencijaServisa {
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frmPrijavaServisa;
 	private JTable table;
@@ -39,7 +39,8 @@ public class EvidencijaServisa {
 					EvidencijaServisa window = new EvidencijaServisa();
 					window.frmPrijavaServisa.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

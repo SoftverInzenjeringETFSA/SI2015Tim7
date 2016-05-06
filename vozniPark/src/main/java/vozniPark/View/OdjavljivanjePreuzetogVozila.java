@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import org.apache.log4j.Logger;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -12,8 +15,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import org.apache.log4j.Logger;
 
 public class OdjavljivanjePreuzetogVozila {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frmOdjavljivanjePreuzetogVozila;
 	private JTextField textField_1;
@@ -33,7 +39,8 @@ public class OdjavljivanjePreuzetogVozila {
 					OdjavljivanjePreuzetogVozila window = new OdjavljivanjePreuzetogVozila();
 					window.frmOdjavljivanjePreuzetogVozila.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});

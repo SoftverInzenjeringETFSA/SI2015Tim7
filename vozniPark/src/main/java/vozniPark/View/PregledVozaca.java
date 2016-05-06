@@ -11,8 +11,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import org.apache.log4j.Logger;
 
 public class PregledVozaca {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 	private JTable table_1;
@@ -29,7 +32,8 @@ public class PregledVozaca {
 					PregledVozaca window = new PregledVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});

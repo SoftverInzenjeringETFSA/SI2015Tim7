@@ -12,7 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+
 public class PodaciOVozacu {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 
@@ -26,7 +30,8 @@ public class PodaciOVozacu {
 					PodaciOVozacu window = new PodaciOVozacu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});

@@ -5,8 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import org.apache.log4j.Logger;
+
+import vozniPark.View.Login;
 
 public class IzvjestajOSvimServisima {
+
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 	private JTable table;
@@ -21,7 +26,8 @@ public class IzvjestajOSvimServisima {
 					IzvjestajOSvimServisima window = new IzvjestajOSvimServisima();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

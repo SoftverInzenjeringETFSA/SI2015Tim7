@@ -4,8 +4,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import org.apache.log4j.Logger;
 
 public class VozacHomePage {
+
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
 
@@ -19,7 +22,8 @@ public class VozacHomePage {
 					VozacHomePage window = new VozacHomePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
