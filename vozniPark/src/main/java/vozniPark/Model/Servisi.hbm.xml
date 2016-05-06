@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2016 9:34:26 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="vozniPark.Model.Servisi" table="SERVISI">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="datumOdlaska" type="java.util.Date">
+            <column name="DATUMODLASKA" />
+        </property>
+        <property name="datumVracanja" type="java.util.Date">
+            <column name="DATUMVRACANJA" />
+        </property>
+        <property name="cijena" type="double">
+            <column name="CIJENA" />
+        </property>
+        <property name="opis" type="java.lang.String">
+            <column name="OPIS" />
+        </property>
+    </class>
+</hibernate-mapping>

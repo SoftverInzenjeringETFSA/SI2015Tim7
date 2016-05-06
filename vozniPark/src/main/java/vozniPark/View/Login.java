@@ -1,5 +1,6 @@
 package vozniPark.View;
 import java.awt.EventQueue;
+import org.apache.log4j.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,6 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class Login {
+	
+	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frmLogin;
 	private JTextField textField;
@@ -22,7 +25,8 @@ public class Login {
 					Login window = new Login();
 					window.frmLogin.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});

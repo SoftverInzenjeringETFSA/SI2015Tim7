@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2016 9:34:26 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="vozniPark.Model.Vozilo" table="VOZILO">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="brojSaobracajneDozvole" type="java.lang.String">
+            <column name="BROJSAOBRACAJNEDOZVOLE" />
+        </property>
+        <property name="registracija" type="java.lang.String">
+            <column name="REGISTRACIJA" />
+        </property>
+        <property name="naziv" type="java.lang.String">
+            <column name="NAZIV" />
+        </property>
+        <property name="osnovneKarakteristike" type="java.lang.String">
+            <column name="OSNOVNEKARAKTERISTIKE" />
+        </property>
+        <property name="zadnjiServisKilometri" type="double">
+            <column name="ZADNJISERVISKILOMETRI" />
+        </property>
+        <property name="datumZadnjegServisa" type="java.util.Date">
+            <column name="DATUMZADNJEGSERVISA" />
+        </property>
+        <list name="listaTocenja" inverse="false" table="TOCENJEGORIVA" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="vozniPark.Model.TocenjeGoriva" />
+        </list>
+        <list name="listaServisa" inverse="false" table="SERVISI" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="vozniPark.Model.Servisi" />
+        </list>
+        <property name="brojPredjenihKilometara" type="double">
+            <column name="BROJPREDJENIHKILOMETARA" />
+        </property>
+        <property name="proizvodjac" type="java.lang.String">
+            <column name="PROIZVODJAC" />
+        </property>
+        <property name="godinaProizvodnje" type="int">
+            <column name="GODINAPROIZVODNJE" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+        <property name="brojVlasnickeDozvole" type="java.lang.String">
+            <column name="BROJVLASNICKEDOZVOLE" />
+        </property>
+    </class>
+</hibernate-mapping>
