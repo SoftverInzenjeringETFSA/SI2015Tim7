@@ -9,11 +9,11 @@
   <property name="hibernate.connection.username">EtfSI2015</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="hibernate.hbm2ddl.auto">update</property>
-  <mapping resource="vozniPark/Model/Osoba.hbm.xml"/>
-  <mapping resource="vozniPark/Model/Sef.hbm.xml"/>
-  <mapping resource="vozniPark/Model/Servisi.hbm.xml"/>
-  <mapping resource="vozniPark/Model/TocenjeGoriva.hbm.xml"/>
-  <mapping resource="vozniPark/Model/Vozac.hbm.xml"/>
-  <mapping resource="vozniPark/Model/Vozilo.hbm.xml"/>
+  <mapping resource="vozniPark/Osoba.hbm.xml"/>
+  <mapping resource="vozniPark/Sef.hbm.xml"/>
+  <mapping resource="vozniPark/Servisi.hbm.xml"/>
+  <mapping resource="vozniPark/TocenjeGoriva.hbm.xml"/>
+  <mapping resource="vozniPark/Vozac.hbm.xml"/>
+  <mapping resource="vozniPark/Vozilo.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
