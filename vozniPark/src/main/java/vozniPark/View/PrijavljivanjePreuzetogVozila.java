@@ -158,6 +158,7 @@ public class PrijavljivanjePreuzetogVozila {
 						v.setStatus("Zauzet");
 						Long id2 = (Long) session.save(v);
 						/* treba nastaviti implementaciju
+						 * dodati pristup tabeli voznje
 						Voznje voznje = new Voznje();
 						SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 						String dateInString = datum;
@@ -170,7 +171,8 @@ public class PrijavljivanjePreuzetogVozila {
 						}
 						voznje.setDatumPreuzimanja(date);
 						
-						Long id3 = (Long) session.save(voznje);*/
+						Long id3 = (Long) session.save(voznje);
+						*/
 						t.commit();
 					}
 				}	
