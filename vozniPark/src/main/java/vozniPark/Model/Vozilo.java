@@ -9,7 +9,7 @@ public class Vozilo implements java.io.Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private long id;
 	private String brojSaobracajneDozvole;
 	private String registracija;
 	private String naziv;
@@ -22,7 +22,15 @@ public class Vozilo implements java.io.Serializable{
 	private String proizvodjac;
 	private int godinaProizvodnje;
 	private String status;
-
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	private String brojVlasnickeDozvole;
 	public String getBrojVlasnickeDozvole() {
 		return brojVlasnickeDozvole;

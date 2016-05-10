@@ -3,17 +3,18 @@
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
-  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
   <property name="hibernate.connection.password">2015SIEtf</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tim7</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tim_7?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
   <property name="hibernate.connection.username">EtfSI2015</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="hibernate.hbm2ddl.auto">update</property>
-  <mapping resource="vozniPark/Osoba.hbm.xml"/>
-  <mapping resource="vozniPark/Sef.hbm.xml"/>
-  <mapping resource="vozniPark/Servisi.hbm.xml"/>
-  <mapping resource="vozniPark/TocenjeGoriva.hbm.xml"/>
-  <mapping resource="vozniPark/Vozac.hbm.xml"/>
-  <mapping resource="vozniPark/Vozilo.hbm.xml"/>
+  <mapping resource="Osoba.hbm.xml"/>
+  <mapping resource="Sef.hbm.xml"/>
+  <mapping resource="Servisi.hbm.xml"/>
+  <mapping resource="TocenjeGoriva.hbm.xml"/>
+  <mapping resource="Vozac.hbm.xml"/>
+  <mapping resource="Vozilo.hbm.xml"/>
+  <mapping resource="Voznje.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

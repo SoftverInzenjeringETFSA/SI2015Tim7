@@ -9,10 +9,19 @@ public class Servisi implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private long id;
 	private Date datumOdlaska;
 	private Date datumVracanja;
 	private double cijena;
 	private String opis;
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 	public Date getDatumOdlaska() {
 		return datumOdlaska;
