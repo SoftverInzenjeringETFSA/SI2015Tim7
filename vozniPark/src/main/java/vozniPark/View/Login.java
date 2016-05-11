@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login {
 	
@@ -18,7 +20,7 @@ public class Login {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -68,6 +70,20 @@ public class Login {
 		textField_1.setColumns(10);
 		
 		JButton btnPotvrdi = new JButton("Potvrdi");
+		btnPotvrdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SefHomePage sefHome = new SefHomePage();
+				sefHome.main(null);
+
+				//ako login prodje, ova forma ce se ugasiti, treba se ponovo pojaviti nakon sto se prijavljeni korisnik odjavi
+				
+				 //zasad se otvara sefHomePage, nakon sto se implementira login, ovisice o unesenim podacima
+				 //koja pocetna forma ce se otvoriti
+				 //VozacHomePage vozacHome = new VozacHomePage();
+				 //vozacHome.main(null);
+				 frmLogin.dispose();
+			}
+		});
 		btnPotvrdi.setBounds(135, 170, 100, 23);
 		frmLogin.getContentPane().add(btnPotvrdi);
 	}

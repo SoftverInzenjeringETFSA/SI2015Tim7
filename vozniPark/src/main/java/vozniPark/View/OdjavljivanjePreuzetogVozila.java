@@ -9,17 +9,14 @@ import javax.swing.SwingConstants;
 import org.apache.log4j.Logger;
 
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
-import org.apache.log4j.Logger;
 
 public class OdjavljivanjePreuzetogVozila {
 	
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(OdjavljivanjePreuzetogVozila.class);
 
 	private JFrame frmOdjavljivanjePreuzetogVozila;
 	private JTextField textField_1;
@@ -32,7 +29,7 @@ public class OdjavljivanjePreuzetogVozila {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -60,7 +57,7 @@ public class OdjavljivanjePreuzetogVozila {
 		frmOdjavljivanjePreuzetogVozila = new JFrame();
 		frmOdjavljivanjePreuzetogVozila.setTitle("Odjavljivanje preuzetog vozila");
 		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 361);
-		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().setLayout(null);
 		
 		JLabel lblRegistracijskiBroj = new JLabel("Broj registracijske tablice:");

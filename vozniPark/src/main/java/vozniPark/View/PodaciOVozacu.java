@@ -17,7 +17,7 @@ import org.hibernate.Session;
 
 public class PodaciOVozacu {
 	
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(PodaciOVozacu.class);
 
 	private JFrame frame;
 	private JFrame frejm;
@@ -26,7 +26,7 @@ public class PodaciOVozacu {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,12 +53,13 @@ public class PodaciOVozacu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 709, 543);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JButton btnPotvrdi = new JButton("Vrati se na pregled vozača");
 		btnPotvrdi.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
 			}
 		});
 		

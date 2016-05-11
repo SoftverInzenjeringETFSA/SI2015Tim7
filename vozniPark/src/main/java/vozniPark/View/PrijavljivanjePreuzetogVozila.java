@@ -41,7 +41,7 @@ public class PrijavljivanjePreuzetogVozila {
 	private static Scanner sc = new Scanner(System.in);
 
 	
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(PrijavljivanjePreuzetogVozila.class);
 
 
 	private static final String comboBox = null;
@@ -104,7 +104,7 @@ public class PrijavljivanjePreuzetogVozila {
 		});
 		frmPrij.setTitle("Prijavljivanje preuzetog vozila");
 		frmPrij.setBounds(100, 100, 403, 212);
-		frmPrij.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrij.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrij.getContentPane().setLayout(null);
 		
 		JLabel lblBrojRegistarskeTablice = new JLabel("Broj registarske tablice:");

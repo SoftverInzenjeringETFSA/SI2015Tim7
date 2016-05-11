@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 
 public class UnosNovogVozila {
 
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(UnosNovogVozila.class);
 
 	private JFrame frame;
 	private JTextField textField;
@@ -28,7 +28,7 @@ public class UnosNovogVozila {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,7 +55,7 @@ public class UnosNovogVozila {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 482, 374);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{60, 142, 212, 0};
 		gridBagLayout.rowHeights = new int[]{34, 20, 23, 23, 23, 23, 23, 23, 23, 57, 23, 0};

@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 
 public class PregledSlobodnihVozila {
 	
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(PregledSlobodnihVozila.class);
 
 	private JFrame frmPregledSlobodnihVozila;
 	private JTable table;
@@ -26,7 +26,7 @@ public class PregledSlobodnihVozila {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -54,7 +54,7 @@ public class PregledSlobodnihVozila {
 		frmPregledSlobodnihVozila = new JFrame();
 		frmPregledSlobodnihVozila.setTitle("Pregled slobodnih vozila");
 		frmPregledSlobodnihVozila.setBounds(100, 100, 899, 300);
-		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPregledSlobodnihVozila.getContentPane().setLayout(null);
 		
 		table = new JTable();

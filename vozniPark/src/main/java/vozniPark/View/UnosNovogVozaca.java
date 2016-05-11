@@ -17,21 +17,20 @@ import java.awt.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
-import app.vrtic.Model.Vaspitac;
-import app.vrtic.Service.VaspitacServis;
+
 import vozniPark.Model.Vozac;
 import vozniPark.Model.VozniPark;
 
 public class UnosNovogVozaca {
 
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(UnosNovogVozaca.class);
 
 	private JFrame frame;
 	private Session s;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -58,7 +57,7 @@ public class UnosNovogVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 709, 592);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JButton btnPotvrdi = new JButton("Registruj voza\u010Da");
 		

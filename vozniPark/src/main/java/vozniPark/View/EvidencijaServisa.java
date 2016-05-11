@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
 public class EvidencijaServisa {
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(EvidencijaServisa.class);
 
 	private JFrame frmPrijavaServisa;
 	private JTable table;
@@ -32,7 +32,7 @@ public class EvidencijaServisa {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -60,7 +60,7 @@ public class EvidencijaServisa {
 		frmPrijavaServisa = new JFrame();
 		frmPrijavaServisa.setTitle("Servis");
 		frmPrijavaServisa.setBounds(100, 100, 600, 344);
-		frmPrijavaServisa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrijavaServisa.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrijavaServisa.getContentPane().setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -144,7 +144,7 @@ public class EvidencijaServisa {
 		panel_1.add(label);
 		
 		JLabel label_3 = new JLabel("Datum:");
-		label_3.setBounds(365, 67, 35, 14);
+		label_3.setBounds(366, 67, 49, 14);
 		panel_1.add(label_3);
 		
 		textField_2 = new JTextField();
@@ -153,7 +153,7 @@ public class EvidencijaServisa {
 		panel_1.add(textField_2);
 		
 		JLabel label_4 = new JLabel("Vrijeme:");
-		label_4.setBounds(361, 96, 39, 14);
+		label_4.setBounds(360, 96, 53, 14);
 		panel_1.add(label_4);
 		
 		textField_3 = new JTextField();
@@ -166,7 +166,7 @@ public class EvidencijaServisa {
 		panel_1.add(button);
 		
 		JLabel lblCijena = new JLabel("Cijena:");
-		lblCijena.setBounds(365, 125, 35, 14);
+		lblCijena.setBounds(367, 125, 49, 14);
 		panel_1.add(lblCijena);
 		
 		textField_4 = new JTextField();
@@ -175,7 +175,7 @@ public class EvidencijaServisa {
 		textField_4.setColumns(10);
 		
 		JLabel lblOpisServisa = new JLabel("Opis servisa:");
-		lblOpisServisa.setBounds(338, 153, 62, 14);
+		lblOpisServisa.setBounds(333, 153, 76, 14);
 		panel_1.add(lblOpisServisa);
 		
 		textField_5 = new JTextField();
@@ -194,7 +194,7 @@ public class EvidencijaServisa {
 		panel_1.add(separator_9);
 		
 		JLabel lblServisiranoKod_1 = new JLabel("Servisirano kod:");
-		lblServisiranoKod_1.setBounds(322, 36, 78, 14);
+		lblServisiranoKod_1.setBounds(315, 36, 92, 14);
 		panel_1.add(lblServisiranoKod_1);
 		
 		textField_6 = new JTextField();

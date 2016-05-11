@@ -14,7 +14,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        //System.out.println( "Hello World!" );
+    	/*primjer unosa odredjenog objekta u bazu
     	Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         Sef s = new Sef();
@@ -27,6 +27,9 @@ public class App
         session.save(s);
         t.commit();
         
-        session.close();
+        session.close();*/
+    	
+    	Login login = new Login();
+    	login.main(null);
     }
 }

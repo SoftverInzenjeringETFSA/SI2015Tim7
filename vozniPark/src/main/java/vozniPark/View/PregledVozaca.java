@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
 	
-	final static Logger logger = Logger.getLogger(Login.class);
+	final static Logger logger = Logger.getLogger(PregledVozaca.class);
 
 	private JFrame frame;
 	private JTable table_1;
@@ -31,7 +31,7 @@ public class PregledVozaca {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -58,7 +58,7 @@ public class PregledVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 681, 537);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		String[] header=new String[]{"Ime", "Prezime", "Adresa", "Broj vozacke dozvole", "Username", "Broj telefona"};
@@ -96,11 +96,17 @@ public class PregledVozaca {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PodaciOVozacu podaci=new PodaciOVozacu();
-				podaci.PrikaziFormu();
+				podaci.main(null);
 			}
 		});
 		
 		btnNewButton_1 = new JButton("Prikaz aktivnosti");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrikazAktivnostiVozaca prikaz = new PrikazAktivnostiVozaca();
+				prikaz.main(null);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
