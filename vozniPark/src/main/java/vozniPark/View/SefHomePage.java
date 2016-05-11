@@ -64,8 +64,8 @@ public class SefHomePage {
 		JButton btnUnesiVozilo = new JButton("Unesi vozilo");
 		btnUnesiVozilo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UnosNovogVozaca unosVozaca = new UnosNovogVozaca();
-				unosVozaca.main(null);
+				UnosNovogVozila unosVozila = new UnosNovogVozila();
+				unosVozila.main(null);
 			}
 		});
 		btnUnesiVozilo.setBounds(65, 141, 218, 25);
