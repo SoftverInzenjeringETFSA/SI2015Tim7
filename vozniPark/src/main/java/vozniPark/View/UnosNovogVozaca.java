@@ -17,14 +17,15 @@ import java.awt.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
-
+import vozniPark.Controller.PrijavaPreuzetogVozilaController;
+import vozniPark.Controller.UnosNovogVozacaController;
 import vozniPark.Model.Vozac;
 import vozniPark.Model.VozniPark;
 
 public class UnosNovogVozaca {
 
 	final static Logger logger = Logger.getLogger(UnosNovogVozaca.class);
-
+	private UnosNovogVozacaController unvc;
 	private JFrame frame;
 	private Session s;
 	/**
@@ -194,44 +195,7 @@ public class UnosNovogVozaca {
 		
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(Ime.getText().length()<2){
-					JOptionPane.showMessageDialog(null, "Neispravno uneseno ime");
-				}
-				
-				if(Prezime.getText().length()<3){
-					JOptionPane.showMessageDialog(null, "Neispravno uneseno prezime");
-				}
-				
-				if(BrojVozacke.getText().length()!=9){
-					JOptionPane.showMessageDialog(null, "Neispravno unesen broj vozacke");
-				}
-
-				if(Adresa.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Unesite adresu.");
-					return;
-				}
-				
-				if(BrojTelefona.getText().length()!= 9 && BrojTelefona.getText().length()!=10) {
-					JOptionPane.showMessageDialog(null, "Niste pravilno unijeli broj telefona.");
-					return;
-				}
-				if(Username.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Unesite username.");
-					return;
-				}
-				if(Sifra.getText().length()<4) {
-					JOptionPane.showMessageDialog(null, "Sifra mora imati minimalno 4 slova.");
-					return;
-				}
-				VozniPark vp=new VozniPark(s);
-				Vozac v=new Vozac();
-				v.setIme(Ime.getText());
-				v.setPrezime(Prezime.getText());
-				v.setBrojVozacke(BrojVozacke.getText());
-				v.setAdresa(Adresa.getText());
-				v.setBrojTelefona(BrojTelefona.getText());
-				v.setUsername(Username.getText());
-				v.setPassword(Sifra.getText());
+				unvc.UnosVozaca(Ime.getText(), Prezime.getText(), BrojVozacke.getText(), Adresa.getText(), BrojTelefona.getText(), Username.getText(), Sifra.getText());
 			}
 		});
 		

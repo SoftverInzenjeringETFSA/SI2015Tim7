@@ -150,12 +150,4 @@ public class PregledVozaca {
 		frame.getContentPane().setLayout(groupLayout);
 	}
 	
-	/*private static void PrikaziPodatke(Session session) 
-	{
-		Transaction t = session.beginTransaction();
-		int a = session.createCriteria(Vozilo.class).list().size();
-		textField_1.setText(Integer.toString(a));
-		
-		t.commit();
-	}*/
 }
