@@ -13,12 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 
 public class PodaciOVozacu {
 	
 	final static Logger logger = Logger.getLogger(Login.class);
 
 	private JFrame frame;
+	private JFrame frejm;
+	Session s;
 
 	/**
 	 * Launch the application.
@@ -171,4 +174,24 @@ public class PodaciOVozacu {
 		frame.getContentPane().setLayout(groupLayout);
 		
 	}
+
+	public void PrikaziFormu() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PodaciOVozacu window = new PodaciOVozacu(s);
+					window.frejm.setVisible(true);
+					window.frejm.setAlwaysOnTop(true);
+				} catch (Exception e) {
+					logger.info(e);
+				}
+			}
+		});
+		
+	}
+	public PodaciOVozacu(Session s) {
+		this.s = s;
+		initialize();
+	}
+	
 }

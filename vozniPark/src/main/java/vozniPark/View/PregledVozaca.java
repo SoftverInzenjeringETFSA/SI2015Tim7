@@ -12,6 +12,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import vozniPark.Model.Vozilo;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
 	
@@ -87,6 +93,12 @@ public class PregledVozaca {
 		lblOdaberiteVozaaZa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnNewButton = new JButton("Prikaži podatke");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PodaciOVozacu podaci=new PodaciOVozacu();
+				podaci.PrikaziFormu();
+			}
+		});
 		
 		btnNewButton_1 = new JButton("Prikaz aktivnosti");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
@@ -130,8 +142,14 @@ public class PregledVozaca {
 		lblPodaciOVozau.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(lblPodaciOVozau);
 		frame.getContentPane().setLayout(groupLayout);
-
-
-
 	}
+	
+	/*private static void PrikaziPodatke(Session session) 
+	{
+		Transaction t = session.beginTransaction();
+		int a = session.createCriteria(Vozilo.class).list().size();
+		textField_1.setText(Integer.toString(a));
+		
+		t.commit();
+	}*/
 }

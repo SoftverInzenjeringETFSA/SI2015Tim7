@@ -2,10 +2,13 @@ package vozniPark.Model;
 
 import java.util.List;
 
+import org.hibernate.Session;
+
 public class VozniPark {
 
 	private List<Vozilo> listaVozila;
 	private List<Vozac> listaVozaca;
+	private Session s;
 
 	public List<Vozilo> getListaVozila() {
 		return listaVozila;
@@ -24,5 +27,9 @@ public class VozniPark {
 	}
 
 	public VozniPark() {
+	}
+
+	public VozniPark(Session s) {
+		this.s=s;
 	}
 }
