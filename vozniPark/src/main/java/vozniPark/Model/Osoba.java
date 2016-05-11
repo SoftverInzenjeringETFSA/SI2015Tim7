@@ -1,6 +1,6 @@
 package vozniPark.Model;
 
-public abstract class Osoba implements java.io.Serializable{
+public class Osoba implements java.io.Serializable{
 
 	/**
 	 * 
