@@ -12,12 +12,16 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import vozniPark.Util.*;
+import vozniPark.View.OdabirIzvjestaja;
 import vozniPark.Model.*;
 
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.apache.log4j.Logger;
 
 public class PrijavaPreuzetogVozilaController {
+	
+	final static Logger logger = Logger.getLogger(PrijavaPreuzetogVozilaController.class);
 	
 	private List<Vozilo> listaVozila;
 	
@@ -78,7 +82,8 @@ public class PrijavaPreuzetogVozilaController {
 					date = formatter.parse(datumVrijeme);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 				voznje.setDatumPreuzimanja(date);
 				voznje.setVozilo(v);			

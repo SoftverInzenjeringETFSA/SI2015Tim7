@@ -50,7 +50,7 @@ public class PrijavljivanjePreuzetogVozila {
 	protected static final String DateTimeFormat = null;
 
 	private JFrame frmPrij;
-	private static JTextField textField_1;
+	private JTextField textField_1;
 	private JTextField textField_2;
 	
 	
