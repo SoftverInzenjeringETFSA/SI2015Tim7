@@ -6,10 +6,13 @@
     <class name="vozniPark.Model.Voznje" table="VOZNJE">
         <id name="id" type="long">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="datumPreuzimanja" type="java.util.Date">
             <column name="DATUMPREUZIMANJA" />
+        </property>
+        <property name="datumVracanja" type="java.util.Date">
+            <column name="DATUMVRACANJA" />
         </property>
         <property name="predjeniKilometri" type="long">
             <column name="PREDJENIKILOMETRI" />
@@ -18,7 +21,10 @@
             <column name="OPISUPOTREBE" />
         </property>
         <many-to-one name="vozilo" class="vozniPark.Model.Vozilo" fetch="join">
-            <column name="VOZILO" />
+            <column name="VOZILO_ID" />
+        </many-to-one>
+        <many-to-one name="vozac" class="vozniPark.Model.Vozac" fetch="join">
+            <column name="VOZAC_ID" />
         </many-to-one>
         <property name="potrosnjaGoriva" type="long">
             <column name="POTROSNJAGORIVA" />

@@ -19,6 +19,12 @@ public class Voznje implements Serializable {
 	public void setDatumPreuzimanja(Date datumPreuzimanja) {
 		this.datumPreuzimanja = datumPreuzimanja;
 	}
+	public Date getDatumVracanja() {
+		return datumVracanja;
+	}
+	public void setDatumVracanja(Date datumVracanja) {
+		this.datumVracanja = datumVracanja;
+	} 
 	public long getPredjeniKilometri() {
 		return predjeniKilometri;
 	}
@@ -37,6 +43,12 @@ public class Voznje implements Serializable {
 	public void setVozilo(Vozilo vozilo) {
 		this.vozilo = vozilo;
 	}
+	public Vozac getVozac() {
+		return vozac;
+	}
+	public void setVozac(Vozac vozac) {
+		this.vozac = vozac;
+	}
 	public long getPotrosnjaGoriva() {
 		return potrosnjaGoriva;
 	}
@@ -47,11 +59,13 @@ public class Voznje implements Serializable {
 		return serialVersionUID;
 	}
 	private Date datumPreuzimanja;
+	private Date datumVracanja;
 	private long predjeniKilometri;
 	private String opisUpotrebe;
 	private Vozilo vozilo;
+	private Vozac vozac;
 	private long potrosnjaGoriva;
 	
 	
-	public Voznje() {} 
+	public Voznje() {}
 }
