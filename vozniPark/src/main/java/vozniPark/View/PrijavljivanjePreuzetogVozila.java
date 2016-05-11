@@ -32,8 +32,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import vozniPark.Controller.PrijavaPreuzetogVozilaController;
 
 public class PrijavljivanjePreuzetogVozila {
+	
+	private PrijavaPreuzetogVozilaController ppvc;
+	
 	private static Scanner sc = new Scanner(System.in);
 
 	
@@ -48,7 +52,8 @@ public class PrijavljivanjePreuzetogVozila {
 	private JFrame frmPrij;
 	private static JTextField textField_1;
 	private JTextField textField_2;
-	VozniPark vp = new VozniPark();
+	
+	
 
 	/**
 	 * Launch the application.
@@ -75,6 +80,7 @@ public class PrijavljivanjePreuzetogVozila {
 	 */
 	public PrijavljivanjePreuzetogVozila() {
 		initialize();
+		ppvc = new PrijavaPreuzetogVozilaController();
 	}
 
 	/**
@@ -82,8 +88,8 @@ public class PrijavljivanjePreuzetogVozila {
 	 */
 	private void initialize() {
 		frmPrij = new JFrame();
-		final Vector<String> v = new Vector<String>();
-		final JComboBox comboBox_1 = new JComboBox(v);
+		
+		final JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(177, 28, 161, 20);
 		frmPrij.getContentPane().add(comboBox_1);
 		
@@ -91,21 +97,9 @@ public class PrijavljivanjePreuzetogVozila {
 			@Override
 			// kad se forma ucita pokupi sva vozila iz baze
 			public void windowOpened(WindowEvent arg0) {
-				Session session = HibernateUtil.getSessionFactory().openSession();
-				Transaction t = session.beginTransaction();
 				
-				vp.setListaVozila((List<Vozilo>) session.createCriteria(Vozilo.class).list());
-				Vector comboBoxItems=new Vector();
-				for(int i=0; i<vp.getListaVozila().size(); i++) 
-				{
-					if(vp.getListaVozila().get(i).getStatus().contentEquals("Slobodan"))
-					{
-					    
-					    v.addElement(vp.getListaVozila().get(i).getRegistracija());
-						
-					}
-				}
-				t.commit();
+				ppvc.ucitajVozilaIzBaze(frmPrij,comboBox_1);
+				
 			}
 		});
 		frmPrij.setTitle("Prijavljivanje preuzetog vozila");
@@ -143,58 +137,13 @@ public class PrijavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Prijavi");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String datum,vrijeme,registracija;
-				datum = textField_1.getText();
-				vrijeme = textField_2.getText();
-				registracija = (String)comboBox_1.getSelectedItem();
-				for(int i=0; i< vp.getListaVozila().size(); i++) 
-				{
-					if(vp.getListaVozila().get(i).getRegistracija().contentEquals(registracija))
-					{	
-						long id = vp.getListaVozila().get(i).getId();
-						Session session = HibernateUtil.getSessionFactory().openSession();
-						Transaction t = session.beginTransaction();
-						Vozilo v = (Vozilo) session.load(Vozilo.class, id);
-						v.setStatus("Zauzet");
-						Long id2 = (Long) session.save(v);
-						/* treba nastaviti implementaciju
-						 * dodati pristup tabeli voznje
-						Voznje voznje = new Voznje();
-						SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-						String dateInString = datum;
-						Date date = new Date();
-						try {
-							date = formatter.parse(dateInString);
-						} catch (ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						voznje.setDatumPreuzimanja(date);
-						
-						Long id3 = (Long) session.save(voznje);
-						*/
-						t.commit();
-					}
-				}	
-				
+				ppvc.prijaviVoziloZauzetim(comboBox_1.getSelectedItem().toString(),textField_1.getText(),textField_2.getText());
+				//zatvara prozor kad se klikne na dugme
+				frmPrij.dispatchEvent(new WindowEvent(frmPrij, WindowEvent.WINDOW_CLOSING));			
 			}
 		});
 		btnNewButton.setBounds(39, 134, 299, 23);
-		frmPrij.getContentPane().add(btnNewButton);
+		frmPrij.getContentPane().add(btnNewButton);		
 		
-		
-		
-		
-	}
-	
-	
-	
-	private static void nadjiVozilo(Session session) 
-	{
-		Transaction t = session.beginTransaction();
-		int a = session.createCriteria(Vozilo.class).list().size();
-		textField_1.setText(Integer.toString(a));
-		
-		t.commit();
 	}
 }
