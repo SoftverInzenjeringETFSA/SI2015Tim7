@@ -8,26 +8,19 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
-
-import vozniPark.Controller.PrijavaPreuzetogVozilaController;
 import vozniPark.Controller.UnosNovogVozacaController;
-import vozniPark.Model.Vozac;
-import vozniPark.Model.VozniPark;
 
 public class UnosNovogVozaca {
 
 	final static Logger logger = Logger.getLogger(UnosNovogVozaca.class);
 	private UnosNovogVozacaController unvc;
 	private JFrame frame;
-	private Session s;
 	/**
 	 * Launch the application.
 	 */
@@ -50,6 +43,7 @@ public class UnosNovogVozaca {
 	 */
 	public UnosNovogVozaca() {
 		initialize();
+		unvc = new UnosNovogVozacaController();
 	}
 
 	/**

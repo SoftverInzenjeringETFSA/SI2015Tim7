@@ -12,16 +12,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import vozniPark.Model.Vozilo;
+import vozniPark.Controller.PregledVozacaController;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
 	
 	final static Logger logger = Logger.getLogger(PregledVozaca.class);
+	
+	private PregledVozacaController pvc;
 
 	private JFrame frame;
 	private JTable table_1;
@@ -50,6 +51,7 @@ public class PregledVozaca {
 	 */
 	public PregledVozaca() {
 		initialize();
+		pvc = new PregledVozacaController();
 	}
 
 	/**

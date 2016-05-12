@@ -21,7 +21,7 @@ import vozniPark.Util.HibernateUtil;
 
 public class OdjavaPreuzetogVozilaController {
 	
-	final static Logger logger = Logger.getLogger(PrijavaPreuzetogVozilaController.class);
+	final static Logger logger = Logger.getLogger(OdjavaPreuzetogVozilaController.class);
 	
 	private List<Vozilo> listaVozila;
 	
@@ -64,7 +64,7 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				Transaction t = session.beginTransaction();
 				Vozilo v = (Vozilo) session.load(Vozilo.class, idVozila);
 				v.setStatus("Slobodan");
-				Long id2 = (Long) session.save(v);
+				session.save(v);
 				
 				
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");

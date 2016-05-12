@@ -21,12 +21,7 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Vector;
-
-import org.hibernate.Transaction;
-import org.hibernate.Session;
-import org.hibernate.SharedSessionContract;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -37,9 +32,6 @@ import vozniPark.Controller.PrijavaPreuzetogVozilaController;
 public class PrijavljivanjePreuzetogVozila {
 	
 	private PrijavaPreuzetogVozilaController ppvc;
-	
-	private static Scanner sc = new Scanner(System.in);
-
 	
 	final static Logger logger = Logger.getLogger(PrijavljivanjePreuzetogVozila.class);
 
@@ -58,7 +50,7 @@ public class PrijavljivanjePreuzetogVozila {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

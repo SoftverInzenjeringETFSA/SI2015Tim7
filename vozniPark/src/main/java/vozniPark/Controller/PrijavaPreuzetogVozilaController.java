@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import vozniPark.Util.*;
-import vozniPark.View.OdabirIzvjestaja;
 import vozniPark.Model.*;
 
 import org.hibernate.Transaction;
@@ -71,7 +70,7 @@ public class PrijavaPreuzetogVozilaController {
 				Transaction t = session.beginTransaction();
 				Vozilo v = (Vozilo) session.load(Vozilo.class, id);
 				v.setStatus("Zauzet");
-				Long id2 = (Long) session.save(v);
+				session.save(v);
 				
 				
 				Voznje voznje = new Voznje();

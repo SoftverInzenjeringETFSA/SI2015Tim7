@@ -17,7 +17,7 @@ import vozniPark.Util.HibernateUtil;
 
 public class PregledVozacaController {
 	
-	final static Logger logger = Logger.getLogger(UnosNovogVozacaController.class);
+	final static Logger logger = Logger.getLogger(PregledVozacaController.class);
 	private List<Vozac> listaVozaca;
 	
 	public PregledVozacaController() {
