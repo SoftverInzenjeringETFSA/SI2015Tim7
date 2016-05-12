@@ -29,6 +29,10 @@ public class OdjavaPreuzetogVozilaController {
 		listaVozila = new ArrayList<Vozilo>();
 	}
 	
+	public List<Vozilo> getListaVozila() {
+		return listaVozila;
+	}
+	
 	public void ucitajVozilaIzBaze(JFrame frame, JComboBox cb) {
 		
 		final Vector<String> v = new Vector<String>();

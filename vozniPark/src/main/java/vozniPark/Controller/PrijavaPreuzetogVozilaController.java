@@ -28,22 +28,20 @@ public class PrijavaPreuzetogVozilaController {
 		listaVozila = new ArrayList<Vozilo>();
 	}
 	
+	public List<Vozilo> getListaVozila() {
+		return listaVozila;
+	}
+	
 	public void ucitajVozilaIzBaze(JFrame frame, JComboBox cb) {
 		
 		final Vector<String> v = new Vector<String>();
-		//JComboBox<String> comboBox = new JComboBox<String>(v);
 		
-		//comboBox.setBounds(177, 28, 161, 20);
-		
-		
-		//frame.getContentPane().add(comboBox);
-		//frame.setVisible(true);
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		
 		listaVozila = session.createCriteria(Vozilo.class).list();
-		//Vector comboBoxItems=new Vector();
+		
 		for(int i=0; i<listaVozila.size(); i++) 
 		{
 			if(listaVozila.get(i).getStatus().contentEquals("Slobodan"))
@@ -53,7 +51,7 @@ public class PrijavaPreuzetogVozilaController {
 			  
 			}
 		}
-		//comboBox.setSelectedIndex(0);
+		
 		DefaultComboBoxModel model = new DefaultComboBoxModel( v );
 		cb.setModel( model );
 		t.commit();
