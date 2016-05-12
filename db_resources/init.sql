@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: tim7
+-- Host: localhost    Database: tim_7
 -- ------------------------------------------------------
 -- Server version	5.5.49-0ubuntu0.14.04.1
 
@@ -14,6 +14,14 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `tim_7`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `tim_7` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `tim_7`;
 
 --
 -- Table structure for table `Osobe`
@@ -200,19 +208,22 @@ DROP TABLE IF EXISTS `Voznje`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Voznje` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `DatumPreuzimanja` datetime NOT NULL,
   `PredjeniKilometri` decimal(10,0) DEFAULT NULL,
   `DatumVracanja` datetime DEFAULT NULL,
   `OpisUpotrebe` varchar(255) DEFAULT NULL,
   `Vozilo_id` int(11) NOT NULL,
   `Vozac_Id` int(11) NOT NULL,
+  `TocenjeGoriva_ID` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Voznje_1_idx` (`Vozilo_id`),
   KEY `fk_Voznje_2_idx` (`Vozac_Id`),
+  KEY `fk_Voznje_3_idx` (`TocenjeGoriva_ID`),
+  CONSTRAINT `fk_Voznje_3` FOREIGN KEY (`TocenjeGoriva_ID`) REFERENCES `TocenjeGoriva` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Voznje_1` FOREIGN KEY (`Vozilo_id`) REFERENCES `Vozila` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Voznje_2` FOREIGN KEY (`Vozac_Id`) REFERENCES `Vozaci` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +232,7 @@ CREATE TABLE `Voznje` (
 
 LOCK TABLES `Voznje` WRITE;
 /*!40000 ALTER TABLE `Voznje` DISABLE KEYS */;
-INSERT INTO `Voznje` VALUES (1,'2016-05-01 00:00:00',NULL,NULL,'Malo se vozali :)',1,2);
+INSERT INTO `Voznje` VALUES (1,'2016-05-01 00:00:00',NULL,NULL,'Malo se vozali :)',1,2,NULL);
 /*!40000 ALTER TABLE `Voznje` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -234,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-06 17:49:07
+-- Dump completed on 2016-05-13  0:54:41
