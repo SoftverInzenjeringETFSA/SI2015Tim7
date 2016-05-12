@@ -7,8 +7,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import org.apache.log4j.Logger;
+
+import vozniPark.View.Login;
 
 public class IzvjestajOAktivnostimaVozaca {
+
+	final static Logger logger = Logger.getLogger(IzvjestajOAktivnostimaVozaca.class);
 
 	private JFrame frame;
 	private JTextField textField;
@@ -18,14 +23,15 @@ public class IzvjestajOAktivnostimaVozaca {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					IzvjestajOAktivnostimaVozaca window = new IzvjestajOAktivnostimaVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -44,7 +50,7 @@ public class IzvjestajOAktivnostimaVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1168, 422);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("Izvještaj o aktivnostima vozača");

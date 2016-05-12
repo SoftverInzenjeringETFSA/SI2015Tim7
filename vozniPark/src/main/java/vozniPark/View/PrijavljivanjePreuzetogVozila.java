@@ -1,6 +1,10 @@
 package vozniPark.View;
 
 import java.awt.EventQueue;
+import java.util.Date;
+
+import vozniPark.Util.*;
+import vozniPark.Model.*;
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
@@ -8,38 +12,67 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import org.apache.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import vozniPark.Controller.PrijavaPreuzetogVozilaController;
 
 public class PrijavljivanjePreuzetogVozila {
+	
+	private PrijavaPreuzetogVozilaController ppvc;
+	
+	final static Logger logger = Logger.getLogger(PrijavljivanjePreuzetogVozila.class);
+
+
+	private static final String comboBox = null;
+
+
+	protected static final String DateTimeFormat = null;
 
 	private JFrame frmPrij;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila();
 					window.frmPrij.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
 	 */
 	public PrijavljivanjePreuzetogVozila() {
 		initialize();
+		ppvc = new PrijavaPreuzetogVozilaController();
 	}
 
 	/**
@@ -47,9 +80,23 @@ public class PrijavljivanjePreuzetogVozila {
 	 */
 	private void initialize() {
 		frmPrij = new JFrame();
+		
+		final JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(177, 28, 161, 20);
+		frmPrij.getContentPane().add(comboBox_1);
+		
+		frmPrij.addWindowListener(new WindowAdapter() {
+			@Override
+			// kad se forma ucita pokupi sva vozila iz baze
+			public void windowOpened(WindowEvent arg0) {
+				
+				ppvc.ucitajVozilaIzBaze(frmPrij,comboBox_1);
+				
+			}
+		});
 		frmPrij.setTitle("Prijavljivanje preuzetog vozila");
 		frmPrij.setBounds(100, 100, 403, 212);
-		frmPrij.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrij.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrij.getContentPane().setLayout(null);
 		
 		JLabel lblBrojRegistarskeTablice = new JLabel("Broj registarske tablice:");
@@ -82,13 +129,13 @@ public class PrijavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Prijavi");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ppvc.prijaviVoziloZauzetim(comboBox_1.getSelectedItem().toString(),textField_1.getText(),textField_2.getText());
+				//zatvara prozor kad se klikne na dugme
+				frmPrij.dispatchEvent(new WindowEvent(frmPrij, WindowEvent.WINDOW_CLOSING));			
 			}
 		});
 		btnNewButton.setBounds(39, 134, 299, 23);
-		frmPrij.getContentPane().add(btnNewButton);
+		frmPrij.getContentPane().add(btnNewButton);		
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(177, 28, 161, 20);
-		frmPrij.getContentPane().add(comboBox);
 	}
 }

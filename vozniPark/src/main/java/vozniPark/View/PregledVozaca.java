@@ -11,8 +11,18 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import org.apache.log4j.Logger;
+
+import vozniPark.Controller.PregledVozacaController;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
+	
+	final static Logger logger = Logger.getLogger(PregledVozaca.class);
+	
+	private PregledVozacaController pvc;
 
 	private JFrame frame;
 	private JTable table_1;
@@ -22,14 +32,15 @@ public class PregledVozaca {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PregledVozaca window = new PregledVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});
@@ -40,6 +51,7 @@ public class PregledVozaca {
 	 */
 	public PregledVozaca() {
 		initialize();
+		pvc = new PregledVozacaController();
 	}
 
 	/**
@@ -48,7 +60,7 @@ public class PregledVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 681, 537);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		String[] header=new String[]{"Ime", "Prezime", "Adresa", "Broj vozacke dozvole", "Username", "Broj telefona"};
@@ -83,8 +95,20 @@ public class PregledVozaca {
 		lblOdaberiteVozaaZa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnNewButton = new JButton("Prikaži podatke");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PodaciOVozacu podaci=new PodaciOVozacu();
+				podaci.main(null);
+			}
+		});
 		
 		btnNewButton_1 = new JButton("Prikaz aktivnosti");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrikazAktivnostiVozaca prikaz = new PrikazAktivnostiVozaca();
+				prikaz.main(null);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -126,8 +150,6 @@ public class PregledVozaca {
 		lblPodaciOVozau.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(lblPodaciOVozau);
 		frame.getContentPane().setLayout(groupLayout);
-
-
-
 	}
+	
 }

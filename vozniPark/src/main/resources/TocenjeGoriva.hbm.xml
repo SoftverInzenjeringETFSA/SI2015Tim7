@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2016 9:34:26 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="vozniPark.Model.TocenjeGoriva" table="TOCENJEGORIVA">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="kolicina" type="double">
+            <column name="KOLICINA" />
+        </property>
+        <property name="cijena" type="double">
+            <column name="CIJENA" />
+        </property>
+    </class>
+</hibernate-mapping>

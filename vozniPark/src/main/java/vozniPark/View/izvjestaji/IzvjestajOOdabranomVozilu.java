@@ -8,8 +8,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import org.apache.log4j.Logger;
+
+import vozniPark.View.Login;
 
 public class IzvjestajOOdabranomVozilu {
+
+	final static Logger logger = Logger.getLogger(IzvjestajOOdabranomVozilu.class);
 
 	private JFrame frame;
 	private JTextField textField_2;
@@ -20,14 +25,15 @@ public class IzvjestajOOdabranomVozilu {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					IzvjestajOOdabranomVozilu window = new IzvjestajOOdabranomVozilu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -46,7 +52,7 @@ public class IzvjestajOOdabranomVozilu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 780, 421);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblIzvjetajOOdabranom = new JLabel("Izvje\u0161taj o odabranom vozilu");

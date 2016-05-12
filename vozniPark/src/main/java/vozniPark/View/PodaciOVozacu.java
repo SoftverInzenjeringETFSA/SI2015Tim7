@@ -12,21 +12,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+
 public class PodaciOVozacu {
+	
+	final static Logger logger = Logger.getLogger(PodaciOVozacu.class);
 
 	private JFrame frame;
+	private JFrame frejm;
+	Session s;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PodaciOVozacu window = new PodaciOVozacu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});
@@ -45,12 +53,13 @@ public class PodaciOVozacu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 709, 543);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JButton btnPotvrdi = new JButton("Vrati se na pregled vozača");
 		btnPotvrdi.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
 			}
 		});
 		
@@ -166,4 +175,24 @@ public class PodaciOVozacu {
 		frame.getContentPane().setLayout(groupLayout);
 		
 	}
+
+	public void PrikaziFormu() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PodaciOVozacu window = new PodaciOVozacu(s);
+					window.frejm.setVisible(true);
+					window.frejm.setAlwaysOnTop(true);
+				} catch (Exception e) {
+					logger.info(e);
+				}
+			}
+		});
+		
+	}
+	public PodaciOVozacu(Session s) {
+		this.s = s;
+		initialize();
+	}
+	
 }

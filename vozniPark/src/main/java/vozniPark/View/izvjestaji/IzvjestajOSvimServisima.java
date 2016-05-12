@@ -5,8 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import org.apache.log4j.Logger;
+
+import vozniPark.View.Login;
 
 public class IzvjestajOSvimServisima {
+
+	final static Logger logger = Logger.getLogger(IzvjestajOSvimServisima.class);
 
 	private JFrame frame;
 	private JTable table;
@@ -14,14 +19,15 @@ public class IzvjestajOSvimServisima {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					IzvjestajOSvimServisima window = new IzvjestajOSvimServisima();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -40,7 +46,7 @@ public class IzvjestajOSvimServisima {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1038, 457);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblIzvjetajOSvim = new JLabel("Izvje\u0161taj o svim servisima svih vozila");

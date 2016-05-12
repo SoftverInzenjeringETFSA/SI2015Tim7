@@ -4,22 +4,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import org.apache.log4j.Logger;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VozacHomePage {
+
+	final static Logger logger = Logger.getLogger(VozacHomePage.class);
 
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					VozacHomePage window = new VozacHomePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -46,14 +52,33 @@ public class VozacHomePage {
 		frame.getContentPane().add(lblDobroDoaoMeho);
 		
 		JButton btnNewButton = new JButton("Prijava preuzetog vozila");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrijavljivanjePreuzetogVozila prijava = new PrijavljivanjePreuzetogVozila();
+				prijava.main(null);
+			}
+		});
 		btnNewButton.setBounds(12, 74, 220, 25);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnOdjavaPreuzetogVozila = new JButton("Odjava preuzetog vozila");
+		btnOdjavaPreuzetogVozila.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OdjavljivanjePreuzetogVozila odjava = new OdjavljivanjePreuzetogVozila();
+				odjava.main(null);
+			}
+		});
 		btnOdjavaPreuzetogVozila.setBounds(12, 120, 220, 25);
 		frame.getContentPane().add(btnOdjavaPreuzetogVozila);
 		
 		JButton btnOdjaviSe = new JButton("Odjavi se");
+		btnOdjaviSe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Login login = new Login();
+				login.main(null);
+			}
+		});
 		btnOdjaviSe.setBounds(440, 176, 117, 25);
 		frame.getContentPane().add(btnOdjaviSe);
 	}

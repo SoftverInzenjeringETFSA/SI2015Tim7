@@ -1,19 +1,27 @@
 package vozniPark.View;
 
 import java.awt.EventQueue;
+import vozniPark.Controller.OdjavaPreuzetogVozilaController;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import org.apache.log4j.Logger;
+
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class OdjavljivanjePreuzetogVozila {
+	
+	private OdjavaPreuzetogVozilaController opvc;
+	
+	final static Logger logger = Logger.getLogger(OdjavljivanjePreuzetogVozila.class);
 
 	private JFrame frmOdjavljivanjePreuzetogVozila;
 	private JTextField textField_1;
@@ -26,14 +34,15 @@ public class OdjavljivanjePreuzetogVozila {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					OdjavljivanjePreuzetogVozila window = new OdjavljivanjePreuzetogVozila();
 					window.frmOdjavljivanjePreuzetogVozila.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 			}
 		});
@@ -44,6 +53,7 @@ public class OdjavljivanjePreuzetogVozila {
 	 */
 	public OdjavljivanjePreuzetogVozila() {
 		initialize();
+		opvc = new OdjavaPreuzetogVozilaController();
 	}
 
 	/**
@@ -51,9 +61,15 @@ public class OdjavljivanjePreuzetogVozila {
 	 */
 	private void initialize() {
 		frmOdjavljivanjePreuzetogVozila = new JFrame();
+		frmOdjavljivanjePreuzetogVozila.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				opvc.ucitajVozilaIzBaze(frmOdjavljivanjePreuzetogVozila, comboBox);
+			}
+		});
 		frmOdjavljivanjePreuzetogVozila.setTitle("Odjavljivanje preuzetog vozila");
 		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 361);
-		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().setLayout(null);
 		
 		JLabel lblRegistracijskiBroj = new JLabel("Broj registracijske tablice:");
@@ -109,6 +125,9 @@ public class OdjavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Odjavi vozilo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), textField_1.getText(), textField_2.getText(),Long.valueOf(textField_3.getText()), textField_5.getText(), Long.valueOf(textField_4.getText()));
+				//zatvara prozor kad se klikne na dugme
+				frmOdjavljivanjePreuzetogVozila.dispatchEvent(new WindowEvent(frmOdjavljivanjePreuzetogVozila, WindowEvent.WINDOW_CLOSING));
 			}
 		});
 		btnNewButton.setBounds(36, 286, 367, 25);
@@ -122,5 +141,7 @@ public class OdjavljivanjePreuzetogVozila {
 		comboBox = new JComboBox();
 		comboBox.setBounds(218, 31, 185, 20);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(comboBox);
+		
+		
 	}
 }

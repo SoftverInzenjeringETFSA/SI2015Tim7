@@ -13,22 +13,26 @@ import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.apache.log4j.Logger;
+import vozniPark.Controller.UnosNovogVozacaController;
 
 public class UnosNovogVozaca {
 
+	final static Logger logger = Logger.getLogger(UnosNovogVozaca.class);
+	private UnosNovogVozacaController unvc;
 	private JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					UnosNovogVozaca window = new UnosNovogVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -39,6 +43,7 @@ public class UnosNovogVozaca {
 	 */
 	public UnosNovogVozaca() {
 		initialize();
+		unvc = new UnosNovogVozacaController();
 	}
 
 	/**
@@ -47,43 +52,39 @@ public class UnosNovogVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 709, 592);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JButton btnPotvrdi = new JButton("Registruj voza\u010Da");
-		btnPotvrdi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		
-		JTextPane textPane = new JTextPane();
+		final JTextPane Ime = new JTextPane();
 		
 		JLabel lblIme = new JLabel("Ime:");
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
 		
-		JTextPane textPane_1 = new JTextPane();
+		final JTextPane Prezime = new JTextPane();
 		
-		JEditorPane editorPane = new JEditorPane();
+		final JEditorPane BrojVozacke = new JEditorPane();
 		
 		JLabel lblBrojVozackeDozvole = new JLabel("Broj voza\u010Dke dozvole:");
 		
-		JTextPane textPane_2 = new JTextPane();
+		final JTextPane Adresa = new JTextPane();
 		
 		JLabel lblAdresa = new JLabel("Adresa:");
 		
 		JLabel lblBrojTelefona = new JLabel("Broj telefona:");
 		
-		JTextPane textPane_4 = new JTextPane();
+		final JTextPane Username = new JTextPane();
 		
 		JLabel lblUsername = new JLabel("Username:");
 		
-		JTextPane textPane_5 = new JTextPane();
+		final JTextPane Sifra = new JTextPane();
 		
 		JLabel lblSifra = new JLabel("\u0160ifra:");
 		
 		JPanel panel = new JPanel();
 		
-		JTextPane textPane_3 = new JTextPane();
+		final JTextPane BrojTelefona = new JTextPane();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -94,12 +95,12 @@ public class UnosNovogVozaca {
 							.addGap(169)
 							.addComponent(lblPrezime)
 							.addGap(18)
-							.addComponent(textPane_1, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Prezime, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(188)
 							.addComponent(lblSifra)
 							.addGap(18)
-							.addComponent(textPane_5, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Sifra, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(131)
 							.addComponent(btnPotvrdi, GroupLayout.PREFERRED_SIZE, 422, GroupLayout.PREFERRED_SIZE))
@@ -108,28 +109,28 @@ public class UnosNovogVozaca {
 								.addGap(96)
 								.addComponent(lblBrojVozackeDozvole)
 								.addGap(18)
-								.addComponent(editorPane))
+								.addComponent(BrojVozacke))
 							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 								.addGap(175)
 								.addComponent(lblAdresa)
 								.addGap(18)
-								.addComponent(textPane_2, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(Adresa, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 								.addGap(142)
 								.addComponent(lblBrojTelefona)
 								.addGap(18)
-								.addComponent(textPane_3))
+								.addComponent(BrojTelefona))
 							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 								.addGap(157)
 								.addComponent(lblUsername)
 								.addGap(18)
-								.addComponent(textPane_4, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(Username, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(193)
 							.addComponent(lblIme)
 							.addGap(18)
-							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Ime, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(206)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)))
@@ -145,46 +146,53 @@ public class UnosNovogVozaca {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblIme))
-						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Ime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblPrezime))
-						.addComponent(textPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Prezime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(24)
 							.addComponent(lblBrojVozackeDozvole))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(18)
-							.addComponent(editorPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(BrojVozacke, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblAdresa))
-						.addComponent(textPane_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Adresa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblBrojTelefona)
-						.addComponent(textPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(BrojTelefona, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(21)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblUsername))
-						.addComponent(textPane_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Username, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblSifra))
-						.addComponent(textPane_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Sifra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(71)
 					.addComponent(btnPotvrdi)
 					.addGap(70))
 		);
+		
+		btnPotvrdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				unvc.UnosVozaca(Ime.getText(), Prezime.getText(), BrojVozacke.getText(), Adresa.getText(), BrojTelefona.getText(), Username.getText(), Sifra.getText());
+			}
+		});
+		
 		
 		JLabel lblUnosNovogVozaa = new JLabel("Unos novog voza\u010Da");
 		lblUnosNovogVozaa.setFont(new Font("Tahoma", Font.PLAIN, 21));

@@ -8,9 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import org.apache.log4j.Logger;
 
 public class PrikazAktivnostiVozaca {
+	
+	final static Logger logger = Logger.getLogger(PrikazAktivnostiVozaca.class);
 
 	private JFrame frame;
 	private JTable table;
@@ -19,14 +21,15 @@ public class PrikazAktivnostiVozaca {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PrikazAktivnostiVozaca window = new PrikazAktivnostiVozaca();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.info(e);
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -45,7 +48,7 @@ public class PrikazAktivnostiVozaca {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1077, 453);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		String[] columnNames = {"Preuzeto vozilo:", "Broj registracije:","Datum i vrijeme preuzimanja vozila:","Datum i vrijeme vraćanja vozila:","Pređeni kilometri:","Dosipanje goriva(KM):","Dosipanje goriva(l):","Svrha upotrebe:"};
