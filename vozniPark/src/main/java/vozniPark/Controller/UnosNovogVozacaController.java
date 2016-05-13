@@ -24,6 +24,9 @@ public class UnosNovogVozacaController {
 		listaVozaca=new ArrayList<Vozac>();
 	}
 	
+	public List<Vozac> getListaVozaca() {
+		return listaVozaca;
+	}
 	
 	public void UnosVozaca(String Ime, String Prezime, String BrojVozacke, String Adresa, String BrojTelefona, String Username, String Sifra)
 	{
