@@ -1,5 +1,7 @@
 package vozniPark.View.izvjestaji;
 import java.awt.EventQueue;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,17 +12,21 @@ import javax.swing.JTable;
 import javax.swing.JComboBox;
 import org.apache.log4j.Logger;
 
+import vozniPark.Controller.PregledServisaController;
+import vozniPark.Controller.PregledVozilaController;
 import vozniPark.View.Login;
 
 public class IzvjestajOOdabranomVozilu {
 
 	final static Logger logger = Logger.getLogger(IzvjestajOOdabranomVozilu.class);
-
+	private PregledVozilaController pvc;
 	private JFrame frame;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTable table;
 	private JTable table_1;
+	private JComboBox comboBox;
+	private JComboBox comboBox_1;
 
 	/**
 	 * Launch the application.
@@ -42,9 +48,6 @@ public class IzvjestajOOdabranomVozilu {
 	/**
 	 * Create the application.
 	 */
-	public IzvjestajOOdabranomVozilu() {
-		initialize();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -72,6 +75,16 @@ public class IzvjestajOOdabranomVozilu {
 		textField_2.setBounds(100, 95, 173, 20);
 		frame.getContentPane().add(textField_2);
 		
+		textField_2.addFocusListener(new FocusListener() {
+		    public void focusGained(FocusEvent e) {
+		        textField_2.setText("");
+		    }
+
+		    public void focusLost(FocusEvent e) {
+		       
+		    }
+		});
+		
 		JLabel lblZaPeriodOd = new JLabel("Za period od:");
 		lblZaPeriodOd.setBounds(20, 98, 82, 14);
 		frame.getContentPane().add(lblZaPeriodOd);
@@ -80,6 +93,17 @@ public class IzvjestajOOdabranomVozilu {
 		textField_3.setColumns(10);
 		textField_3.setBounds(307, 95, 173, 20);
 		frame.getContentPane().add(textField_3);
+		
+		textField_3.addFocusListener(new FocusListener() {
+		    public void focusGained(FocusEvent e) {
+		        textField_3.setText("");
+		    }
+
+		    public void focusLost(FocusEvent e) {
+		       
+		    }
+		});
+		
 		
 		JLabel lblDo = new JLabel("do :");
 		lblDo.setBounds(283, 98, 27, 14);
@@ -106,14 +130,19 @@ public class IzvjestajOOdabranomVozilu {
 		table_1 = new JTable(data1,columnNames1);
 		scrollPane_1.setViewportView(table_1);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(100, 36, 173, 20);
 		frame.getContentPane().add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(100, 63, 173, 20);
 		frame.getContentPane().add(comboBox_1);
 		
 		
+	}
+	public IzvjestajOOdabranomVozilu() {
+		initialize();
+		pvc= new PregledVozilaController();
+		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
 	}
 }

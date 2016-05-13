@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import vozniPark.Model.TocenjeGoriva;
 import vozniPark.Model.Vozilo;
 import vozniPark.Model.Voznje;
 import vozniPark.Util.HibernateUtil;
@@ -57,7 +58,7 @@ public class OdjavaPreuzetogVozilaController {
 		t.commit();
 	}
 	
-public void odjaviVozilo(String registracija, String datum, String vrijeme, Long kilometri, String opis, long potrosnja) {
+public void odjaviVozilo(String registracija, String datum, String vrijeme, Long kilometri, String opis, double potrosnja,double cijena) {
 		
 		for(int i=0; i< listaVozila.size(); i++) 
 		{
@@ -85,7 +86,11 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				voznje.setDatumVracanja(date);
 				voznje.setPredjeniKilometri(kilometri);
 				voznje.setOpisUpotrebe(opis);
-				voznje.setPotrosnjaGoriva(potrosnja);
+				TocenjeGoriva tg = new TocenjeGoriva();
+				tg.setKolicina(potrosnja);
+				tg.setCijena(cijena);
+				session.save(tg);
+				voznje.setTocenje(tg);
 				session.save(voznje);
 				
 				t.commit();

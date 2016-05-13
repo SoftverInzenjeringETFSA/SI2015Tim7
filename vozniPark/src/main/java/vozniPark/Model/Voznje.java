@@ -49,11 +49,11 @@ public class Voznje implements Serializable {
 	public void setVozac(Vozac vozac) {
 		this.vozac = vozac;
 	}
-	public long getPotrosnjaGoriva() {
-		return potrosnjaGoriva;
+	public TocenjeGoriva getTocenje() {
+		return tocenje;
 	}
-	public void setPotrosnjaGoriva(long potrosnjaGoriva) {
-		this.potrosnjaGoriva = potrosnjaGoriva;
+	public void setTocenje(TocenjeGoriva potrosnjaGoriva) {
+		this.tocenje = potrosnjaGoriva;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -64,7 +64,7 @@ public class Voznje implements Serializable {
 	private String opisUpotrebe;
 	private Vozilo vozilo;
 	private Vozac vozac;
-	private long potrosnjaGoriva;
+	private TocenjeGoriva tocenje;
 	
 	
 	public Voznje() {}

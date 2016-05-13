@@ -10,6 +10,7 @@ public class Servisi implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
+	private String servisiranoKod;
 	private Date datumOdlaska;
 	private Date datumVracanja;
 	private double cijena;
@@ -21,6 +22,14 @@ public class Servisi implements java.io.Serializable{
 	
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getServisiranoKod() {
+		return servisiranoKod;
+	}
+	
+	public void setServisiranoKod(String s) {
+		this.servisiranoKod = s;
 	}
 	
 	public Date getDatumOdlaska() {

@@ -1,5 +1,10 @@
 package vozniPark.View.izvjestaji;
 import java.awt.EventQueue;
+import java.util.ArrayList;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,12 +12,14 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import org.apache.log4j.Logger;
 
+
+import vozniPark.Controller.PregledServisaController;
 import vozniPark.View.Login;
 
 public class IzvjestajOSvimServisima {
 
 	final static Logger logger = Logger.getLogger(IzvjestajOSvimServisima.class);
-
+	private PregledServisaController psc;
 	private JFrame frame;
 	private JTable table;
 
@@ -36,9 +43,7 @@ public class IzvjestajOSvimServisima {
 	/**
 	 * Create the application.
 	 */
-	public IzvjestajOSvimServisima() {
-		initialize();
-	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -57,11 +62,23 @@ public class IzvjestajOSvimServisima {
 		scrollPane.setBounds(10, 37, 1002, 371);
 		frame.getContentPane().add(scrollPane);
 		
-		
-		String[] columnNames = {"Servisirano vozilo:","Broj registracije:","Servisirano kod:", "Datum i vrijeme odvoženja vozila na servis:","Datum i vrijeme vraćanja vozila:","Opis servisiranja:","Cijena servisiranja(KM):"};
-        Object[][] data ={};
-		table = new JTable(data,columnNames);
+		psc= new PregledServisaController();
+		Vector<String> columnNames = new Vector<String>();
+		columnNames.add("Servisirano vozilo:");
+		columnNames.add("Broj registracije:");
+		columnNames.add("Servisirano kod:");
+		columnNames.add("Datum i vrijeme odvoženja vozila na servis:");
+		columnNames.add("Datum i vrijeme vraćanja vozila:");
+		columnNames.add("Opis servisiranja:");
+		columnNames.add("Cijena servisiranja(KM):");
+        Vector<Vector<String>> nl=new Vector<Vector<String>>();
+        nl=psc.ucitajVoznjeZaVozaca();
+		table = new JTable(nl,columnNames);
 		scrollPane.setViewportView(table);
+
 	}
 
+	public IzvjestajOSvimServisima() {
+		initialize();		
+	}
 }

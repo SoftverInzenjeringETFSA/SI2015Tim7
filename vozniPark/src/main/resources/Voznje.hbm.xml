@@ -26,8 +26,8 @@
         <many-to-one name="vozac" class="vozniPark.Model.Vozac" fetch="join">
             <column name="VOZAC_ID" />
         </many-to-one>
-        <property name="potrosnjaGoriva" type="long">
-            <column name="POTROSNJAGORIVA" />
-        </property>
+        <many-to-one name="tocenje" class="vozniPark.Model.TocenjeGoriva" fetch="join">
+            <column name="TOCENJE_ID" />
+        </many-to-one>
     </class>
 </hibernate-mapping>
