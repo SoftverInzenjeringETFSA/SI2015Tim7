@@ -23,6 +23,10 @@ public class PregledVozacaController {
 	public PregledVozacaController() {
 		listaVozaca=new ArrayList<Vozac>();
 	}
+
+	public List<Vozac> getListaVozaca() {
+		return listaVozaca;
+	}
 	
 	public void ucitajVozaceIzBaze(JFrame frame, JTable jt) {
 		final Vector<String> v = new Vector<String>();

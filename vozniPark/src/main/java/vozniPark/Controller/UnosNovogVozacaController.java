@@ -6,21 +6,27 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import vozniPark.Model.Vozac;
+import vozniPark.Model.Vozilo;
 import vozniPark.Util.HibernateUtil;
 
 public class UnosNovogVozacaController {
 	final static Logger logger = Logger.getLogger(UnosNovogVozacaController.class);
 	private List<Vozac> listaVozaca;
-	
+	PregledVozacaController pvc= new PregledVozacaController();
 	public UnosNovogVozacaController() {
 		listaVozaca=new ArrayList<Vozac>();
 	}
 	
+	public List<Vozac> getListaVozaca() {
+		return listaVozaca;
+	}
 	
 	public void UnosVozaca(String Ime, String Prezime, String BrojVozacke, String Adresa, String BrojTelefona, String Username, String Sifra)
 	{
@@ -54,6 +60,24 @@ public class UnosNovogVozacaController {
 			JOptionPane.showMessageDialog(null, "Unesite username.");
 			return;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+			
+			listaVozaca = sesija.createCriteria(Vozac.class).list();
+			for (int i=0; i<listaVozaca.size(); i++) v.addElement(listaVozaca.get(i).getUsername());
+			
+			for (int i = 0; i < listaVozaca.size(); i++) {
+				if(listaVozaca.get(i).getUsername() == Username) 
+					{
+					JOptionPane.showMessageDialog(null, "Username vec postoji");
+					return;
+					}
+				
+			}
+			
+		}
+			
 		if(Sifra.length()<4) {
 			JOptionPane.showMessageDialog(null, "Sifra mora imati minimalno 4 slova.");
 			return;
