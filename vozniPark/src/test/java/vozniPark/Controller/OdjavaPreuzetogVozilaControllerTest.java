@@ -27,14 +27,14 @@ public class OdjavaPreuzetogVozilaControllerTest extends TestCase {
 		String vrijeme = "14:20:00";
 		Long kilometri = 5000L; 
 		String opis = "testiramo junit testove";
-		long potrosnja = 100;
-		
+		double potrosnja = 100;
+		double cijenaGoriva = 2.5;
 		JFrame frame = new JFrame();
 		JComboBox comboBox = new JComboBox();
 		
 		OdjavaPreuzetogVozilaController opvc = new OdjavaPreuzetogVozilaController();
 		opvc.ucitajVozilaIzBaze(frame, comboBox);
-		opvc.odjaviVozilo(registracija, datum, vrijeme, kilometri, opis, potrosnja);
+		opvc.odjaviVozilo(registracija, datum, vrijeme, kilometri, opis, potrosnja,cijenaGoriva);
 		
 		opvc.ucitajVozilaIzBaze(frame, comboBox);
 		assertEquals("Slobodan",opvc.getListaVozila().get(0).getStatus());

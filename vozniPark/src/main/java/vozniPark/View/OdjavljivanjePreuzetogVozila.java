@@ -30,6 +30,7 @@ public class OdjavljivanjePreuzetogVozila {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JComboBox comboBox;
+	private JTextField textField_6;
 
 	/**
 	 * Launch the application.
@@ -68,7 +69,7 @@ public class OdjavljivanjePreuzetogVozila {
 			}
 		});
 		frmOdjavljivanjePreuzetogVozila.setTitle("Odjavljivanje preuzetog vozila");
-		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 361);
+		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 400);
 		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().setLayout(null);
 		
@@ -125,12 +126,12 @@ public class OdjavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Odjavi vozilo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), textField_1.getText(), textField_2.getText(),Long.valueOf(textField_3.getText()), textField_5.getText(), Long.valueOf(textField_4.getText()));
+				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), textField_1.getText(), textField_2.getText(),Long.valueOf(textField_3.getText()), textField_5.getText(), Double.valueOf(textField_4.getText()),Double.valueOf(textField_6.getText()));
 				//zatvara prozor kad se klikne na dugme
 				frmOdjavljivanjePreuzetogVozila.dispatchEvent(new WindowEvent(frmOdjavljivanjePreuzetogVozila, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		btnNewButton.setBounds(36, 286, 367, 25);
+		btnNewButton.setBounds(36, 325, 367, 25);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(btnNewButton);
 		
 		textField_5 = new JTextField();
@@ -141,6 +142,15 @@ public class OdjavljivanjePreuzetogVozila {
 		comboBox = new JComboBox();
 		comboBox.setBounds(218, 31, 185, 20);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(comboBox);
+		
+		JLabel lblCijenaGoriva = new JLabel("Cijena goriva:");
+		lblCijenaGoriva.setBounds(108, 289, 73, 14);
+		frmOdjavljivanjePreuzetogVozila.getContentPane().add(lblCijenaGoriva);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(218, 286, 185, 20);
+		frmOdjavljivanjePreuzetogVozila.getContentPane().add(textField_6);
+		textField_6.setColumns(10);
 		
 		
 	}
