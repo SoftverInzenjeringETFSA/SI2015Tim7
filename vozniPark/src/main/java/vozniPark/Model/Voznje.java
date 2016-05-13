@@ -49,7 +49,7 @@ public class Voznje implements Serializable {
 	public void setVozac(Vozac vozac) {
 		this.vozac = vozac;
 	}
-	public TocenjeGoriva getTocenjea() {
+	public TocenjeGoriva getTocenje() {
 		return tocenje;
 	}
 	public void setTocenje(TocenjeGoriva potrosnjaGoriva) {
