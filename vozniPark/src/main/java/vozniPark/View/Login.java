@@ -79,10 +79,12 @@ public class Login {
 		
 				if(controller.login(tf_username.getText(), new String(passwordField.getPassword()))) {
 					if(controller.dajKorisnika() instanceof Sef) {
+                        frmLogin.dispose();
         				SefHomePage sefHome = new SefHomePage();
     	    			sefHome.main(null);
 					}
 					else if (controller.dajKorisnika() instanceof Vozac) {
+                        frmLogin.dispose();
                         VozacHomePage vozacHome = new VozacHomePage();
                         vozacHome.main(null);
 					}
