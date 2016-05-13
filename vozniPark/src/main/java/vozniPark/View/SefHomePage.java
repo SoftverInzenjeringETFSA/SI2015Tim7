@@ -101,7 +101,7 @@ public class SefHomePage {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				Login login = new Login();
-				login.main(null);
+				login.main();
 			}
 		});
 		btnNewButton_1.setBounds(418, 242, 117, 25);

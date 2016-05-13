@@ -76,7 +76,7 @@ public class VozacHomePage {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				Login login = new Login();
-				login.main(null);
+				login.main();
 			}
 		});
 		btnOdjaviSe.setBounds(440, 176, 117, 25);

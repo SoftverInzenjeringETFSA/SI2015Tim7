@@ -17,6 +17,8 @@ import static vozniPark.Controller.LoginController.getSecurePassword;
 
 public class PopuniBazu {
 
+    private PopuniBazu() {}
+
     public static void DodajOsobe() {
 
         Session s = HibernateUtil.getSessionFactory().openSession();

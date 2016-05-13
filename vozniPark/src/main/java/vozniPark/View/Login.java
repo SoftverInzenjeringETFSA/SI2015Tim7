@@ -28,9 +28,8 @@ public class Login {
 	/**
 	 * Launch the application.
 	 */
-	public void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+	public void main() {
+		EventQueue.invokeLater(() -> {
 				try {
 					Login window = new Login();
 					window.frmLogin.setVisible(true);
@@ -38,8 +37,7 @@ public class Login {
 					logger.info(e);
 					//e.printStackTrace();
 				}
-			}
-		});
+    		});
 	}
 
 	/**
@@ -74,9 +72,7 @@ public class Login {
 		tf_username.setColumns(10);
 		
 		JButton btnPotvrdi = new JButton("Potvrdi");
-		btnPotvrdi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		
+		btnPotvrdi.addActionListener((e) -> {
 				if(controller.login(tf_username.getText(), new String(passwordField.getPassword()))) {
 					if(controller.dajKorisnika() instanceof Sef) {
                         frmLogin.dispose();
@@ -97,17 +93,6 @@ public class Login {
 				else {
 					JOptionPane.showMessageDialog(null,"Pogresni pristupni podaci. Molimo pokusajte ponovo.");
 				}
-
-				//ako login prodje, ova forma ce se ugasiti, treba se novo pojaviti nakon sto se prijavljeni korisnik odjavi
-				
-				 //zasad se otvara sefHomePage, nakon sto se implementira login, ovisice o unesenim podacima
-				 //koja pocetna forma ce se otvoriti
-				 //VozacHomePage vozacHome = new VozacHomePage();
-				 //vozacHome.main(null);
-				/*SefHomePage sefHome = new SefHomePage();
-				sefHome.main(null);*/
-			//	 frmLogin.dispose();
-			}
 		});
 		btnPotvrdi.setBounds(156, 150, 100, 23);
 		frmLogin.getContentPane().add(btnPotvrdi);

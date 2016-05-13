@@ -28,7 +28,7 @@ public class App
         session.close();*/
     	
     	Login login = new Login();
-    	login.main(null);
+    	login.main();
     	//OdjavljivanjePreuzetogVozila odjava = new OdjavljivanjePreuzetogVozila();
     	//odjava.main(null);
     	//VozacHomePage vhp = new VozacHomePage();
