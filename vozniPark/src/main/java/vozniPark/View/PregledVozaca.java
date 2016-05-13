@@ -16,6 +16,8 @@ import org.apache.log4j.Logger;
 import vozniPark.Controller.PregledVozacaController;
 
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
@@ -59,6 +61,7 @@ public class PregledVozaca {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		//framePregled = new JFrame();
 		frame.setBounds(100, 100, 681, 537);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
@@ -67,27 +70,7 @@ public class PregledVozaca {
 
 		table_1 = new JTable();
 		table_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Armin", "Nogo"},
-				{"Mirnes", "Peljto"},
-				{"Aida", "Kanlic"},
-				{"Minela", "Mustafi"},
-				{"Ajdin", "Mujezinovic"},
-				{"Dino", "Mehmedovic"},
-				{"Irma", "Karasoftic"},
-			},
-			new String[] {
-				"Ime", "Prezime"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		
 		table_1.getColumnModel().getColumn(0).setPreferredWidth(85);
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(95);
 		
@@ -99,6 +82,13 @@ public class PregledVozaca {
 			public void actionPerformed(ActionEvent arg0) {
 				PodaciOVozacu podaci=new PodaciOVozacu();
 				podaci.main(null);
+			}
+		});
+		
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowOpened(WindowEvent arg0)
+			{
+				pvc.ucitajVozaceIzBaze(frame, table_1);
 			}
 		});
 		
