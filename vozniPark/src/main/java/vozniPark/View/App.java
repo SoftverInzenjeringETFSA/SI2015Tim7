@@ -1,10 +1,7 @@
 package vozniPark.View;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import vozniPark.Model.Sef;
-import vozniPark.Util.HibernateUtil;
+import vozniPark.Controller.LoginController;
+import vozniPark.Util.PopuniBazu;
 
 /**
  * Hello world!
@@ -14,6 +11,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        //PopuniBazu.DodajOsobe();
     	/*primjer unosa odredjenog objekta u bazu
     	Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
@@ -28,7 +26,8 @@ public class App
         t.commit();
         
         session.close();*/
-    	
+
+
     	Login login = new Login();
     	login.main(null);
     	//OdjavljivanjePreuzetogVozila odjava = new OdjavljivanjePreuzetogVozila();

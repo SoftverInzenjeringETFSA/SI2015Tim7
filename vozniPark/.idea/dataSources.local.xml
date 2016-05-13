@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="c75ce24c-e5d8-4ee2-b7ca-adfe5a92cfcc">
+      <first-sync>true</first-sync>
+      <user-name>EtfSI2015</user-name>
+      <user-password>dfc0dfcedfc8dfc9df90dfc7dfd3dfd9dfdbdfc6df90df85df85dfc6dfc5dfc9dfcbdfc6dfc2dfc5dfd9dfdedf90df99df99df9adf9cdf85dfdedfc3dfc7dff5df9ddf95dfdfdfd9dfcfdff9dff9dfe6df97dfccdfcbdfc6dfd9dfcfdf8cdfdfdfd9dfcfdfffdfc4dfc3dfc9dfc5dfcedfcfdf97dfdedfd8dfdfdfcfdf8cdfdfdfd9dfcfdfe0dfeedfe8dfe9dfe9dfc5dfc7dfdadfc6dfc3dfcbdfc4dfdedffedfc3dfc7dfcfdfd0dfc5dfc4dfcfdff9dfc2dfc3dfccdfdedf97dfdedfd8dfdfdfcfdf8cdfdfdfd9dfcfdfe6dfcfdfcddfcbdfc9dfd3dfeedfcbdfdedfcfdfdedfc3dfc7dfcfdfe9dfc5dfcedfcfdf97dfccdfcbdfc6dfd9dfcfdf8cdfd9dfcfdfd8dfdcdfcfdfd8dffedfc3dfc7dfcfdfd0dfc5dfc4dfcfdf97dfffdffedfe9</user-password>
+    </data-source>
+  </component>
+</project>
