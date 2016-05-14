@@ -44,8 +44,10 @@ public class LoginController {
             korisnik = osobe.get(0);
             return true;
         }
-        korisnik = null;
-        return false;
+        else {
+            korisnik = null;
+            return false;
+        }
 
 
     }
