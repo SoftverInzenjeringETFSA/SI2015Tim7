@@ -81,7 +81,7 @@ public class PregledVozaca {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PodaciOVozacu podaci=new PodaciOVozacu();
-				podaci.main(null);
+				
 			}
 		});
 		

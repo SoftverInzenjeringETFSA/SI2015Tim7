@@ -13,12 +13,12 @@ public class PregledVozacaControllerTest extends TestCase{
 	}
 	
 	public void testUcitajVozaceIzBaze() 
-	{
+	{	
 		PregledVozacaController pvc=new PregledVozacaController();
 		JFrame frame = new JFrame();
 		JTable jt= new JTable();
 		pvc.ucitajVozaceIzBaze(frame, jt);
-		//assertEquals(2, pvc.getListaVozaca().size());
+		assertEquals(2, pvc.getListaVozaca().size());
 	}
 
 }
