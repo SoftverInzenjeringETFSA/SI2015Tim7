@@ -89,7 +89,7 @@ public class UnosNovogVozacaController {
 		v.setAdresa(Adresa);
 		v.setBrojTelefona(BrojTelefona);
 		v.setUsername(Username);
-		v.setPassword(Sifra);
+		v.setPassword(LoginController.getSecurePassword(Sifra));
 		session.save(v);
 		t.commit();
 	}
