@@ -8,7 +8,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import org.apache.log4j.Logger;
@@ -66,8 +65,6 @@ public class PregledVozaca {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		String[] header=new String[]{"Ime", "Prezime", "Adresa", "Broj vozacke dozvole", "Username", "Broj telefona"};
-
 		table_1 = new JTable();
 		table_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -81,7 +78,7 @@ public class PregledVozaca {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PodaciOVozacu podaci=new PodaciOVozacu();
-				
+				podaci.PrikaziFormu();
 			}
 		});
 		

@@ -29,15 +29,18 @@ public class Login {
 	 * Launch the application.
 	 */
 	public void main() {
-		EventQueue.invokeLater(() -> {
-				try {
-					Login window = new Login();
-					window.frmLogin.setVisible(true);
-				} catch (Exception e) {
-					logger.info(e);
-					//e.printStackTrace();
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+					try {
+						Login window = new Login();
+						window.frmLogin.setVisible(true);
+					} catch (Exception e) {
+						logger.info(e);
+						//e.printStackTrace();
+					}
 				}
-    		});
+		});
 	}
 
 	/**
@@ -72,27 +75,30 @@ public class Login {
 		tf_username.setColumns(10);
 		
 		JButton btnPotvrdi = new JButton("Potvrdi");
-		btnPotvrdi.addActionListener((e) -> {
-				if(controller.login(tf_username.getText(), new String(passwordField.getPassword()))) {
-					if(controller.dajKorisnika() instanceof Sef) {
-                        frmLogin.dispose();
-        				SefHomePage sefHome = new SefHomePage();
-    	    			sefHome.main(null);
-					}
-					else if (controller.dajKorisnika() instanceof Vozac) {
-                        frmLogin.dispose();
-                        VozacHomePage vozacHome = new VozacHomePage();
-                        vozacHome.main(null);
+		btnPotvrdi.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					if(controller.login(tf_username.getText(), new String(passwordField.getPassword()))) {
+						if(controller.dajKorisnika() instanceof Sef) {
+			                frmLogin.dispose();
+							SefHomePage sefHome = new SefHomePage();
+			    			sefHome.main(null);
+						}
+						else if (controller.dajKorisnika() instanceof Vozac) {
+			                frmLogin.dispose();
+			                VozacHomePage vozacHome = new VozacHomePage();
+			                vozacHome.main(null);
+						}
+						else {
+
+							JOptionPane.showMessageDialog(null,"Doslo je do greske. Molim vas pokusajte opet ili kontaktirajte podrsku");
+			                frmLogin.dispose();
+						}
 					}
 					else {
-
-						JOptionPane.showMessageDialog(null,"Doslo je do greske. Molim vas pokusajte opet ili kontaktirajte podrsku");
-                        frmLogin.dispose();
+						JOptionPane.showMessageDialog(null,"Pogresni pristupni podaci. Molimo pokusajte ponovo.");
 					}
-				}
-				else {
-					JOptionPane.showMessageDialog(null,"Pogresni pristupni podaci. Molimo pokusajte ponovo.");
-				}
+			}
 		});
 		btnPotvrdi.setBounds(156, 150, 100, 23);
 		frmLogin.getContentPane().add(btnPotvrdi);
