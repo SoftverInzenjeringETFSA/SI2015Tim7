@@ -62,6 +62,7 @@ public class PregledSlobodnihVozilaController {
     
 		catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage());
+			logger.info(e);
 		}
 	}
 

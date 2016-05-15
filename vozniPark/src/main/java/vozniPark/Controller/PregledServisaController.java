@@ -21,7 +21,7 @@ public class PregledServisaController {
 	
 	final static Logger logger = Logger.getLogger(OdjavaPreuzetogVozilaController.class);
 	private List<Vozilo> listaVozila;
-	private Vector<Vector<String>> li;
+	
 	
 	public PregledServisaController() {
 		listaVozila = new ArrayList<Vozilo>();
@@ -33,12 +33,12 @@ public class PregledServisaController {
 		Transaction t = session.beginTransaction();
 		listaVozila = session.createCriteria(Vozilo.class).list();
 
-		li=new Vector<Vector<String>>();
+		Vector<Vector<String>> li=new Vector<Vector<String>>();
 		
 		for(int i=0; i<listaVozila.size(); i++) 
 		{
 			Vector<String> row = new Vector<String>();
-			for(int j=0; j<listaVozila.get(i).getListaServisa().size(); j++) 
+			for(int j=0; j<listaVozila.get(i).getListaServisa().size(); j++)
 			{
 				row.addElement(listaVozila.get(i).getNaziv());
 				row.addElement(listaVozila.get(i).getRegistracija());
@@ -67,7 +67,7 @@ public class PregledServisaController {
 					row.addElement(listaVozila.get(i).getNaziv());
 					row.addElement(listaVozila.get(i).getListaServisa().get(j).getOpis());
 				}
-				li.add(row);
+				lista.add(row);
 			}
 		}
 		
@@ -87,7 +87,7 @@ public class PregledServisaController {
 					row.addElement(listaVozila.get(i).getNaziv());
 					row.addElement(listaVozila.get(i).getListaServisa().get(j).getOpis());
 				}
-				li.add(row);
+				lista.add(row);
 			}
 		}
 		
@@ -111,15 +111,16 @@ public class PregledServisaController {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Vozilo v = (Vozilo) session.load(Vozilo.class, id);
-		v.setStatus("Servis");
+		v.setStatus("Servis"); 
 		Servisi s=new Servisi();
 		s.setDatumOdlaska(datum);
 		s.setDatumVracanja(datum);
 		s.setCijena(0);
 		s.setOpis("Vozilo je jos uvijek na servisu");
 		s.setServisiranoKod("Vozilo je jos uvijek na servisu");
+		session.save(s);
 		v.getListaServisa().add(s);
-		session.save(v);
+		session.save(v); 
 		t.commit();
 	}
 	
@@ -132,7 +133,8 @@ public class PregledServisaController {
 		v.getListaServisa().get(v.getListaServisa().size()-1).setDatumVracanja(datum);
 		v.getListaServisa().get(v.getListaServisa().size()-1).setCijena(Double.valueOf(cijena));
 		v.getListaServisa().get(v.getListaServisa().size()-1).setServisiranoKod(servisiranoKod);
-		v.getListaServisa().get(v.getListaServisa().size()-1).setOpis(opis);;
+		v.getListaServisa().get(v.getListaServisa().size()-1).setOpis(opis);
+
 		session.save(v);
 		t.commit();
 	}

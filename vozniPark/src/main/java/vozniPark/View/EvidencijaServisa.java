@@ -69,6 +69,8 @@ public class EvidencijaServisa {
 	 */
 	private void initialize() {
 		psc= new PregledServisaController();
+		Vector<Vector<String>> nl=new Vector<Vector<String>>();
+        nl=psc.ucitajVoznjeZaVozaca();
 		frmPrijavaServisa = new JFrame();
 		frmPrijavaServisa.setTitle("Servis");
 		frmPrijavaServisa.setBounds(100, 100, 600, 344);
@@ -195,8 +197,7 @@ public class EvidencijaServisa {
 		columnNames.add("Datum i vrijeme vraćanja vozila:");
 		columnNames.add("Opis servisiranja:");
 		columnNames.add("Cijena servisiranja(KM):");
-        Vector<Vector<String>> nl=new Vector<Vector<String>>();
-        nl=psc.ucitajVoznjeZaVozaca();
+        
 		
 		table_2 = new JTable(nl,columnNames);
 		table_2.setBounds(10, 11, 539, 229);
@@ -211,12 +212,14 @@ public class EvidencijaServisa {
 					date = formatter.parse(datumVrijeme);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					//e.printStackTrace();
+					//e.printStackTrace(); nisi
 					logger.info(e);
 				}
 				
-				psc.dodajNaServis(date,psc.dajIDVozila(data1.get(table.getSelectedRow()).get(1)));
-				initialize();
+				psc.dodajNaServis(date,psc.dajIDVozila(data1.get(table.getSelectedRow()).get(0)));
+				frmPrijavaServisa.dispose();
+				EvidencijaServisa servis = new EvidencijaServisa();
+				servis.main(null); 				
 			}
 		});
 		
@@ -232,8 +235,10 @@ public class EvidencijaServisa {
 					//e.printStackTrace();
 					logger.info(e);
 				}
-				psc.dodajDovrsenServis(psc.dajIDVozila(data2.get(table_1.getSelectedRow()).get(1)), date, textField_6.getText(), textField_4.getText(), textField_5.getText());
-				initialize();
+				psc.dodajDovrsenServis(psc.dajIDVozila(data2.get(table_1.getSelectedRow()).get(0)), date, textField_6.getText(), textField_4.getText(), textField_5.getText());
+				frmPrijavaServisa.dispose();
+				EvidencijaServisa servis = new EvidencijaServisa();
+				servis.main(null);
 			}
 		});
 	}
