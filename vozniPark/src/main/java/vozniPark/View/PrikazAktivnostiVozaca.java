@@ -59,8 +59,8 @@ public class PrikazAktivnostiVozaca {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti za vozača"+imeiprezime.get(0)+" "+imeiprezime.get(1));
-		lblIzvjetajO.setBounds(10, 35, 229, 14);
+		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti za vozača "+imeiprezime.get(0)+" "+imeiprezime.get(1));
+		lblIzvjetajO.setBounds(10, 35, 513, 14);
 		frame.getContentPane().add(lblIzvjetajO);
 		
 		JScrollPane scrollPane = new JScrollPane();
