@@ -17,6 +17,7 @@ import vozniPark.Controller.PregledVozacaController;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class PregledVozaca {
@@ -29,6 +30,7 @@ public class PregledVozaca {
 	private JTable table_1;
 	private JLabel lblOdaberiteVozaaZa;
 	private JButton btnNewButton_1;
+	private Vector<Vector<String>> data;
 
 	/**
 	 * Launch the application.
@@ -52,20 +54,26 @@ public class PregledVozaca {
 	 */
 	public PregledVozaca() {
 		initialize();
-		pvc = new PregledVozacaController();
+		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		pvc = new PregledVozacaController();
 		frame = new JFrame();
 		//framePregled = new JFrame();
 		frame.setBounds(100, 100, 681, 537);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		table_1 = new JTable();
+		data=new Vector<Vector<String>>();
+		data=pvc.ucitajVozaceIzBaze();
+		Vector<String> columnNames=new Vector<String>();
+		columnNames.addElement("Ime");
+		columnNames.addElement("Prezime");
+		table_1 = new JTable(data,columnNames);
 		table_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 	/*
 		table_1.getColumnModel().getColumn(0).setPreferredWidth(85);
@@ -77,22 +85,22 @@ public class PregledVozaca {
 		JButton btnNewButton = new JButton("Prikaži podatke");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PodaciOVozacu podaci=new PodaciOVozacu();
-				podaci.PrikaziFormu();
+				PodaciOVozacu podaci=new PodaciOVozacu(table_1.getSelectedRow());
+				podaci.main(null);
 			}
 		});
 		
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent arg0)
 			{
-				pvc.ucitajVozaceIzBaze(frame, table_1);
+				
 			}
 		});
 		
 		btnNewButton_1 = new JButton("Prikaz aktivnosti");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrikazAktivnostiVozaca prikaz = new PrikazAktivnostiVozaca();
+				PrikazAktivnostiVozaca prikaz = new PrikazAktivnostiVozaca(data.get(table_1.getSelectedRow()));
 				prikaz.main(null);
 			}
 		});

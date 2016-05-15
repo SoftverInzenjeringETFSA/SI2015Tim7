@@ -120,14 +120,16 @@ public class IzvjestajOAktivnostimaVozaca {
 				columnNames.addElement("Dosipanje goriva(l):");
 				columnNames.addElement("Svrha upotrebe:");
 				table = new JTable(data,columnNames);
-				scrollPane.setViewportView(table);
-				Vector<String> data1=new Vector<String>();
+				
+				Vector<Vector<String>> data1=new Vector<Vector<String>>();
 				Vector<String> columnNames1=new Vector<String>();
 				data1=pvc.dajUkupno();
+				
 				columnNames1.addElement("Ukupno(km):");
 				columnNames1.addElement("Ukupno(KM):");
 				columnNames1.addElement("Ukupno(l):");
 				table_1 = new JTable(data1,columnNames1);
+				scrollPane.setViewportView(table);
 				scrollPane_1.setViewportView(table_1);
 			}
 		});

@@ -1,6 +1,7 @@
 package vozniPark.View;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,13 +11,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
+import vozniPark.Controller.PregledVoznjiController;
+
 public class PrikazAktivnostiVozaca {
 	
 	final static Logger logger = Logger.getLogger(PrikazAktivnostiVozaca.class);
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField textField;
+	private Vector<String> imeiprezime;
+	private PregledVoznjiController pvc;
 
 	/**
 	 * Launch the application.
@@ -25,7 +29,7 @@ public class PrikazAktivnostiVozaca {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrikazAktivnostiVozaca window = new PrikazAktivnostiVozaca();
+					PrikazAktivnostiVozaca window = new PrikazAktivnostiVozaca(imeiprezime);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					logger.info(e);
@@ -38,7 +42,9 @@ public class PrikazAktivnostiVozaca {
 	/**
 	 * Create the application.
 	 */
-	public PrikazAktivnostiVozaca() {
+	public PrikazAktivnostiVozaca(Vector<String> podaci) {
+		imeiprezime=podaci;
+		pvc=new PregledVoznjiController();
 		initialize();
 	}
 
@@ -46,46 +52,37 @@ public class PrikazAktivnostiVozaca {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		JTextField jt1=new JTextField(imeiprezime.get(0));
+		JTextField jt2=new JTextField(imeiprezime.get(1));
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1077, 453);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String[] columnNames = {"Preuzeto vozilo:", "Broj registracije:","Datum i vrijeme preuzimanja vozila:","Datum i vrijeme vraćanja vozila:","Pređeni kilometri:","Dosipanje goriva(KM):","Dosipanje goriva(l):","Svrha upotrebe:"};
-        Object[][] data ={};
-
-        
-		
-		
-		
-		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti vozača");
-		lblIzvjetajO.setBounds(10, 11, 229, 14);
+		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti za vozača "+imeiprezime.get(0)+" "+imeiprezime.get(1));
+		lblIzvjetajO.setBounds(10, 35, 513, 14);
 		frame.getContentPane().add(lblIzvjetajO);
-		
-		JLabel lblNewLabel = new JLabel("Vozač :");
-		lblNewLabel.setBounds(10, 44, 46, 14);
-		frame.getContentPane().add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(66, 41, 173, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JButton btnPrikaz = new JButton("Prikaži");
-		btnPrikaz.setBounds(252, 40, 89, 23);
-		frame.getContentPane().add(btnPrikaz);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 74, 1041, 303);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		Vector<Vector<String>> data=new Vector<Vector<String>>();
+		data=pvc.ucitajVoznjeZaVozaca(frame, jt1, jt2);
+		Vector<String> columnNames=new Vector<String>();
+		columnNames.addElement("Preuzeto vozilo:");
+		columnNames.addElement("Broj registracije:");
+		columnNames.addElement("Datum i vrijeme preuzimanja vozila:");
+		columnNames.addElement("Datum i vrijeme vraćanja vozila:");
+		columnNames.addElement("Pređeni kilometri:");
+		columnNames.addElement("Dosipanje goriva(KM):");
+		columnNames.addElement("Dosipanje goriva(l):");
+		columnNames.addElement("Svrha upotrebe:");
+		
+		table = new JTable(data,columnNames);
 		scrollPane.setViewportView(table);
 		
 		table = new JTable(data,columnNames);
-		textField.setBounds(61, 41, 178, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		table.getTableHeader().setPreferredSize(new Dimension(10,50));
 	}
 
