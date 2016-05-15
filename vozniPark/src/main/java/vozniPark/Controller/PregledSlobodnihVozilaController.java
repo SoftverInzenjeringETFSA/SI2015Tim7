@@ -31,7 +31,7 @@ public class PregledSlobodnihVozilaController {
 	@SuppressWarnings("unchecked")
 	public void dajSvaSlobodnaVozila(DefaultTableModel model, JTable table){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		listaVozila = session.createCriteria(Vozilo.class).list();
+		listaVozila = session.createCriteria(Vozilo.class).add(Restrictions.like("status","Slobodan")).list();
 		if(listaVozila.isEmpty()){
 			JOptionPane.showMessageDialog(null, "Trenutno nema slobodnih vozila");
 			return;
@@ -40,7 +40,7 @@ public class PregledSlobodnihVozilaController {
 		dodajUTabelu(listaVozila, model, table);
     	}
 
-	private void dodajUTabelu(List<Vozilo> lista, DefaultTableModel model, JTable table) {
+	void dodajUTabelu(List<Vozilo> lista, DefaultTableModel model, JTable table) {
 		// TODO Auto-generated method stub
 		for (Vozilo vozilo : lista) {
 			if(vozilo.getStatus().equals("Slobodan")) 
@@ -92,11 +92,11 @@ public class PregledSlobodnihVozilaController {
 		return lista;
 	}
 	
-	public void pretraziSlobodnaVozila(String naziv, String registracija, DefaultTableModel model, JTable table) {
+	public boolean pretraziSlobodnaVozila(String naziv, String registracija, DefaultTableModel model, JTable table) {
 		
 		if(praznoPolje(naziv) && praznoPolje(registracija)){
 			JOptionPane.showMessageDialog(null, "Unesite naziv ili registraciju vozila");
-			return;
+			return false;
 		}
 		else{
 			//pretraga po nazivu i registraciji
@@ -104,25 +104,28 @@ public class PregledSlobodnihVozilaController {
 				List<Vozilo> lista = dajVozilaPoNazivuIRegistraciji(naziv, registracija);
 				izbrisiTabelu(model);
 				dodajUTabelu(lista, model, table);
+				return true;
 			}
 			//pretraga po nazivu
 			else if(!praznoPolje(naziv)){
 				List<Vozilo> lista = dajVozilaPoNazivu(naziv);
 				izbrisiTabelu(model);
 				dodajUTabelu(lista, model, table);
+				return true;
 			}
 			//pretraga po registraciji
 			else{
 				List<Vozilo> lista = dajVozilaPoRegistraciji(registracija);
 				izbrisiTabelu(model);
 				dodajUTabelu(lista, model, table);
+				return true;
 			}
 		}
 		
 	}
 
-	private void izbrisiTabelu(DefaultTableModel model) {
-		// TODO Auto-generated method stub
+	void izbrisiTabelu(DefaultTableModel model) {
+		
 		int redovi = model.getRowCount();
 		for(int i= redovi - 1; i >= 0; i--){
 			model.removeRow(i);
