@@ -2,6 +2,7 @@ package vozniPark.View.izvjestaji;
 import java.awt.EventQueue;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +16,8 @@ import org.apache.log4j.Logger;
 import vozniPark.Controller.PregledServisaController;
 import vozniPark.Controller.PregledVozilaController;
 import vozniPark.View.Login;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class IzvjestajOOdabranomVozilu {
 
@@ -27,6 +30,10 @@ public class IzvjestajOOdabranomVozilu {
 	private JTable table_1;
 	private JComboBox comboBox;
 	private JComboBox comboBox_1;
+	private JTable table_2;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
+	private JScrollPane scrollPane_2;
 
 	/**
 	 * Launch the application.
@@ -48,11 +55,15 @@ public class IzvjestajOOdabranomVozilu {
 	/**
 	 * Create the application.
 	 */
-
+	public IzvjestajOOdabranomVozilu() {
+		initialize();
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		pvc= new PregledVozilaController();
+		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 780, 421);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -110,24 +121,23 @@ public class IzvjestajOOdabranomVozilu {
 		frame.getContentPane().add(lblDo);
 		
 		JButton btnNewButton = new JButton("Prika\u017Ei");
+		
 		btnNewButton.setBounds(490, 94, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 126, 744, 210);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 126, 429, 210);
 		frame.getContentPane().add(scrollPane);
 
-		String[] columnNames = {"Servisirano kod:", "Datum i vrijeme odvoženja vozila na servis:","Datum i vrijeme vraćanja vozila:","Cijena servisiranja(KM):","Pređeni kilometri:","Dosipanje goriva(KM):","Dosipanje goriva(l):"};
-        Object[][] data ={};
-		table = new JTable(data,columnNames);
+		
+		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(333, 335, 421, 38);
 		frame.getContentPane().add(scrollPane_1);
-		String[] columnNames1 = {"Ukupno(KM):","Ukupno(km):","Ukupno(KM):","Ukupno(l):"};
-        Object[][] data1 ={};
-		table_1 = new JTable(data1,columnNames1);
+
+		table_1 = new JTable();
 		scrollPane_1.setViewportView(table_1);
 		
 		comboBox = new JComboBox();
@@ -137,12 +147,48 @@ public class IzvjestajOOdabranomVozilu {
 		comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(100, 63, 173, 20);
 		frame.getContentPane().add(comboBox_1);
+		scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(439, 126, 315, 210);
+		frame.getContentPane().add(scrollPane_2);
 		
+		table_2 = new JTable();
+		scrollPane_2.setViewportView(table_2);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Vector<Vector<String>> data= new Vector<Vector<String>>();
+				data=pvc.ucitajServiseUTabelu(frame, textField_2, textField_2, comboBox, comboBox_1);
+				Vector<String> columnNames = new Vector<String>();
+				columnNames.add("Servisirano kod:");
+				columnNames.add("Datum i vrijeme odvoženja vozila na servis:");
+				columnNames.add("Datum i vrijeme vraćanja vozila:");
+				columnNames.add("Cijena servisiranja(KM):");
+				table = new JTable(data,columnNames);
+				scrollPane.setViewportView(table);
+				
+				Vector<Vector<String>> data2= new Vector<Vector<String>>();
+				data2=pvc.ucitajTocenjaUTabelu(frame, textField_2, textField_2, comboBox, comboBox_1);
+				Vector<String> columnNames2 = new Vector<String>();
+				columnNames2.add("Pređeni kilometri:");
+				columnNames2.add("Dosipanje goriva(KM):");
+				columnNames2.add("Dosipanje goriva(l):");
+				table_2 = new JTable(data2,columnNames2);
+				scrollPane_2.setViewportView(table_2);
+				
+				Vector<Vector<String>> data1= new Vector<Vector<String>>();
+				Vector<String> d = new Vector<String>();
+				d=pvc.dajUkupno();
+				data1.add(d);
+				Vector<String> columnNames1 = new Vector<String>();
+				columnNames1.add("Ukupno(KM):");
+				columnNames1.add("Ukupno(km):");
+				columnNames1.add("Ukupno(KM):");
+				columnNames1.add("Ukupno(l):");
+				table_1 = new JTable(data1,columnNames1);
+				scrollPane_1.setViewportView(table_1);
+			}
+		});
 		
 	}
-	public IzvjestajOOdabranomVozilu() {
-		initialize();
-		pvc= new PregledVozilaController();
-		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
-	}
+
 }
