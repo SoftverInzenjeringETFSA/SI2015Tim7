@@ -36,33 +36,33 @@ public class UnosNovogVozilaController {
 		return unos.isEmpty() || unos.replaceAll("\\s","").length() == 0;
 	}
 	
-	public void unesiVozilo(String saobracajnaDozvola, String vlasnickaDozvola, String registracija, String intervalMjeseci, String intervalKilometara,
+	public boolean unesiVozilo(String saobracajnaDozvola, String vlasnickaDozvola, String registracija, String intervalMjeseci, String intervalKilometara,
 							String nazivVozila, String godinaProizvodnje, String proizvodjac, String opis, JFrame frame){
 		
 		if(this.praznoPolje(saobracajnaDozvola)){
 			JOptionPane.showMessageDialog(null, "Unesite broj saobraćajne dozvole");
-			return;
+			return false;
 		}
 		if(!saobracajnaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj saobraćajne dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(vlasnickaDozvola)){
 			JOptionPane.showMessageDialog(null, "Unesite broj vlasničke dozvole");
-			return;
+			return false;
 		}
 		if(!vlasnickaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj vlasničke dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(registracija)){
 			JOptionPane.showMessageDialog(null, "Unesite registraciju vozila");
-			return;
+			return false;
 		}
 		//registracija slovo + dvije cifre + znak “-” + slovo + znak “-” + tri cifre (npr. G67-J-765)
 		if(!registracija.matches("^[A-Za-z][0-9]{2}-[A-Za-z]-[0-9]{3}$")){
 			JOptionPane.showMessageDialog(null, "Registracija vozila nije u pravilnom formatu");
-			return;
+			return false;
 		}
 		else{
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -71,38 +71,38 @@ public class UnosNovogVozilaController {
 				if(vozilo.getRegistracija().equals(registracija)) 
 				{
 					JOptionPane.showMessageDialog(null, "Registracija već postoji");
-					return;
+					return false;
 				}
 			}
 		}
 
 		if(this.praznoPolje(intervalMjeseci)){
 			JOptionPane.showMessageDialog(null, "Unesite interval servisa (mjeseci)");
-			return;
+			return false;
 		}
 		if(!intervalMjeseci.matches("^[0-9]+$")){
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (mjeseci)");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(intervalKilometara)){
 			JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri)");
-			return;
+			return false;
 		}
 		if(!intervalKilometara.matches("^[0-9]+$")){
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (kilometri)");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(nazivVozila)){
 			JOptionPane.showMessageDialog(null, "Unesite naziv vozila");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(godinaProizvodnje)){
 			JOptionPane.showMessageDialog(null, "Unesite godinu proizvodnje");
-			return;
+			return false;
 		}
 		if(!godinaProizvodnje.matches("^(19|20)[0-9]{2}$")){
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za godinu proizvodnje");
-			return;
+			return false;
 		}
 		else{
 			godinaP = Integer.parseInt(godinaProizvodnje);
@@ -113,11 +113,11 @@ public class UnosNovogVozilaController {
 		}
 		if(godinaP > trenutnaGodina){
 			JOptionPane.showMessageDialog(null, "Godina proizvodnje mora biti manja ili jednaka trenutnoj");
-			return;
+			return false;
 		}
 		if(this.praznoPolje(proizvodjac)){
 			JOptionPane.showMessageDialog(null, "Unesite proizvođača vozila");
-			return;
+			return false;
 		}
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -136,5 +136,6 @@ public class UnosNovogVozilaController {
 		session.save(vozilo);
 		transaction.commit();
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		return true;
 	}
 }
