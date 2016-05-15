@@ -8,10 +8,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,6 +29,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class PregledSlobodnihVozila {
 	
@@ -37,6 +42,7 @@ public class PregledSlobodnihVozila {
 	private JTextField registracija;
 	private PregledSlobodnihVozilaController controller;
 	private DefaultTableModel model;
+	private String registracijaBr;
 	/**
 	 * Launch the application.
 	 */
@@ -62,7 +68,7 @@ public class PregledSlobodnihVozila {
 		initialize();
 		
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -80,64 +86,32 @@ public class PregledSlobodnihVozila {
 		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPregledSlobodnihVozila.getContentPane().setLayout(null);
 		
-		model = new DefaultTableModel(new Object[]{"1","2","3","4","5","6"},0);
+		model = new DefaultTableModel(new Object[]{"Naziv vozila","Proizvođač","God. proizvodnje","Registracija","Status","Opis"},0);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(10, 12, 625, 239);
+		frmPregledSlobodnihVozila.getContentPane().add(scrollPane);
 		table = new JTable();
-		table.setBounds(10, 43, 625, 208);
-		frmPregledSlobodnihVozila.getContentPane().add(table);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(table);
+		//klik na red tabele
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		    @Override
+		    public void valueChanged(ListSelectionEvent event) {
+		    	//sprijeci double-click 
+		    	if (!event.getValueIsAdjusting()) {
+		    		 if (table.getSelectedRow() > -1) {
+			    			//otvori prozor sa podacima
+		    			    //proslijedi br. registracije
+		    			 	registracijaBr = table.getValueAt(table.getSelectedRow(), 3).toString();
+				            PodaciOVozilu p = new PodaciOVozilu(registracijaBr);
+				            p.main(null); 
+				        }
+		    	    }		    		
+		    }
+		});
 		
-		JLabel lblNazivVozila = new JLabel("Naziv vozila");
-		lblNazivVozila.setBounds(15, 15, 86, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblNazivVozila);
-		
-		JSeparator separator = new JSeparator();
-		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setForeground(Color.BLACK);
-		separator.setBounds(96, 14, 8, 17);
-		frmPregledSlobodnihVozila.getContentPane().add(separator);
-		
-		JLabel lblRegistracija = new JLabel("Registracija");
-		lblRegistracija.setBounds(345, 15, 86, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblRegistracija);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1.setForeground(Color.BLACK);
-		separator_1.setBounds(195, 14, 8, 17);
-		frmPregledSlobodnihVozila.getContentPane().add(separator_1);
-		
-		JLabel lblProizvoa = new JLabel("Proizvo\u0111a\u010D");
-		lblProizvoa.setBounds(114, 15, 67, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblProizvoa);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setOrientation(SwingConstants.VERTICAL);
-		separator_2.setForeground(Color.BLACK);
-		separator_2.setBounds(327, 14, 8, 17);
-		frmPregledSlobodnihVozila.getContentPane().add(separator_2);
-		
-		JLabel lblGodProizvodnje = new JLabel("God. proizvodnje");
-		lblGodProizvodnje.setBounds(215, 15, 105, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblGodProizvodnje);
-		
-		JSeparator separator_3 = new JSeparator();
-		separator_3.setOrientation(SwingConstants.VERTICAL);
-		separator_3.setForeground(Color.BLACK);
-		separator_3.setBounds(428, 14, 8, 17);
-		frmPregledSlobodnihVozila.getContentPane().add(separator_3);
-		
-		JLabel lblOpis = new JLabel("Opis");
-		lblOpis.setBounds(555, 15, 46, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblOpis);
-		
-		JSeparator separator_4 = new JSeparator();
-		separator_4.setOrientation(SwingConstants.VERTICAL);
-		separator_4.setForeground(Color.BLACK);
-		separator_4.setBounds(500, 14, 8, 17);
-		frmPregledSlobodnihVozila.getContentPane().add(separator_4);
-		
-		JLabel lblStatus = new JLabel("Status");
-		lblStatus.setBounds(445, 15, 46, 14);
-		frmPregledSlobodnihVozila.getContentPane().add(lblStatus);
 		
 		JLabel lblNazivVozila_1 = new JLabel("Naziv  vozila:");
 		lblNazivVozila_1.setBounds(670, 65, 86, 14);
