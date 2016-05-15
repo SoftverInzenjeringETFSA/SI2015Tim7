@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,13 +16,17 @@ import javax.swing.JPanel;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
+import vozniPark.Controller.PregledVozacaController;
+
+
 public class PodaciOVozacu {
 	
 	final static Logger logger = Logger.getLogger(PodaciOVozacu.class);
 
 	private JFrame frame;
 	private JFrame frejm;
-	Session s;
+	private Vector<String> imena;
+	private PregledVozacaController pvc;
 
 	/**
 	 * Launch the application.
@@ -30,7 +35,7 @@ public class PodaciOVozacu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PodaciOVozacu window = new PodaciOVozacu();
+					PodaciOVozacu window = new PodaciOVozacu(imena);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					//e.printStackTrace();
@@ -43,7 +48,9 @@ public class PodaciOVozacu {
 	/**
 	 * Create the application.
 	 */
-	public PodaciOVozacu() {
+	public PodaciOVozacu(Vector<String> podaci) {
+		imena=podaci;
+		pvc=new PregledVozacaController();
 		initialize();
 	}
 
@@ -83,22 +90,22 @@ public class PodaciOVozacu {
 		
 		JPanel panel = new JPanel();
 		
-		JLabel lblIrma = new JLabel("Irma");
+		JLabel lblIrma = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getIme());
 		lblIrma.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblKarasoftic = new JLabel("Karasofti\u0107");
+		JLabel lblKarasoftic = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getPrezime());
 		lblKarasoftic.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblike = new JLabel("12IKE1212");
+		JLabel lblike = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getBrojVozacke());
 		lblike.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblEtfovska = new JLabel("ETFovska 2");
+		JLabel lblEtfovska = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getAdresa());
 		lblEtfovska.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel label = new JLabel("061222555");
+		JLabel label = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getBrojTelefona());
 		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblIkarasofti = new JLabel("ikarasofti1");
+		JLabel lblIkarasofti = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getUsername());
 		lblIkarasofti.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -180,7 +187,7 @@ public class PodaciOVozacu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PodaciOVozacu window = new PodaciOVozacu(s);
+					PodaciOVozacu window = new PodaciOVozacu(imena);
 					window.frejm.setVisible(true);
 					window.frejm.setAlwaysOnTop(true);
 				} catch (Exception e) {
@@ -189,10 +196,6 @@ public class PodaciOVozacu {
 			}
 		});
 		
-	}
-	public PodaciOVozacu(Session s) {
-		this.s = s;
-		initialize();
 	}
 	
 }
