@@ -28,7 +28,7 @@ public class UnosNovogVozilaController {
 		listaVozila =new ArrayList<Vozilo>();
 	}
 	
-	public List<Vozilo> getListaVozaca() {
+	public List<Vozilo> getListaVozila() {
 		return listaVozila;
 	}
 	
@@ -67,8 +67,8 @@ public class UnosNovogVozilaController {
 		else{
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			listaVozila = session.createCriteria(Vozilo.class).list();
-			for (int i = 0; i < listaVozila.size(); i++) {
-				if(listaVozila.get(i).getRegistracija() == registracija) 
+			for (Vozilo vozilo: listaVozila) {
+				if(vozilo.getRegistracija().equals(registracija)) 
 				{
 					JOptionPane.showMessageDialog(null, "Registracija već postoji");
 					return;
@@ -111,7 +111,7 @@ public class UnosNovogVozilaController {
 		    cal.setTime(date);
 		    trenutnaGodina = cal.get(Calendar.YEAR);	    
 		}
-		if(godinaP >= trenutnaGodina){
+		if(godinaP > trenutnaGodina){
 			JOptionPane.showMessageDialog(null, "Godina proizvodnje mora biti manja ili jednaka trenutnoj");
 			return;
 		}

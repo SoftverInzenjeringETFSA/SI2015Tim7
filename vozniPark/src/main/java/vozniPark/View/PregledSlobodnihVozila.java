@@ -4,15 +4,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+
+import vozniPark.Controller.PregledSlobodnihVozilaController;
+import vozniPark.Model.Vozilo;
+import vozniPark.Util.HibernateUtil;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PregledSlobodnihVozila {
 	
@@ -20,9 +33,10 @@ public class PregledSlobodnihVozila {
 
 	private JFrame frmPregledSlobodnihVozila;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-
+	private JTextField naziv;
+	private JTextField registracija;
+	private PregledSlobodnihVozilaController controller;
+	private DefaultTableModel model;
 	/**
 	 * Launch the application.
 	 */
@@ -44,7 +58,9 @@ public class PregledSlobodnihVozila {
 	 * Create the application.
 	 */
 	public PregledSlobodnihVozila() {
+		controller = new PregledSlobodnihVozilaController();
 		initialize();
+		
 	}
 
 	/**
@@ -52,11 +68,19 @@ public class PregledSlobodnihVozila {
 	 */
 	private void initialize() {
 		frmPregledSlobodnihVozila = new JFrame();
+		frmPregledSlobodnihVozila.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {
+				controller.dajSvaSlobodnaVozila(model, table);
+			}
+		});
+
 		frmPregledSlobodnihVozila.setTitle("Pregled slobodnih vozila");
 		frmPregledSlobodnihVozila.setBounds(100, 100, 899, 300);
 		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPregledSlobodnihVozila.getContentPane().setLayout(null);
 		
+		model = new DefaultTableModel(new Object[]{"1","2","3","4","5","6"},0);
 		table = new JTable();
 		table.setBounds(10, 43, 625, 208);
 		frmPregledSlobodnihVozila.getContentPane().add(table);
@@ -128,25 +152,31 @@ public class PregledSlobodnihVozila {
 		lblRegistracija_1.setBounds(670, 100, 86, 14);
 		frmPregledSlobodnihVozila.getContentPane().add(lblRegistracija_1);
 		
-		textField = new JTextField();
-		textField.setBounds(755, 62, 118, 20);
-		frmPregledSlobodnihVozila.getContentPane().add(textField);
-		textField.setColumns(10);
+		naziv = new JTextField();
+		naziv.setBounds(755, 62, 118, 20);
+		frmPregledSlobodnihVozila.getContentPane().add(naziv);
+		naziv.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(755, 97, 118, 20);
-		frmPregledSlobodnihVozila.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		registracija = new JTextField();
+		registracija.setBounds(755, 97, 118, 20);
+		frmPregledSlobodnihVozila.getContentPane().add(registracija);
+		registracija.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Prika\u017Ei vozilo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				controller.pretraziSlobodnaVozila(naziv.getText(),registracija.getText(), model, table);
 			}
 		});
 		btnNewButton.setBounds(755, 133, 118, 23);
 		frmPregledSlobodnihVozila.getContentPane().add(btnNewButton);
 		
 		JButton btnPrikaiSvaVozila = new JButton("Prika\u017Ei sva vozila");
+		btnPrikaiSvaVozila.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.dajSvaSlobodnaVozila(model,table);
+			}
+		});
 		btnPrikaiSvaVozila.setBounds(671, 228, 202, 23);
 		frmPregledSlobodnihVozila.getContentPane().add(btnPrikaiSvaVozila);
 	}
