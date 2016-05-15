@@ -20,5 +20,8 @@
         <property name="opis" type="java.lang.String">
             <column name="OPIS" />
         </property>
+        <property name="servisiranoKod" type="java.lang.String">
+            <column name="SERVISIRANOKOD" />
+        </property>
     </class>
 </hibernate-mapping>

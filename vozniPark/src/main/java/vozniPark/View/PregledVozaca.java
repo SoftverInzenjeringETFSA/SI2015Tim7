@@ -67,10 +67,10 @@ public class PregledVozaca {
 		JPanel panel = new JPanel();
 		table_1 = new JTable();
 		table_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+	/*
 		table_1.getColumnModel().getColumn(0).setPreferredWidth(85);
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(95);
-		
+	*/
 		lblOdaberiteVozaaZa = new JLabel("Odaberite voza\u010Da za prikaz podataka:");
 		lblOdaberiteVozaaZa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

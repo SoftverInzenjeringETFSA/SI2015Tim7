@@ -1,6 +1,7 @@
 package vozniPark.Model;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Vozilo implements java.io.Serializable{
@@ -126,7 +127,10 @@ public class Vozilo implements java.io.Serializable{
 		this.status = status;
 	}
 
-	public Vozilo(){}
+	public Vozilo(){
+		this.listaServisa = new ArrayList<Servisi>();
+		this.listaTocenja = new ArrayList<TocenjeGoriva>();
+	}
 
 	public int getIntervalServisaKilometri() {
 		return intervalServisaKilometri;

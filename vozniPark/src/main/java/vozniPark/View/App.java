@@ -11,7 +11,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        //PopuniBazu.DodajOsobe();
+    	//napraviti bazu tim_7 bez tabela, pa pokrenuti sljedecu liniju koda
+        PopuniBazu.Izvrsi();
     	/*primjer unosa odredjenog objekta u bazu
     	Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
