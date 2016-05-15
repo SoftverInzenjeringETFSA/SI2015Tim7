@@ -12,8 +12,7 @@ public class App
     public static void main( String[] args )
     {
     	//napraviti bazu tim_7 bez tabela, pa pokrenuti sljedecu liniju koda
-    	//samo jednom izvrsiti da se formiraju tabele i popuni baza podataka
-        //PopuniBazu.Izvrsi();
+        PopuniBazu.Izvrsi();
     	/*primjer unosa odredjenog objekta u bazu
     	Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
