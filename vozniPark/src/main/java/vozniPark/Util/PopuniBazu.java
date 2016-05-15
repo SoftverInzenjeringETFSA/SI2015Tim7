@@ -3,6 +3,7 @@ package vozniPark.Util;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.common.util.impl.Log;
 import vozniPark.Model.*;
 
 import java.security.NoSuchAlgorithmException;
@@ -30,6 +31,7 @@ public class PopuniBazu {
             }
         }
         catch (Exception e) {
+            Logger.getLogger(PopuniBazu.class).info(e);
             DodajPodatke();
         }
     }
