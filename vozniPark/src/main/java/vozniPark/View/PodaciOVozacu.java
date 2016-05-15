@@ -26,7 +26,7 @@ public class PodaciOVozacu {
 
 	private JFrame frame;
 	private JFrame frejm;
-	private Vector<String> imena;
+	private int imena;
 	private PregledVozacaController pvc;
 
 	/**
@@ -49,7 +49,7 @@ public class PodaciOVozacu {
 	/**
 	 * Create the application.
 	 */
-	public PodaciOVozacu(Vector<String> podaci) {
+	public PodaciOVozacu(int podaci) {
 		imena=podaci;
 		pvc=new PregledVozacaController();
 		initialize();
@@ -100,39 +100,39 @@ public class PodaciOVozacu {
 		lblNewLabel_1.setBounds(230, 272, 75, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getIme());
+		JLabel lblNewLabel_2 = new JLabel(pvc.dajVozacaINT(imena).getIme());
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(322, 96, 195, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JLabel label_1 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getPrezime());
+		JLabel label_1 = new JLabel(pvc.dajVozacaINT(imena).getPrezime());
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_1.setBounds(322, 131, 195, 14);
 		frame.getContentPane().add(label_1);
 		
-		JLabel label_2 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getBrojVozacke());
+		JLabel label_2 = new JLabel(pvc.dajVozacaINT(imena).getBrojVozacke());
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_2.setBounds(322, 167, 195, 14);
 		frame.getContentPane().add(label_2);
 		
-		JLabel label_3 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getAdresa());
+		JLabel label_3 = new JLabel(pvc.dajVozacaINT(imena).getAdresa());
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_3.setBounds(322, 204, 195, 14);
 		frame.getContentPane().add(label_3);
 		
-		JLabel label_4 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getBrojTelefona());
+		JLabel label_4 = new JLabel(pvc.dajVozacaINT(imena).getBrojTelefona());
 		label_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_4.setBounds(322, 239, 195, 14);
 		frame.getContentPane().add(label_4);
 		
-		JLabel label_5 = new JLabel(pvc.dajVozaca(imena.get(0), imena.get(1)).getUsername());
+		JLabel label_5 = new JLabel(pvc.dajVozacaINT(imena).getUsername());
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_5.setBounds(322, 274, 195, 14);
 		frame.getContentPane().add(label_5);
 		
 		JButton btnNewButton = new JButton("Vrati se na listu vozača");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) { 
 				frame.dispose();
 			}
 		});
@@ -142,18 +142,5 @@ public class PodaciOVozacu {
 			
 	}
 
-	public void PrikaziFormu() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PodaciOVozacu window = new PodaciOVozacu(imena);
-					window.frejm.setVisible(true);
-					window.frejm.setAlwaysOnTop(true);
-				} catch (Exception e) {
-					logger.info(e);
-				}
-			}
-		});
-		
-	}
+	
 }

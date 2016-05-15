@@ -17,7 +17,7 @@ public class PregledVozacaControllerTest extends TestCase{
 		PregledVozacaController pvc=new PregledVozacaController();
 		JFrame frame = new JFrame();
 		JTable jt= new JTable();
-		pvc.ucitajVozaceIzBaze(frame, jt);
+		//pvc.ucitajVozaceIzBaze(frame, jt);
 		assertEquals(2, pvc.getListaVozaca().size());
 	}
 

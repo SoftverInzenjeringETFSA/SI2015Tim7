@@ -85,8 +85,8 @@ public class PregledVozaca {
 		JButton btnNewButton = new JButton("Prikaži podatke");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PodaciOVozacu podaci=new PodaciOVozacu(data.get(table_1.getSelectedRow()));
-				podaci.PrikaziFormu();
+				PodaciOVozacu podaci=new PodaciOVozacu(table_1.getSelectedRow());
+				podaci.main(null);
 			}
 		});
 		

@@ -22,6 +22,7 @@ public class PregledVozacaController {
 	
 	public PregledVozacaController() {
 		listaVozaca=new ArrayList<Vozac>();
+		ucitajVozaceIzBaze();
 	}
 
 	public List<Vozac> getListaVozaca() {
@@ -57,5 +58,10 @@ public class PregledVozacaController {
 			}
 		}
 		return new Vozac();
+	}
+	public Vozac dajVozacaINT(int i)
+	{
+
+		return listaVozaca.get(i);
 	}
 }
