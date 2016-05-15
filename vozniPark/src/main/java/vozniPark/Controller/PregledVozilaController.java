@@ -90,21 +90,21 @@ public class PregledVozilaController {
 		Vector<Vector<String>> v= new Vector<Vector<String>>();
 		Date d1;
 		Date d2;
-		if(Datum1.getSelectedText().equals(""))
+		if(Datum1.getText().equals("".toString()))
 		{
-			d1=new Date("1994-02-02");
+			d1=new Date(1994-1900, 2, 2);
 		}
 		else
 		{
-			d1=new Date(Datum1.getSelectedText());
+			d1=new Date(Datum1.getText());
 		}
-		if(Datum2.getSelectedText().equals(""))
+		if(Datum2.getText().equals("".toString()))
 		{
-			d2=new Date("2090-02-02");
+			d2=new Date(2090-1900, 2, 2);
 		}
 		else
 		{
-			d2=new Date(Datum2.getSelectedText());
+			d2=new Date(Datum2.getText());
 		}
 			
 			for(int i=0; i<listaVozila.size(); i++) 
@@ -144,8 +144,25 @@ public class PregledVozilaController {
 	
 	public Vector<Vector<String>> ucitajTocenjaUTabelu(JFrame frame,JTextField Datum1, JTextField Datum2,JComboBox cb1,JComboBox cb2) {
 		Vector<Vector<String>> v= new Vector<Vector<String>>();
-		Date d1=new Date(Datum1.getSelectedText());
-		Date d2=new Date(Datum2.getSelectedText());
+		Date d1;
+		Date d2;
+		if(Datum1.getText().equals("".toString()))
+		{
+			d1=new Date(1994-1900, 2, 2);
+		}
+		else
+		{
+			d1=new Date(Datum1.getText());
+		}
+		if(Datum2.getText().equals("".toString()))
+		{
+			d2=new Date(2090-1900, 2, 2);
+		}
+		else
+		{
+			d2=new Date(Datum2.getText());
+		}
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		

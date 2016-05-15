@@ -63,7 +63,7 @@ public class IzvjestajOOdabranomVozilu {
 	 */
 	private void initialize() {
 		pvc= new PregledVozilaController();
-		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 780, 421);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -155,6 +155,7 @@ public class IzvjestajOOdabranomVozilu {
 		
 		table_2 = new JTable();
 		scrollPane_2.setViewportView(table_2);
+		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comboBox_1.setSelectedIndex(pvc.DajVozilo(comboBox.getSelectedItem().toString()));
