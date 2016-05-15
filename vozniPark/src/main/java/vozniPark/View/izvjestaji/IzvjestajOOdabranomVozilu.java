@@ -141,10 +141,12 @@ public class IzvjestajOOdabranomVozilu {
 		scrollPane_1.setViewportView(table_1);
 		
 		comboBox = new JComboBox();
+
 		comboBox.setBounds(100, 36, 173, 20);
 		frame.getContentPane().add(comboBox);
 		
 		comboBox_1 = new JComboBox();
+
 		comboBox_1.setBounds(100, 63, 173, 20);
 		frame.getContentPane().add(comboBox_1);
 		scrollPane_2 = new JScrollPane();
@@ -153,6 +155,16 @@ public class IzvjestajOOdabranomVozilu {
 		
 		table_2 = new JTable();
 		scrollPane_2.setViewportView(table_2);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comboBox_1.setSelectedIndex(pvc.DajVozilo(comboBox.getSelectedItem().toString()));
+			}
+		});
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comboBox.setSelectedIndex(pvc.DajRegistraciju(comboBox_1.getSelectedItem().toString()));
+			}
+		});
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

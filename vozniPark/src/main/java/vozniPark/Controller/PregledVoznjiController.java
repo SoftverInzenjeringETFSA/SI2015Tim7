@@ -66,15 +66,17 @@ public class PregledVoznjiController {
 	    return v;
 	}
 	
-	public Vector<String> dajUkupno()
+	public Vector<Vector<String>> dajUkupno()
 	{
+		Vector<Vector<String>> v = new Vector<Vector<String>>();
 		Vector<String> vu = new Vector<String>();
 		vu.addElement(String.valueOf(kilometri));
 		vu.addElement(String.valueOf(cijena));
 		vu.addElement(String.valueOf(kolicina));
+		v.add(vu);
 		kolicina=0;
 		cijena=0;
 		kilometri=0;
-		return vu;
+		return v;
 	}
 }
