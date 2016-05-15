@@ -1,5 +1,7 @@
 package vozniPark.View;
 import java.awt.EventQueue;
+import java.util.Date;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -13,6 +15,12 @@ import javax.swing.SwingConstants;
 
 import javax.swing.JTextField;
 import org.apache.log4j.Logger;
+
+import vozniPark.Controller.PregledServisaController;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.awt.event.ActionEvent;
 
 public class EvidencijaServisa {
 	final static Logger logger = Logger.getLogger(EvidencijaServisa.class);
@@ -28,6 +36,9 @@ public class EvidencijaServisa {
 	private JTextField textField_5;
 	private JTable table_2;
 	private JTextField textField_6;
+	private PregledServisaController psc;
+	private Vector<Vector<String>> data1;
+	private Vector<Vector<String>> data2;
 
 	/**
 	 * Launch the application.
@@ -57,6 +68,7 @@ public class EvidencijaServisa {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		psc= new PregledServisaController();
 		frmPrijavaServisa = new JFrame();
 		frmPrijavaServisa.setTitle("Servis");
 		frmPrijavaServisa.setBounds(100, 100, 600, 344);
@@ -71,23 +83,16 @@ public class EvidencijaServisa {
 		tabbedPane.addTab("Prijava vozila na servis", null, panel, null);
 		panel.setLayout(null);
 		
-		table = new JTable();
-		table.setBounds(10, 30, 300, 200);
+		Vector<String> columnNames1 = new Vector<String>();
+		columnNames1.add("Registracija");
+		columnNames1.add("Naziv vozila");
+		columnNames1.add("Opis vozila");
+        data1=new Vector<Vector<String>>();
+        data1=psc.ucitajSlobodnaVozila();
+		
+		table = new JTable(data1,columnNames1);
+		table.setBounds(10, 11, 300, 219);
 		panel.add(table);
-		
-		JLabel lblRegistracija = new JLabel("Registracija");
-		lblRegistracija.setBounds(15, 8, 92, 14);
-		panel.add(lblRegistracija);
-		
-		JSeparator separator = new JSeparator();
-		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setForeground(Color.BLACK);
-		separator.setBounds(99, 8, 8, 17);
-		panel.add(separator);
-		
-		JLabel lblOpisVozila = new JLabel("Opis vozila");
-		lblOpisVozila.setBounds(217, 8, 79, 14);
-		panel.add(lblOpisVozila);
 		
 		JLabel lblDatum = new JLabel("Datum:");
 		lblDatum.setBounds(341, 46, 46, 14);
@@ -108,40 +113,24 @@ public class EvidencijaServisa {
 		textField_1.setColumns(10);
 		
 		JButton btnPotvrdi = new JButton("Potvrdi");
+		
 		btnPotvrdi.setBounds(410, 207, 125, 23);
-		panel.add(btnPotvrdi);		
-		
-		JLabel lblNazivVozila = new JLabel("Naziv vozila");
-		lblNazivVozila.setBounds(117, 8, 71, 14);
-		panel.add(lblNazivVozila);
-		
-		JSeparator separator_8 = new JSeparator();
-		separator_8.setOrientation(SwingConstants.VERTICAL);
-		separator_8.setForeground(Color.BLACK);
-		separator_8.setBounds(199, 8, 8, 17);
-		panel.add(separator_8);
+		panel.add(btnPotvrdi);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Odjava vozila sa servisa", null, panel_1, null);
 		panel_1.setLayout(null);
 		
-		table_1 = new JTable();
-		table_1.setBounds(10, 30, 300, 200);
+		Vector<String> columnNames2 = new Vector<String>();
+		columnNames2.add("Registracija");
+		columnNames2.add("Naziv vozila");
+		columnNames2.add("Opis vozila");
+        data2=new Vector<Vector<String>>();
+        data2=psc.ucitajVozilaNaServisu();
+		
+		table_1 = new JTable(data2,columnNames2);
+		table_1.setBounds(10, 11, 300, 219);
 		panel_1.add(table_1);
-		
-		JLabel label_1 = new JLabel("Opis vozila");
-		label_1.setBounds(217, 8, 79, 14);
-		panel_1.add(label_1);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1.setForeground(Color.BLACK);
-		separator_1.setBounds(99, 8, 8, 17);
-		panel_1.add(separator_1);
-		
-		JLabel label = new JLabel("Registracija");
-		label.setBounds(15, 8, 92, 14);
-		panel_1.add(label);
 		
 		JLabel label_3 = new JLabel("Datum:");
 		label_3.setBounds(366, 67, 49, 14);
@@ -162,6 +151,7 @@ public class EvidencijaServisa {
 		panel_1.add(textField_3);
 		
 		JButton button = new JButton("Potvrdi");
+
 		button.setBounds(410, 207, 125, 23);
 		panel_1.add(button);
 		
@@ -183,16 +173,6 @@ public class EvidencijaServisa {
 		panel_1.add(textField_5);
 		textField_5.setColumns(10);
 		
-		JLabel lblNazivVozila_1 = new JLabel("Naziv vozila");
-		lblNazivVozila_1.setBounds(117, 8, 71, 14);
-		panel_1.add(lblNazivVozila_1);
-		
-		JSeparator separator_9 = new JSeparator();
-		separator_9.setOrientation(SwingConstants.VERTICAL);
-		separator_9.setForeground(Color.BLACK);
-		separator_9.setBounds(199, 8, 8, 17);
-		panel_1.add(separator_9);
-		
 		JLabel lblServisiranoKod_1 = new JLabel("Servisirano kod:");
 		lblServisiranoKod_1.setBounds(315, 36, 92, 14);
 		panel_1.add(lblServisiranoKod_1);
@@ -206,72 +186,55 @@ public class EvidencijaServisa {
 		tabbedPane.addTab("Prikaz svih servisa za sva vozila", null, panel_2, null);
 		panel_2.setLayout(null);
 		
-		table_2 = new JTable();
-		table_2.setBounds(10, 40, 539, 200);
+		
+		Vector<String> columnNames = new Vector<String>();
+		columnNames.add("Servisirano vozilo:");
+		columnNames.add("Broj registracije:");
+		columnNames.add("Servisirano kod:");
+		columnNames.add("Datum i vrijeme odvoženja vozila na servis:");
+		columnNames.add("Datum i vrijeme vraćanja vozila:");
+		columnNames.add("Opis servisiranja:");
+		columnNames.add("Cijena servisiranja(KM):");
+        Vector<Vector<String>> nl=new Vector<Vector<String>>();
+        nl=psc.ucitajVoznjeZaVozaca();
+		
+		table_2 = new JTable(nl,columnNames);
+		table_2.setBounds(10, 11, 539, 229);
 		panel_2.add(table_2);
 		
-		JLabel lblServisiranoVozilo = new JLabel("Vozilo");
-		lblServisiranoVozilo.setBounds(15, 11, 45, 18);
-		panel_2.add(lblServisiranoVozilo);
+		btnPotvrdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				String datumVrijeme = textField.getText() + textField_1.getText();
+				Date date = new Date();
+				try {
+					date = formatter.parse(datumVrijeme);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					logger.info(e);
+				}
+				
+				psc.dodajNaServis(date,psc.dajIDVozila(data1.get(table.getSelectedRow()).get(1)));
+				initialize();
+			}
+		});
 		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setOrientation(SwingConstants.VERTICAL);
-		separator_2.setForeground(Color.BLACK);
-		separator_2.setBounds(56, 11, 8, 17);
-		panel_2.add(separator_2);
-		
-		JLabel lblRegistracija_1 = new JLabel("Registracija");
-		lblRegistracija_1.setBounds(65, 13, 75, 14);
-		panel_2.add(lblRegistracija_1);
-		
-		JSeparator separator_3 = new JSeparator();
-		separator_3.setOrientation(SwingConstants.VERTICAL);
-		separator_3.setForeground(Color.BLACK);
-		separator_3.setBounds(140, 11, 8, 17);
-		panel_2.add(separator_3);
-		
-		JLabel lblServisiranoKod = new JLabel("Servisirano kod");
-		lblServisiranoKod.setBounds(147, 13, 96, 14);
-		panel_2.add(lblServisiranoKod);
-		
-		JSeparator separator_4 = new JSeparator();
-		separator_4.setOrientation(SwingConstants.VERTICAL);
-		separator_4.setForeground(Color.BLACK);
-		separator_4.setBounds(242, 11, 8, 17);
-		panel_2.add(separator_4);
-		
-		JLabel lblVrijemeod = new JLabel("Vrijeme(od)");
-		lblVrijemeod.setBounds(250, 13, 75, 14);
-		panel_2.add(lblVrijemeod);
-		
-		JSeparator separator_5 = new JSeparator();
-		separator_5.setOrientation(SwingConstants.VERTICAL);
-		separator_5.setForeground(Color.BLACK);
-		separator_5.setBounds(323, 11, 8, 17);
-		panel_2.add(separator_5);
-		
-		JLabel lblVrijemedo = new JLabel("Vrijeme(do)");
-		lblVrijemedo.setBounds(330, 13, 68, 14);
-		panel_2.add(lblVrijemedo);
-		
-		JSeparator separator_6 = new JSeparator();
-		separator_6.setOrientation(SwingConstants.VERTICAL);
-		separator_6.setForeground(Color.BLACK);
-		separator_6.setBounds(402, 11, 8, 17);
-		panel_2.add(separator_6);
-		
-		JLabel lblOpis = new JLabel("Opis servisa");
-		lblOpis.setBounds(410, 13, 75, 14);
-		panel_2.add(lblOpis);
-		
-		JSeparator separator_7 = new JSeparator();
-		separator_7.setOrientation(SwingConstants.VERTICAL);
-		separator_7.setForeground(Color.BLACK);
-		separator_7.setBounds(489, 11, 8, 17);
-		panel_2.add(separator_7);
-		
-		JLabel lblCijena_1 = new JLabel("Cijena");
-		lblCijena_1.setBounds(500, 13, 46, 14);
-		panel_2.add(lblCijena_1);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				String datumVrijeme = textField_2.getText() + textField_3.getText();
+				Date date = new Date();
+				try {
+					date = formatter.parse(datumVrijeme);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					logger.info(e);
+				}
+				psc.dodajDovrsenServis(psc.dajIDVozila(data2.get(table_1.getSelectedRow()).get(1)), date, textField_6.getText(), textField_4.getText(), textField_5.getText());
+				initialize();
+			}
+		});
 	}
 }
