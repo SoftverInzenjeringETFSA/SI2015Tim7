@@ -22,6 +22,9 @@ public class Vozilo implements java.io.Serializable{
 	private String proizvodjac;
 	private int godinaProizvodnje;
 	private String status;
+	private int intervalServisaKilometri;
+	private int intervalServisaMjeseci;
+	private String opis;
 	
 	public long getId() {
 		return id;
@@ -124,4 +127,28 @@ public class Vozilo implements java.io.Serializable{
 	}
 
 	public Vozilo(){}
+
+	public int getIntervalServisaKilometri() {
+		return intervalServisaKilometri;
+	}
+
+	public void setIntervalServisaKilometri(int intervalServisaKilometri) {
+		this.intervalServisaKilometri = intervalServisaKilometri;
+	}
+
+	public int getIntervalServisaMjeseci() {
+		return intervalServisaMjeseci;
+	}
+
+	public void setIntervalServisaMjeseci(int intervalServisaMjeseci) {
+		this.intervalServisaMjeseci = intervalServisaMjeseci;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
 }

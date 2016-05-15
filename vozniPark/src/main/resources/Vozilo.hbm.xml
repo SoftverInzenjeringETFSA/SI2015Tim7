@@ -55,5 +55,14 @@
         <property name="brojVlasnickeDozvole" type="java.lang.String">
             <column name="BROJVLASNICKEDOZVOLE" />
         </property>
+        <property name="intervalServisaKilometri" type="int">
+            <column name="INTERVALSERVISAKILOMETRI" />
+        </property>
+        <property name="intervalServisaMjeseci" type="int">
+            <column name="INTERVALSERVISAMJESECI" />
+        </property>
+        <property name="opis" type="java.lang.String">
+            <column name="OPIS" />
+        </property>
     </class>
 </hibernate-mapping>

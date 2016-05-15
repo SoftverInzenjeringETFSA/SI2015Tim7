@@ -10,21 +10,26 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import org.apache.log4j.Logger;
 
+import vozniPark.Controller.UnosNovogVozilaController;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class UnosNovogVozila {
 
 	final static Logger logger = Logger.getLogger(UnosNovogVozila.class);
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-
+	private JTextField saobracajnaDozvola;
+	private JTextField vlasnickaDozvola;
+	private JTextField registracija;
+	private JTextField intervalMjeseci;
+	private JTextField intervalKilometara;
+	private JTextField nazivVozila;
+	private JTextField godinaProizvodnje;
+	private JTextField proizvodjac;
+	private JTextField opis;
+	private UnosNovogVozilaController controller;
 	/**
 	 * Launch the application.
 	 */
@@ -47,6 +52,7 @@ public class UnosNovogVozila {
 	 */
 	public UnosNovogVozila() {
 		initialize();
+		controller = new UnosNovogVozilaController();
 	}
 
 	/**
@@ -71,14 +77,14 @@ public class UnosNovogVozila {
 		gbc_lblNewLabel.gridy = 1;
 		frame.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 1;
-		frame.getContentPane().add(textField, gbc_textField);
-		textField.setColumns(10);
+		saobracajnaDozvola = new JTextField();
+		GridBagConstraints gbc_saobracajnaDozvola = new GridBagConstraints();
+		gbc_saobracajnaDozvola.anchor = GridBagConstraints.NORTHWEST;
+		gbc_saobracajnaDozvola.insets = new Insets(0, 0, 5, 0);
+		gbc_saobracajnaDozvola.gridx = 2;
+		gbc_saobracajnaDozvola.gridy = 1;
+		frame.getContentPane().add(saobracajnaDozvola, gbc_saobracajnaDozvola);
+		saobracajnaDozvola.setColumns(10);
 		
 		JLabel lblBrojVlasnikeDozvole = new JLabel("Broj vlasni\u010Dke dozvole :");
 		GridBagConstraints gbc_lblBrojVlasnikeDozvole = new GridBagConstraints();
@@ -88,14 +94,14 @@ public class UnosNovogVozila {
 		gbc_lblBrojVlasnikeDozvole.gridy = 2;
 		frame.getContentPane().add(lblBrojVlasnikeDozvole, gbc_lblBrojVlasnikeDozvole);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 2;
-		frame.getContentPane().add(textField_1, gbc_textField_1);
+		vlasnickaDozvola = new JTextField();
+		vlasnickaDozvola.setColumns(10);
+		GridBagConstraints gbc_vlasnickaDozvola = new GridBagConstraints();
+		gbc_vlasnickaDozvola.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_vlasnickaDozvola.insets = new Insets(0, 0, 5, 0);
+		gbc_vlasnickaDozvola.gridx = 2;
+		gbc_vlasnickaDozvola.gridy = 2;
+		frame.getContentPane().add(vlasnickaDozvola, gbc_vlasnickaDozvola);
 		
 		JLabel lblRegistracija = new JLabel("Registracija :");
 		GridBagConstraints gbc_lblRegistracija = new GridBagConstraints();
@@ -105,14 +111,14 @@ public class UnosNovogVozila {
 		gbc_lblRegistracija.gridy = 3;
 		frame.getContentPane().add(lblRegistracija, gbc_lblRegistracija);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.gridx = 2;
-		gbc_textField_2.gridy = 3;
-		frame.getContentPane().add(textField_2, gbc_textField_2);
+		registracija = new JTextField();
+		registracija.setColumns(10);
+		GridBagConstraints gbc_registracija = new GridBagConstraints();
+		gbc_registracija.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_registracija.insets = new Insets(0, 0, 5, 0);
+		gbc_registracija.gridx = 2;
+		gbc_registracija.gridy = 3;
+		frame.getContentPane().add(registracija, gbc_registracija);
 		
 		JLabel lblIntervalServisamjeseci = new JLabel("Interval servisa(mjeseci) :");
 		GridBagConstraints gbc_lblIntervalServisamjeseci = new GridBagConstraints();
@@ -122,14 +128,14 @@ public class UnosNovogVozila {
 		gbc_lblIntervalServisamjeseci.gridy = 4;
 		frame.getContentPane().add(lblIntervalServisamjeseci, gbc_lblIntervalServisamjeseci);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.gridx = 2;
-		gbc_textField_3.gridy = 4;
-		frame.getContentPane().add(textField_3, gbc_textField_3);
+		intervalMjeseci = new JTextField();
+		intervalMjeseci.setColumns(10);
+		GridBagConstraints gbc_intervalMjeseci = new GridBagConstraints();
+		gbc_intervalMjeseci.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_intervalMjeseci.insets = new Insets(0, 0, 5, 0);
+		gbc_intervalMjeseci.gridx = 2;
+		gbc_intervalMjeseci.gridy = 4;
+		frame.getContentPane().add(intervalMjeseci, gbc_intervalMjeseci);
 		
 		JLabel lblIntervalServisakilometri = new JLabel("Interval servisa(kilometri) :");
 		GridBagConstraints gbc_lblIntervalServisakilometri = new GridBagConstraints();
@@ -140,14 +146,14 @@ public class UnosNovogVozila {
 		gbc_lblIntervalServisakilometri.gridy = 5;
 		frame.getContentPane().add(lblIntervalServisakilometri, gbc_lblIntervalServisakilometri);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.gridx = 2;
-		gbc_textField_4.gridy = 5;
-		frame.getContentPane().add(textField_4, gbc_textField_4);
+		intervalKilometara = new JTextField();
+		intervalKilometara.setColumns(10);
+		GridBagConstraints gbc_intervalKilometara = new GridBagConstraints();
+		gbc_intervalKilometara.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_intervalKilometara.insets = new Insets(0, 0, 5, 0);
+		gbc_intervalKilometara.gridx = 2;
+		gbc_intervalKilometara.gridy = 5;
+		frame.getContentPane().add(intervalKilometara, gbc_intervalKilometara);
 		
 		JLabel lblNazivVozila = new JLabel("Naziv vozila :");
 		GridBagConstraints gbc_lblNazivVozila = new GridBagConstraints();
@@ -157,14 +163,14 @@ public class UnosNovogVozila {
 		gbc_lblNazivVozila.gridy = 6;
 		frame.getContentPane().add(lblNazivVozila, gbc_lblNazivVozila);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_5.gridx = 2;
-		gbc_textField_5.gridy = 6;
-		frame.getContentPane().add(textField_5, gbc_textField_5);
+		nazivVozila = new JTextField();
+		nazivVozila.setColumns(10);
+		GridBagConstraints gbc_nazivVozila = new GridBagConstraints();
+		gbc_nazivVozila.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_nazivVozila.insets = new Insets(0, 0, 5, 0);
+		gbc_nazivVozila.gridx = 2;
+		gbc_nazivVozila.gridy = 6;
+		frame.getContentPane().add(nazivVozila, gbc_nazivVozila);
 		
 		JLabel lblGodinaProizvodnje = new JLabel("Godina proizvodnje :");
 		GridBagConstraints gbc_lblGodinaProizvodnje = new GridBagConstraints();
@@ -174,14 +180,14 @@ public class UnosNovogVozila {
 		gbc_lblGodinaProizvodnje.gridy = 7;
 		frame.getContentPane().add(lblGodinaProizvodnje, gbc_lblGodinaProizvodnje);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_6.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_6.gridx = 2;
-		gbc_textField_6.gridy = 7;
-		frame.getContentPane().add(textField_6, gbc_textField_6);
+		godinaProizvodnje = new JTextField();
+		godinaProizvodnje.setColumns(10);
+		GridBagConstraints gbc_godinaProizvodnje = new GridBagConstraints();
+		gbc_godinaProizvodnje.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_godinaProizvodnje.insets = new Insets(0, 0, 5, 0);
+		gbc_godinaProizvodnje.gridx = 2;
+		gbc_godinaProizvodnje.gridy = 7;
+		frame.getContentPane().add(godinaProizvodnje, gbc_godinaProizvodnje);
 		
 		JLabel lblProizvoa = new JLabel("Proizvo\u0111a\u010D :");
 		GridBagConstraints gbc_lblProizvoa = new GridBagConstraints();
@@ -191,14 +197,14 @@ public class UnosNovogVozila {
 		gbc_lblProizvoa.gridy = 8;
 		frame.getContentPane().add(lblProizvoa, gbc_lblProizvoa);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-		gbc_textField_7.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_textField_7.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_7.gridx = 2;
-		gbc_textField_7.gridy = 8;
-		frame.getContentPane().add(textField_7, gbc_textField_7);
+		proizvodjac = new JTextField();
+		proizvodjac.setColumns(10);
+		GridBagConstraints gbc_proizvodjac = new GridBagConstraints();
+		gbc_proizvodjac.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_proizvodjac.insets = new Insets(0, 0, 5, 0);
+		gbc_proizvodjac.gridx = 2;
+		gbc_proizvodjac.gridy = 8;
+		frame.getContentPane().add(proizvodjac, gbc_proizvodjac);
 		
 		JLabel lblOpis = new JLabel("Opis :");
 		GridBagConstraints gbc_lblOpis = new GridBagConstraints();
@@ -208,16 +214,29 @@ public class UnosNovogVozila {
 		gbc_lblOpis.gridy = 9;
 		frame.getContentPane().add(lblOpis, gbc_lblOpis);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		GridBagConstraints gbc_textField_8 = new GridBagConstraints();
-		gbc_textField_8.fill = GridBagConstraints.BOTH;
-		gbc_textField_8.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_8.gridx = 2;
-		gbc_textField_8.gridy = 9;
-		frame.getContentPane().add(textField_8, gbc_textField_8);
+		opis = new JTextField();
+		opis.setColumns(10);
+		GridBagConstraints gbc_opis = new GridBagConstraints();
+		gbc_opis.fill = GridBagConstraints.BOTH;
+		gbc_opis.insets = new Insets(0, 0, 5, 0);
+		gbc_opis.gridx = 2;
+		gbc_opis.gridy = 9;
+		frame.getContentPane().add(opis, gbc_opis);
 		
 		JButton btnUnesi = new JButton("Unesi");
+		btnUnesi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.unesiVozilo(saobracajnaDozvola.getText(),
+				vlasnickaDozvola.getText(),
+				registracija.getText(),
+				intervalMjeseci.getText(),
+				intervalKilometara.getText(),
+				nazivVozila.getText(),
+				godinaProizvodnje.getText(),
+				proizvodjac.getText(),
+				opis.getText(), frame);
+			}
+		});
 		GridBagConstraints gbc_btnUnesi = new GridBagConstraints();
 		gbc_btnUnesi.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnUnesi.gridx = 2;
