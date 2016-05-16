@@ -68,7 +68,7 @@ public class UnosNovogVozacaController {
 			for (int i=0; i<listaVozaca.size(); i++) v.addElement(listaVozaca.get(i).getUsername());
 			
 			for (int i = 0; i < listaVozaca.size(); i++) {
-				if(listaVozaca.get(i).getUsername() == Username) 
+				if(listaVozaca.get(i).getUsername().equals(Username) )
 					{
 					JOptionPane.showMessageDialog(null, "Username vec postoji");
 					return;
