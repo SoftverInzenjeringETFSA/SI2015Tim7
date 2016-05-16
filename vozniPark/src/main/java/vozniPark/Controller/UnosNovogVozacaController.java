@@ -28,37 +28,37 @@ public class UnosNovogVozacaController {
 		return listaVozaca;
 	}
 	
-	public void UnosVozaca(String Ime, String Prezime, String BrojVozacke, String Adresa, String BrojTelefona, String Username, String Sifra)
+	public boolean UnosVozaca(String Ime, String Prezime, String BrojVozacke, String Adresa, String BrojTelefona, String Username, String Sifra)
 	{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		if(Ime.length()<2){
 			JOptionPane.showMessageDialog(null, "Neispravno uneseno ime");
-			return;
+			return false;
 		}
 		
 		if(Prezime.length()<3){
 			JOptionPane.showMessageDialog(null, "Neispravno uneseno prezime");
-			return;
+			return false;
 		}
 		
 		if(BrojVozacke.length()!=9){
 			JOptionPane.showMessageDialog(null, "Neispravno unesen broj vozacke");
-			return;
+			return false;
 		}
 
 		if(Adresa.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Unesite adresu.");
-			return;
+			return false;
 		}
 		
 		if(BrojTelefona.length()!= 9 && BrojTelefona.length()!=10) {
 			JOptionPane.showMessageDialog(null, "Niste pravilno unijeli broj telefona.");
-			return;
+			return false;
 		}
 		if(Username.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Unesite username.");
-			return;
+			return false;
 		}
 		else {
 			final Vector<String> v = new Vector<String>();
@@ -71,7 +71,7 @@ public class UnosNovogVozacaController {
 				if(listaVozaca.get(i).getUsername().equals(Username) )
 					{
 					JOptionPane.showMessageDialog(null, "Username vec postoji");
-					return;
+						return false;
 					}
 				
 			}
@@ -80,7 +80,7 @@ public class UnosNovogVozacaController {
 			
 		if(Sifra.length()<2) {
 			JOptionPane.showMessageDialog(null, "Sifra mora imati minimalno 4 slova.");
-			return;
+			return false;
 		}
 		Vozac v=new Vozac();
 		v.setIme(Ime);
@@ -92,6 +92,7 @@ public class UnosNovogVozacaController {
 		v.setPassword(LoginController.getSecurePassword(Sifra));
 		session.save(v);
 		t.commit();
+		return true;
 	}
 
 }

@@ -189,7 +189,9 @@ public class UnosNovogVozaca {
 		
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				unvc.UnosVozaca(Ime.getText(), Prezime.getText(), BrojVozacke.getText(), Adresa.getText(), BrojTelefona.getText(), Username.getText(), Sifra.getText());
+				if(unvc.UnosVozaca(Ime.getText(), Prezime.getText(), BrojVozacke.getText(), Adresa.getText(), BrojTelefona.getText(), Username.getText(), Sifra.getText())) {
+					frame.dispose();
+				}
 			}
 		});
 		
