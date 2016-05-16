@@ -3,17 +3,9 @@ import java.awt.EventQueue;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
+import javax.swing.*;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 
-import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
 import vozniPark.Controller.PregledServisaController;
@@ -206,6 +198,11 @@ public class EvidencijaServisa {
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				String datum = textField.getText();
+				String vrijeme = textField_1.getText();
+				if(datum.length() <= 0 || vrijeme.length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Nisu uneseni svi parametri");
+				}
 				String datumVrijeme = textField.getText() + textField_1.getText();
 				Date date = new Date();
 				try {
