@@ -202,6 +202,7 @@ public class EvidencijaServisa {
 				String vrijeme = textField_1.getText();
 				if(datum.length() <= 0 || vrijeme.length() <= 0) {
 					JOptionPane.showMessageDialog(null, "Nisu uneseni svi parametri");
+					return;
 				}
 				String datumVrijeme = textField.getText() + textField_1.getText();
 				Date date = new Date();
