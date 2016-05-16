@@ -3,17 +3,12 @@ package vozniPark.View;
 import java.awt.EventQueue;
 import vozniPark.Controller.OdjavaPreuzetogVozilaController;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 import org.apache.log4j.Logger;
 
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -126,7 +121,21 @@ public class OdjavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Odjavi vozilo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), textField_1.getText(), textField_2.getText(),Long.valueOf(textField_3.getText()), textField_5.getText(), Double.valueOf(textField_4.getText()),Double.valueOf(textField_6.getText()));
+				String s = textField_1.getText();
+				String s1 = textField_2.getText();
+				String s2 = textField_3.getText();
+				String s3 = textField_4.getText();
+				String s4 = textField_5.getText();
+				String s5 = textField_6.getText();
+				if(s.length() == 0 || s1.length() == 0 ||s2.length() == 0 ||s4.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Nisu svi podaci uneseni.");
+					return;
+				}
+				if(s3.length() == 0) {
+					s3 = "0";
+					s5 = "0";
+				}
+				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), s, s1,Long.valueOf(s2), s4, Double.valueOf(s3),Double.valueOf(s5));
 				//zatvara prozor kad se klikne na dugme
 				frmOdjavljivanjePreuzetogVozila.dispatchEvent(new WindowEvent(frmOdjavljivanjePreuzetogVozila, WindowEvent.WINDOW_CLOSING));
 			}
