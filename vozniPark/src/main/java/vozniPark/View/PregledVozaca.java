@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -85,8 +87,14 @@ public class PregledVozaca {
 		JButton btnNewButton = new JButton("Prikaži podatke");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(table_1.getSelectedRow()==-1)
+				{
+					JOptionPane.showMessageDialog(null, "Vozač nije izabran", "Info", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
 				PodaciOVozacu podaci=new PodaciOVozacu(table_1.getSelectedRow());
 				podaci.main(null);
+				}
 			}
 		});
 		
@@ -100,8 +108,14 @@ public class PregledVozaca {
 		btnNewButton_1 = new JButton("Prikaz aktivnosti");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(table_1.getSelectedRow()==-1)
+				{
+					JOptionPane.showMessageDialog(null, "Vozač nije izabran", "Info", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
 				PrikazAktivnostiVozaca prikaz = new PrikazAktivnostiVozaca(data.get(table_1.getSelectedRow()));
 				prikaz.main(null);
+				}
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
