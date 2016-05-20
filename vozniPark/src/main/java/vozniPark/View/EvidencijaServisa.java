@@ -68,6 +68,7 @@ public class EvidencijaServisa {
 		frmPrijavaServisa.setBounds(100, 100, 600, 344);
 		frmPrijavaServisa.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrijavaServisa.getContentPane().setLayout(null);
+		frmPrijavaServisa.setResizable(false);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 11, 564, 284);

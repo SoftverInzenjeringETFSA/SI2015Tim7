@@ -53,6 +53,7 @@ public class UnosNovogVozaca {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 709, 592);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JButton btnPotvrdi = new JButton("Registruj voza\u010Da");
 		

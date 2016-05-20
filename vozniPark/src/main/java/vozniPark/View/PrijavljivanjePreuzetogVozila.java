@@ -98,6 +98,7 @@ public class PrijavljivanjePreuzetogVozila {
 		frmPrij.setBounds(100, 100, 403, 212);
 		frmPrij.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrij.getContentPane().setLayout(null);
+		frmPrij.setResizable(false);
 		
 		JLabel lblBrojRegistarskeTablice = new JLabel("Broj registarske tablice:");
 		lblBrojRegistarskeTablice.setHorizontalAlignment(SwingConstants.RIGHT);

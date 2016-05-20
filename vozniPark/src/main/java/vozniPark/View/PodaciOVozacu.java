@@ -64,6 +64,7 @@ public class PodaciOVozacu {
 		frame.setBounds(100, 100, 709, 543);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblNewLabel = new JLabel("Podaci o vozaču");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));

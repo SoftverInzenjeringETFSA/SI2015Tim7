@@ -46,6 +46,7 @@ public class VozacHomePage {
 		frame.setBounds(100, 100, 583, 250);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho!");
 		lblDobroDoaoMeho.setBounds(12, 12, 153, 15);

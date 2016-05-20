@@ -46,6 +46,7 @@ public class SefHomePage {
 		frame.setBounds(100, 100, 577, 312);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblDobroDoaoefe = new JLabel("Dobro došao, Šefe!");
 		lblDobroDoaoefe.setBounds(12, 12, 145, 21);

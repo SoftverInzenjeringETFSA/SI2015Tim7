@@ -85,6 +85,7 @@ public class PregledSlobodnihVozila {
 		frmPregledSlobodnihVozila.setBounds(100, 100, 899, 300);
 		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPregledSlobodnihVozila.getContentPane().setLayout(null);
+		frmPregledSlobodnihVozila.setResizable(false);
 		
 		model = new DefaultTableModel(new Object[]{"Naziv vozila","Proizvođač","God. proizvodnje","Registracija","Status","Opis"},0);
 		

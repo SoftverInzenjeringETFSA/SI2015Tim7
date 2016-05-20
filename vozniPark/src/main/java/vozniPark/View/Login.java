@@ -60,6 +60,7 @@ public class Login {
 		frmLogin.setBounds(100, 100, 361, 246);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogin.getContentPane().setLayout(null);
+		frmLogin.setResizable(false);
 		
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setBounds(55, 55, 100, 14);

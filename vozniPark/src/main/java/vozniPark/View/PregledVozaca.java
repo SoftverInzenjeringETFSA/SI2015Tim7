@@ -68,6 +68,7 @@ public class PregledVozaca {
 		//framePregled = new JFrame();
 		frame.setBounds(100, 100, 681, 537);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		data=new Vector<Vector<String>>();

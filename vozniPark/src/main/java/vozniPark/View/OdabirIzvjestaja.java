@@ -52,6 +52,7 @@ public class OdabirIzvjestaja {
 		frmIzvjetaji.setBounds(100, 100, 350, 180);
 		frmIzvjetaji.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmIzvjetaji.getContentPane().setLayout(null);
+		frmIzvjetaji.setResizable(false);
 		
 		JButton btnNewButton = new JButton("Izvještaj o aktivnostima vozača");
 		btnNewButton.addActionListener(new ActionListener() {

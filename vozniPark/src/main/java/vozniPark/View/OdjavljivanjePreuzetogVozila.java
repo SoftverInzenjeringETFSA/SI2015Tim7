@@ -67,6 +67,7 @@ public class OdjavljivanjePreuzetogVozila {
 		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 400);
 		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().setLayout(null);
+		frmOdjavljivanjePreuzetogVozila.setResizable(false);
 		
 		JLabel lblRegistracijskiBroj = new JLabel("Broj registracijske tablice:");
 		lblRegistracijskiBroj.setHorizontalAlignment(SwingConstants.RIGHT);

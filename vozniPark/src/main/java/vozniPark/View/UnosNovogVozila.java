@@ -68,6 +68,7 @@ public class UnosNovogVozila {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
+		frame.setResizable(false);
 		
 		JLabel lblNewLabel = new JLabel("Broj saobra\u0107ajne dozvole:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
