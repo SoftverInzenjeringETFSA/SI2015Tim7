@@ -82,6 +82,16 @@ public class VozacHomePage {
 		});
 		btnOdjaviSe.setBounds(440, 176, 117, 25);
 		frame.getContentPane().add(btnOdjaviSe);
+		
+		JButton PregledSlobodnihVozila = new JButton("Pregled slobodnih vozila");
+		PregledSlobodnihVozila.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PregledSlobodnihVozila pregledSlobodnih = new PregledSlobodnihVozila();
+				pregledSlobodnih.main(null);
+			}
+		});
+		PregledSlobodnihVozila.setBounds(12, 157, 220, 25);
+		frame.getContentPane().add(PregledSlobodnihVozila);
 	}
 
 }
