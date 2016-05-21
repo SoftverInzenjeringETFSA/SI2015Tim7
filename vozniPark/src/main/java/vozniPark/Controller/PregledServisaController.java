@@ -44,8 +44,6 @@ public class PregledServisaController {
 			Vector<String> row = new Vector<String>();
 			for(int j=0; j<listaVozila.size(); j++)
 			{
-				JOptionPane.showMessageDialog(null,listaServisa.get(i).getBroj());
-				JOptionPane.showMessageDialog(null,listaVozila.get(j).getNaziv());
 				if((listaServisa.get(i).getBroj() + brojac) == listaVozila.get(j).getId())
 				{	
 					row.addElement(listaVozila.get(j).getNaziv());
