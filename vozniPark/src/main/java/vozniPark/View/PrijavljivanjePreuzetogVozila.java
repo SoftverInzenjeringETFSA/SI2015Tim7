@@ -58,11 +58,11 @@ public class PrijavljivanjePreuzetogVozila {
 		return idVozaca;
 	}
 	
-	public void setIme(String ime) {
+	public static void setIme(String ime) {
 		PrijavljivanjePreuzetogVozila.imeVozaca = ime;
 	}
 	
-	public void setId(long id) {
+	public static void setId(long id) {
 		PrijavljivanjePreuzetogVozila.idVozaca = id;
 	}
 	

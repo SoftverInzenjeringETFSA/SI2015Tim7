@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.*;
-import java.awt.Color;
-
 import org.apache.log4j.Logger;
 
 import vozniPark.Controller.PregledServisaController;
@@ -215,6 +213,7 @@ public class EvidencijaServisa {
 		panel_2.add(table_2);
 
 		btnPotvrdi.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				ispravanDatum = true;
 				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
@@ -236,7 +235,7 @@ public class EvidencijaServisa {
 					return;
 				}
 
-				String datumVrijeme = textField.getText() + textField_1.getText();
+				String datumVrijeme = textField.getText() + " " + textField_1.getText();
 				Date date = new Date();
 
 				try {
@@ -246,6 +245,7 @@ public class EvidencijaServisa {
 					//e.printStackTrace();
 					logger.info(e);
 				}
+				date.setHours(date.getHours() + 2);
 
 				if (table.getSelectedRow() == -1) {
 					JOptionPane.showMessageDialog(null, "Vozilo nije izabrano", "Info",
@@ -260,6 +260,7 @@ public class EvidencijaServisa {
 		});
 
 		button.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 				String datum = textField_2.getText();
@@ -288,6 +289,7 @@ public class EvidencijaServisa {
 					// e.printStackTrace();
 					logger.info(e);
 				}
+				date.setHours(date.getHours() + 2);
 				if (table_1.getSelectedRow() == -1) {
 					JOptionPane.showMessageDialog(null, "Vozilo nije izabrano", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
