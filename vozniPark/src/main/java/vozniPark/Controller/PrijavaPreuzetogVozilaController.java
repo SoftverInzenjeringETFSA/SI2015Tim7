@@ -69,7 +69,7 @@ public class PrijavaPreuzetogVozilaController {
 					session.save(v);
 
 					Voznje voznje = new Voznje();
-					SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+					SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 					String datumVrijeme = datum + " " + vrijeme;
 					Date date = new Date();
 					try {

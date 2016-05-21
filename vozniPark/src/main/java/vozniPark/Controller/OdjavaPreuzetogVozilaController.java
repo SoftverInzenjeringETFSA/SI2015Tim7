@@ -73,7 +73,7 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				session.save(v);
 				
 				
-				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 				String datumVrijeme = datum + " " + vrijeme;
 				Date date = new Date();
 				try {
