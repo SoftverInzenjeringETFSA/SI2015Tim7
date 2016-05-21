@@ -14,7 +14,9 @@ public class App
     	//napraviti bazu tim_7 bez tabela, pa pokrenuti kod
         //PopuniBazu.Izvrsi();
     	
-    	Login login = new Login();
-    	login.main();
+    	UnosNovogVozaca unv=new UnosNovogVozaca();
+    	unv.main(null);
+    	/*Login login = new Login();
+    	login.main();*/
     }
 }
