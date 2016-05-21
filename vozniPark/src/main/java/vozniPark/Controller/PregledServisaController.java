@@ -62,12 +62,9 @@ public class PregledServisaController {
 		{	
 			if(listaVozila.get(i).getStatus().equals("Slobodan".toString())){
 				Vector<String> row = new Vector<String>();
-				for(int j=0; j<listaVozila.get(i).getListaServisa().size(); j++) 
-				{
-					row.addElement(listaVozila.get(i).getRegistracija());
-					row.addElement(listaVozila.get(i).getNaziv());
-					row.addElement(listaVozila.get(i).getListaServisa().get(j).getOpis());
-				}
+				row.addElement(listaVozila.get(i).getRegistracija());
+				row.addElement(listaVozila.get(i).getNaziv());
+				row.addElement(listaVozila.get(i).getOpis());
 				lista.add(row);
 			}
 		}
