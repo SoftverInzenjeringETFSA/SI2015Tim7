@@ -107,6 +107,8 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				tg.setKolicina(potrosnja);
 				tg.setCijena(cijena);
 				session.save(tg);
+				v.getListaTocenja().add(tg);
+				session.save(v);
 				voznje.setTocenje(tg);
 				session.save(voznje);
 				

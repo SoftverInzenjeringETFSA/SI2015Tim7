@@ -107,11 +107,13 @@ public class PrijavaPreuzetogVozilaController {
 					}
 					date.setHours(date.getHours() + 2);
 					voznje.setDatumPreuzimanja(date);
+					voznje.setOpisUpotrebe("Vozilo nije vraceno");
 					voznje.setVozilo(v);
+					
 					Osoba ox = (Osoba) session.load(Osoba.class, getId());
 					voznje.setVozac(ox);
 					session.save(voznje);
-
+					
 					t.commit();
 					JOptionPane.showMessageDialog(null, "Automobil je uspješno prijavljen");
 					return;

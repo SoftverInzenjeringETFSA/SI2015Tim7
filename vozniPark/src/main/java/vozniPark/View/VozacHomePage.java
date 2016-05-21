@@ -74,13 +74,13 @@ public class VozacHomePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		final JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho");
+		final JLabel lblDobroDoaoMeho = new JLabel("");
 		lblDobroDoaoMeho.setBounds(12, 12, 153, 15);
 		frame.getContentPane().add(lblDobroDoaoMeho);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent arg0) {
-				lblDobroDoaoMeho.setText("Dobro došao, " + getIme() + "e");
+				lblDobroDoaoMeho.setText("Dobro došao, " + getIme());
 			}
 		});
 		frame.setBounds(100, 100, 583, 290);
