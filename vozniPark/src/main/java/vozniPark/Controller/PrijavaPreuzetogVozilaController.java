@@ -55,19 +55,6 @@ public class PrijavaPreuzetogVozilaController {
 	}
 
 	public void prijaviVoziloZauzetim(String registracija, String datum, String vrijeme) {
-
-		if (!datum.matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
-			JOptionPane.showMessageDialog(null,
-					"Datum nije ispravno unesen");
-			return;
-		}
-
-		if (!vrijeme.matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")) {
-			JOptionPane.showMessageDialog(null,
-					"Vrijeme nije ispravno uneseno");
-			return;
-		}
-		
 		for (int i = 0; i < listaVozila.size(); i++) {
 			if (listaVozila.get(i).getRegistracija().contentEquals(registracija)) {
 				if (listaVozila.get(i).getStatus() == "Zauzet") {
