@@ -10,6 +10,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -110,6 +111,7 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				session.save(voznje);
 				
 				t.commit();
+				JOptionPane.showMessageDialog(null, "Automobil je uspješno odjavljen");
 			}
 		}
 }
