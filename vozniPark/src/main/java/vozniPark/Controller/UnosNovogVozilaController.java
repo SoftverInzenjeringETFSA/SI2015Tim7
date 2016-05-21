@@ -208,6 +208,8 @@ public class UnosNovogVozilaController {
 		vozilo.setProizvodjac(proizvodjac);
 		vozilo.setStatus("Slobodan");
 		vozilo.setOpis(opis);
+		vozilo.setOsnovneKarakteristike("");
+		vozilo.setDatumZadnjegServisa(new Date());
 		session.save(vozilo);
 		transaction.commit();
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
