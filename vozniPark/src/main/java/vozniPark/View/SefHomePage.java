@@ -1,5 +1,6 @@
 package vozniPark.View;
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -101,7 +102,10 @@ public class SefHomePage {
 		JButton btnNewButton_1 = new JButton("Odjavi se");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				System.gc();
+				for (Window window : Window.getWindows()) {
+				    window.dispose();
+				}
 				JOptionPane.showMessageDialog(null, "Uspješno ste odjavljeni!");
 				Login login = new Login();
 				login.main();
