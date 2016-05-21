@@ -57,6 +57,21 @@ public class UnosNovogVozacaController {
 			JOptionPane.showMessageDialog(null, "Neispravno unesen broj vozacke");
 			return false;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+
+			listaVozaca = sesija.createCriteria(Vozac.class).list();
+			for (int i = 0; i < listaVozaca.size(); i++)
+				v.addElement(listaVozaca.get(i).getBrojVozacke());
+
+			for (int i = 0; i < listaVozaca.size(); i++) {
+				if (listaVozaca.get(i).getBrojVozacke().equals(BrojVozacke)) {
+					JOptionPane.showMessageDialog(null, "Osoba sa unijetim brojem vozačke već postoji");
+					return false;
+				}
+			}
+		}
 
 		if (Adresa.matches("^[a-zA-Z0-9_ ]*$")) {
 			if (Adresa.isEmpty()) {

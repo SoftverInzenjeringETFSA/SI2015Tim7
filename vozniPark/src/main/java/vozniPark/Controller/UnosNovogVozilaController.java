@@ -47,6 +47,22 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Broj saobraćajne dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+
+			listaVozila = sesija.createCriteria(Vozac.class).list();
+			for (int i = 0; i < listaVozila.size(); i++)
+				v.addElement(listaVozila.get(i).getBrojSaobracajneDozvole());
+
+			for (int i = 0; i < listaVozila.size(); i++) {
+				if (listaVozila.get(i).getBrojSaobracajneDozvole().equals(saobracajnaDozvola)) {
+					JOptionPane.showMessageDialog(null, "Vozilo sa unijetom saobracajnom dozvolom vec postoji");
+					return false;
+				}
+			}
+		}
+		
 		if(this.praznoPolje(vlasnickaDozvola)){
 			JOptionPane.showMessageDialog(null, "Unesite broj vlasničke dozvole");
 			return false;
@@ -55,6 +71,22 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Broj vlasničke dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+
+			listaVozila = sesija.createCriteria(Vozac.class).list();
+			for (int i = 0; i < listaVozila.size(); i++)
+				v.addElement(listaVozila.get(i).getBrojVlasnickeDozvole());
+
+			for (int i = 0; i < listaVozila.size(); i++) {
+				if (listaVozila.get(i).getBrojVlasnickeDozvole().equals(vlasnickaDozvola)) {
+					JOptionPane.showMessageDialog(null, "Vozilo sa unijetom vlasničkom dozvolom vec postoji");
+					return false;
+				}
+			}
+		}
+		
 		if(this.praznoPolje(registracija)){
 			JOptionPane.showMessageDialog(null, "Unesite registraciju vozila");
 			return false;
