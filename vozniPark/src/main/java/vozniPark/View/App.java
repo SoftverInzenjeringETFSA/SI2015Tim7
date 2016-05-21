@@ -12,7 +12,7 @@ public class App
     public static void main( String[] args )
     {
     	//napraviti bazu tim_7 bez tabela, pa pokrenuti kod
-        //PopuniBazu.Izvrsi();
+        PopuniBazu.Izvrsi();
     	
     	Login login = new Login();
     	login.main();

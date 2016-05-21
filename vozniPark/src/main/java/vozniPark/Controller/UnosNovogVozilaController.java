@@ -43,7 +43,7 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Unesite broj saobraćajne dozvole");
 			return false;
 		}
-		if(!saobracajnaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
+		if(!saobracajnaDozvola.matches("^[A-Z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj saobraćajne dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
@@ -67,7 +67,7 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Unesite broj vlasničke dozvole");
 			return false;
 		}
-		if(!vlasnickaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
+		if(!vlasnickaDozvola.matches("^[A-Z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj vlasničke dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
