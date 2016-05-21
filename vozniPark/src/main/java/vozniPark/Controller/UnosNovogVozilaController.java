@@ -43,18 +43,50 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Unesite broj saobraćajne dozvole");
 			return false;
 		}
-		if(!saobracajnaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
+		if(!saobracajnaDozvola.matches("^[A-Z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj saobraćajne dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+
+			listaVozila = sesija.createCriteria(Vozilo.class).list();
+			for (int i = 0; i < listaVozila.size(); i++)
+				v.addElement(listaVozila.get(i).getBrojSaobracajneDozvole());
+
+			for (int i = 0; i < listaVozila.size(); i++) {
+				if (listaVozila.get(i).getBrojSaobracajneDozvole().equals(saobracajnaDozvola)) {
+					JOptionPane.showMessageDialog(null, "Vozilo sa unijetom saobracajnom dozvolom vec postoji");
+					return false;
+				}
+			}
+		}
+		
 		if(this.praznoPolje(vlasnickaDozvola)){
 			JOptionPane.showMessageDialog(null, "Unesite broj vlasničke dozvole");
 			return false;
 		}
-		if(!vlasnickaDozvola.matches("^[A-Za-z]{2}[0-9]{7}$")){
+		if(!vlasnickaDozvola.matches("^[A-Z]{2}[0-9]{7}$")){
 			JOptionPane.showMessageDialog(null, "Broj vlasničke dozvole nije u pravilnom formatu (dva slova + sedam cifri)");
 			return false;
 		}
+		else {
+			final Vector<String> v = new Vector<String>();
+			Session sesija = HibernateUtil.getSessionFactory().openSession();
+
+			listaVozila = sesija.createCriteria(Vozilo.class).list();
+			for (int i = 0; i < listaVozila.size(); i++)
+				v.addElement(listaVozila.get(i).getBrojVlasnickeDozvole());
+
+			for (int i = 0; i < listaVozila.size(); i++) {
+				if (listaVozila.get(i).getBrojVlasnickeDozvole().equals(vlasnickaDozvola)) {
+					JOptionPane.showMessageDialog(null, "Vozilo sa unijetom vlasničkom dozvolom vec postoji");
+					return false;
+				}
+			}
+		}
+		
 		if(this.praznoPolje(registracija)){
 			JOptionPane.showMessageDialog(null, "Unesite registraciju vozila");
 			return false;
@@ -84,6 +116,20 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (mjeseci)");
 			return false;
 		}
+		try
+		{
+			if(Integer.parseInt(intervalMjeseci) > 2400)
+			{
+				JOptionPane.showMessageDialog(null, "Unesite interval servisa (mjeseci) koji je manji ili jednak 2400!");
+				return false;
+			}
+		}
+		catch (Exception e) {
+			logger.info(e);
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Unesite interval servisa (mjeseci) koji je manji ili jednak 2400!");
+			return false;
+		}		
 		if(this.praznoPolje(intervalKilometara)){
 			JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri)");
 			return false;
@@ -92,10 +138,32 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (kilometri)");
 			return false;
 		}
+		try
+		{
+			if(Integer.parseInt(intervalKilometara) > 100000)
+			{
+				JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri) koji je manji ili jednak 100000!");
+				return false;
+			}
+		}
+		catch (Exception e) {
+			logger.info(e);
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri) koji je manji ili jednak 100000!");
+			return false;
+		}
 		if(this.praznoPolje(nazivVozila)){
 			JOptionPane.showMessageDialog(null, "Unesite naziv vozila");
 			return false;
 		}
+		else {
+			if(!nazivVozila.matches("^[a-zA-Z0-9_ ]*$")) 
+			{
+				JOptionPane.showMessageDialog(null, "Naziv vozila može sadržavati samo slova i brojeve");
+				return false;
+			}
+		}
+		
 		if(this.praznoPolje(godinaProizvodnje)){
 			JOptionPane.showMessageDialog(null, "Unesite godinu proizvodnje");
 			return false;
@@ -119,6 +187,13 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Unesite proizvođača vozila");
 			return false;
 		}
+		else {
+			if(!proizvodjac.matches("^[a-zA-Z0-9_ ]*$")) 
+			{
+				JOptionPane.showMessageDialog(null, "Naziv proizvođača može sadržavati samo slova i brojeve");
+				return false;
+			}
+		}
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
@@ -133,6 +208,8 @@ public class UnosNovogVozilaController {
 		vozilo.setProizvodjac(proizvodjac);
 		vozilo.setStatus("Slobodan");
 		vozilo.setOpis(opis);
+		vozilo.setOsnovneKarakteristike("");
+		vozilo.setDatumZadnjegServisa(new Date());
 		session.save(vozilo);
 		transaction.commit();
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

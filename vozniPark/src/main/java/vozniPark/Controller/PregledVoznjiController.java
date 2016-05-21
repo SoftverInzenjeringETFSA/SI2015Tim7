@@ -44,7 +44,7 @@ public class PregledVoznjiController {
 		{
 			Vector<String> vp = new Vector<String>();
 			if(listaVoznji.get(i).getVozac().getIme().contentEquals(ime.getText()) && 
-					listaVoznji.get(i).getVozac().getPrezime().contentEquals(prezime.getText()) )
+					listaVoznji.get(i).getVozac().getPrezime().contentEquals(prezime.getText()) && listaVoznji.get(i).getDatumVracanja() != null)
 			{
 				vp.add(listaVoznji.get(i).getVozilo().getNaziv());
 				vp.add(listaVoznji.get(i).getVozilo().getRegistracija());

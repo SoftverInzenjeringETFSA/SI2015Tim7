@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -44,7 +45,26 @@ public class PrijavljivanjePreuzetogVozila {
 	private JFrame frmPrij;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	public Osoba vozac;
 	
+	private static String imeVozaca;
+	private static long idVozaca;
+	
+	public static String getIme() {
+		return imeVozaca;
+	}
+	
+	public static long getId() {
+		return idVozaca;
+	}
+	
+	public static void setIme(String ime) {
+		PrijavljivanjePreuzetogVozila.imeVozaca = ime;
+	}
+	
+	public static void setId(long id) {
+		PrijavljivanjePreuzetogVozila.idVozaca = id;
+	}
 	
 
 	/**
@@ -55,7 +75,7 @@ public class PrijavljivanjePreuzetogVozila {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila();
+					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila(getIme(),getId());
 					window.frmPrij.setVisible(true);
 				} catch (Exception e) {
 					//e.printStackTrace();
@@ -73,6 +93,13 @@ public class PrijavljivanjePreuzetogVozila {
 	public PrijavljivanjePreuzetogVozila() {
 		initialize();
 		ppvc = new PrijavaPreuzetogVozilaController();
+	}
+	
+	public PrijavljivanjePreuzetogVozila(String ime, long id) {
+		initialize();
+		setIme(ime);
+		setId(id);
+		ppvc = new PrijavaPreuzetogVozilaController(getIme(),getId());
 	}
 
 	/**
@@ -95,9 +122,10 @@ public class PrijavljivanjePreuzetogVozila {
 			}
 		});
 		frmPrij.setTitle("Prijavljivanje preuzetog vozila");
-		frmPrij.setBounds(100, 100, 403, 212);
+		frmPrij.setBounds(100, 100, 385, 255);
 		frmPrij.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrij.getContentPane().setLayout(null);
+		frmPrij.setResizable(false);
 		
 		JLabel lblBrojRegistarskeTablice = new JLabel("Broj registarske tablice:");
 		lblBrojRegistarskeTablice.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -129,6 +157,16 @@ public class PrijavljivanjePreuzetogVozila {
 		JButton btnNewButton = new JButton("Prijavi");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (!textField_1.getText().matches("^(?:(?:31(\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+					JOptionPane.showMessageDialog(null,
+							"Datum nije ispravno unesen");
+					return;
+				}
+				if (!textField_2.getText().matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")) {
+					JOptionPane.showMessageDialog(null,
+							"Vrijeme nije ispravno uneseno");
+					return;
+				}
 				ppvc.prijaviVoziloZauzetim(comboBox_1.getSelectedItem().toString(),textField_1.getText(),textField_2.getText());
 				//zatvara prozor kad se klikne na dugme
 				frmPrij.dispatchEvent(new WindowEvent(frmPrij, WindowEvent.WINDOW_CLOSING));			
@@ -136,6 +174,15 @@ public class PrijavljivanjePreuzetogVozila {
 		});
 		btnNewButton.setBounds(39, 134, 299, 23);
 		frmPrij.getContentPane().add(btnNewButton);		
+		
+		JButton btnHelp = new JButton("Pomoć");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo, te unesite datum i vrijeme preuzimanja istog.");
+			}
+		});
+		btnHelp.setBounds(263, 193, 75, 23);
+		frmPrij.getContentPane().add(btnHelp);
 		
 	}
 }

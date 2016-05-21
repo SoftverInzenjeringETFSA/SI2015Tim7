@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -27,6 +28,7 @@ public class IzvjestajOAktivnostimaVozaca {
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private PregledVoznjiController pvc;
+	private JButton btnPomo;
 
 	/**
 	 * Launch the application.
@@ -105,6 +107,15 @@ public class IzvjestajOAktivnostimaVozaca {
 		textField_1.setColumns(10);
 		textField_1.setBounds(379, 41, 178, 20);
 		frame.getContentPane().add(textField_1);
+		
+		btnPomo = new JButton("Pomoć");
+		btnPomo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Unesite ime i prezime vozača za kojeg želite prikaz u odgovarajuća polja, te kliknite na dugme za prikaz.");
+			}
+		});
+		btnPomo.setBounds(1067, 40, 75, 23);
+		frame.getContentPane().add(btnPomo);
 		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

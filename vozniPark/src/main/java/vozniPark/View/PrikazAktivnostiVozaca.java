@@ -58,6 +58,7 @@ public class PrikazAktivnostiVozaca {
 		frame.setBounds(100, 100, 1077, 453);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblIzvjetajO = new JLabel("Prikaz aktivnosti za vozača "+imeiprezime.get(0)+" "+imeiprezime.get(1));
 		lblIzvjetajO.setBounds(10, 35, 513, 14);

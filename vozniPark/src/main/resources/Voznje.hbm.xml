@@ -23,7 +23,7 @@
         <many-to-one name="vozilo" class="vozniPark.Model.Vozilo" fetch="join">
             <column name="VOZILO_ID" />
         </many-to-one>
-        <many-to-one name="vozac" class="vozniPark.Model.Vozac" fetch="join">
+        <many-to-one name="vozac" class="vozniPark.Model.Osoba" fetch="join">
             <column name="VOZAC_ID" />
         </many-to-one>
         <many-to-one name="tocenje" class="vozniPark.Model.TocenjeGoriva" fetch="join">

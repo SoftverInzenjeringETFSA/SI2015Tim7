@@ -1,8 +1,10 @@
 package vozniPark.View;
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,9 +45,10 @@ public class SefHomePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 577, 312);
+		frame.setBounds(100, 100, 577, 340);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		
 		JLabel lblDobroDoaoefe = new JLabel("Dobro došao, Šefe!");
 		lblDobroDoaoefe.setBounds(12, 12, 145, 21);
@@ -99,7 +102,10 @@ public class SefHomePage {
 		JButton btnNewButton_1 = new JButton("Odjavi se");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				for (Window window : Window.getWindows()) {
+				    window.dispose();
+				}
+				JOptionPane.showMessageDialog(null, "Uspješno ste odjavljeni!");
 				Login login = new Login();
 				login.main();
 			}
@@ -126,5 +132,14 @@ public class SefHomePage {
 		});
 		btnPregledVozaa.setBounds(312, 104, 218, 25);
 		frame.getContentPane().add(btnPregledVozaa);
+		
+		JButton btnPomo = new JButton("Pomoć");
+		btnPomo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite opciju koja vam treba, te ćete dobiti prozor na kojem će se nalaziti detaljnije uputstvo za odabranu opciju.");
+			}
+		});
+		btnPomo.setBounds(446, 278, 89, 23);
+		frame.getContentPane().add(btnPomo);
 	}
 }

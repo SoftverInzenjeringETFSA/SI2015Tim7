@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -34,6 +35,7 @@ public class IzvjestajOOdabranomVozilu {
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
+	private JButton btnPomo;
 
 	/**
 	 * Launch the application.
@@ -156,6 +158,15 @@ public class IzvjestajOOdabranomVozilu {
 		table_2 = new JTable();
 		scrollPane_2.setViewportView(table_2);
 		pvc.ucitajVozilaIzBaze(frame, comboBox, comboBox_1);
+		
+		btnPomo = new JButton("Pomoć");
+		btnPomo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo ili na osnovu imena ili na osnovu registracije istog, te unesite period za koji želite prikaz aktivnosti.");
+			}
+		});
+		btnPomo.setBounds(679, 94, 75, 23);
+		frame.getContentPane().add(btnPomo);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comboBox_1.setSelectedIndex(pvc.DajVozilo(comboBox.getSelectedItem().toString()));

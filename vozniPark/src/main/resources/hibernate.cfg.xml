@@ -13,5 +13,6 @@
   <mapping resource="Vozac.hbm.xml"/>
   <mapping resource="Vozilo.hbm.xml"/>
   <mapping resource="Voznje.hbm.xml"/>
+
  </session-factory>
 </hibernate-configuration>

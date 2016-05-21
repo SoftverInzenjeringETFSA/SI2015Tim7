@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -111,6 +112,11 @@ public class PregledServisaController {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Vozilo v = (Vozilo) session.load(Vozilo.class, id);
+		if (v.getStatus()=="Servis")
+		{
+			JOptionPane.showMessageDialog(null, "Vozilo je vec na servisu");
+			return;
+		}
 		v.setStatus("Servis"); 
 		Servisi s=new Servisi();
 		s.setDatumOdlaska(datum);
@@ -122,6 +128,7 @@ public class PregledServisaController {
 		v.getListaServisa().add(s);
 		session.save(v); 
 		t.commit();
+		JOptionPane.showMessageDialog(null, "Vozilo poslano na servis");
 	}
 	
 	public void dodajDovrsenServis(long id,Date datum,String servisiranoKod,String cijena,String opis)
@@ -129,7 +136,14 @@ public class PregledServisaController {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		Vozilo v = (Vozilo) session.load(Vozilo.class, id);
+		if (v.getStatus()=="Slobodan")
+		{
+			JOptionPane.showMessageDialog(null, "Vozilo uopće nije na servisu");
+			return;
+		}
 		v.setStatus("Slobodan");
+		v.setZadnjiServisKilometri(0);
+		v.setDatumZadnjegServisa(datum);
 		v.getListaServisa().get(v.getListaServisa().size()-1).setDatumVracanja(datum);
 		v.getListaServisa().get(v.getListaServisa().size()-1).setCijena(Double.valueOf(cijena));
 		v.getListaServisa().get(v.getListaServisa().size()-1).setServisiranoKod(servisiranoKod);
@@ -137,5 +151,6 @@ public class PregledServisaController {
 
 		session.save(v);
 		t.commit();
+		JOptionPane.showMessageDialog(null, "Vozilo uspješno odjavljeno sa servisa");
 	}
 }
