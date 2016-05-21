@@ -22,10 +22,11 @@ public class PregledServisaController {
 	
 	final static Logger logger = Logger.getLogger(OdjavaPreuzetogVozilaController.class);
 	private List<Vozilo> listaVozila;
-	
+	private List<Servisi> listaServisa;	
 	
 	public PregledServisaController() {
 		listaVozila = new ArrayList<Vozilo>();
+		listaServisa = new ArrayList<Servisi>();
 	}
 	
 	public Vector<Vector<String>> ucitajVoznjeZaVozaca() 
@@ -33,21 +34,25 @@ public class PregledServisaController {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		listaVozila = session.createCriteria(Vozilo.class).list();
+		listaServisa = session.createCriteria(Servisi.class).list();
 
 		Vector<Vector<String>> li=new Vector<Vector<String>>();
 		
-		for(int i=0; i<listaVozila.size(); i++) 
+		for(int i=0; i<listaServisa.size(); i++) 
 		{
 			Vector<String> row = new Vector<String>();
-			for(int j=0; j<listaVozila.get(i).getListaServisa().size(); j++)
+			for(int j=0; j<listaVozila.size(); j++)
 			{
-				row.addElement(listaVozila.get(i).getNaziv());
-				row.addElement(listaVozila.get(i).getRegistracija());
-				row.addElement(listaVozila.get(i).getListaServisa().get(j).getServisiranoKod());
-				row.addElement(listaVozila.get(i).getListaServisa().get(j).getDatumOdlaska().toString());
-				row.addElement(listaVozila.get(i).getListaServisa().get(j).getDatumVracanja().toString());
-				row.addElement(listaVozila.get(i).getListaServisa().get(j).getOpis());
-				row.addElement(String.valueOf(listaVozila.get(i).getListaServisa().get(j).getCijena()));
+				if(listaServisa.get(i).getBroj() == listaVozila.get(j).getId())
+				{	
+					row.addElement(listaVozila.get(j).getNaziv());
+					row.addElement(listaVozila.get(j).getRegistracija());
+					row.addElement(listaServisa.get(i).getServisiranoKod());
+					row.addElement(listaServisa.get(i).getDatumOdlaska().toString());
+					row.addElement(listaServisa.get(i).getDatumVracanja().toString());
+					row.addElement(listaServisa.get(i).getOpis());
+					row.addElement(String.valueOf(listaServisa.get(i).getCijena()));
+				}
 			}
 			li.add(row);
 		}
@@ -79,12 +84,9 @@ public class PregledServisaController {
 		{	
 			if(listaVozila.get(i).getStatus().equals("Servis".toString())){
 				Vector<String> row = new Vector<String>();
-				for(int j=0; j<listaVozila.get(i).getListaServisa().size(); j++) 
-				{
-					row.addElement(listaVozila.get(i).getRegistracija());
-					row.addElement(listaVozila.get(i).getNaziv());
-					row.addElement(listaVozila.get(i).getListaServisa().get(j).getOpis());
-				}
+				row.addElement(listaVozila.get(i).getRegistracija());
+				row.addElement(listaVozila.get(i).getNaziv());
+				row.addElement(listaVozila.get(i).getOpis());
 				lista.add(row);
 			}
 		}
