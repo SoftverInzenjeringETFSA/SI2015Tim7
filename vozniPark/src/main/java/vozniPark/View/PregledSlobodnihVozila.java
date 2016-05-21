@@ -82,7 +82,7 @@ public class PregledSlobodnihVozila {
 		});
 
 		frmPregledSlobodnihVozila.setTitle("Pregled slobodnih vozila");
-		frmPregledSlobodnihVozila.setBounds(100, 100, 899, 300);
+		frmPregledSlobodnihVozila.setBounds(100, 100, 899, 320);
 		frmPregledSlobodnihVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPregledSlobodnihVozila.getContentPane().setLayout(null);
 		frmPregledSlobodnihVozila.setResizable(false);
@@ -91,7 +91,7 @@ public class PregledSlobodnihVozila {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(10, 12, 625, 239);
+		scrollPane.setBounds(10, 12, 625, 269);
 		frmPregledSlobodnihVozila.getContentPane().add(scrollPane);
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -152,7 +152,16 @@ public class PregledSlobodnihVozila {
 				controller.dajSvaSlobodnaVozila(model,table);
 			}
 		});
-		btnPrikaiSvaVozila.setBounds(671, 228, 202, 23);
+		btnPrikaiSvaVozila.setBounds(671, 220, 202, 23);
 		frmPregledSlobodnihVozila.getContentPane().add(btnPrikaiSvaVozila);
+		
+		JButton btnNewButton_1 = new JButton("Pomoć");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Na osnovu unesenih parametara će vam biti prikazana sva slobodna vozila trenutno.");
+			}
+		});
+		btnNewButton_1.setBounds(798, 258, 75, 23);
+		frmPregledSlobodnihVozila.getContentPane().add(btnNewButton_1);
 	}
 }

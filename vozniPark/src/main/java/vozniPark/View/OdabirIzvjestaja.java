@@ -61,7 +61,7 @@ public class OdabirIzvjestaja {
 				aktivnostiVozaca.main(null);
 			}
 		});
-		btnNewButton.setBounds(71, 11, 197, 23);
+		btnNewButton.setBounds(60, 11, 225, 23);
 		frmIzvjetaji.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Izvještaj o odabranom vozilu");
@@ -71,7 +71,7 @@ public class OdabirIzvjestaja {
 				vozilo.main(null);
 			}
 		});
-		btnNewButton_1.setBounds(71, 61, 197, 23);
+		btnNewButton_1.setBounds(60, 61, 225, 23);
 		frmIzvjetaji.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Izvještaj o svim servisima");
@@ -81,7 +81,7 @@ public class OdabirIzvjestaja {
 				servisi.main(null);
 			}
 		});
-		btnNewButton_2.setBounds(71, 111, 197, 23);
+		btnNewButton_2.setBounds(60, 111, 225, 23);
 		frmIzvjetaji.getContentPane().add(btnNewButton_2);
 	}
 

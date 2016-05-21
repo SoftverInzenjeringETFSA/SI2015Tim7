@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -60,13 +61,13 @@ public class UnosNovogVozila {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 482, 374);
+		frame.setBounds(100, 100, 482, 390);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{60, 142, 212, 0};
-		gridBagLayout.rowHeights = new int[]{34, 20, 23, 23, 23, 23, 23, 23, 23, 57, 23, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{60, 142, 212, 0, 0};
+		gridBagLayout.rowHeights = new int[]{34, 20, 23, 23, 23, 23, 23, 23, 23, 57, 23, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		frame.setResizable(false);
 		
@@ -81,7 +82,7 @@ public class UnosNovogVozila {
 		saobracajnaDozvola = new JTextField();
 		GridBagConstraints gbc_saobracajnaDozvola = new GridBagConstraints();
 		gbc_saobracajnaDozvola.anchor = GridBagConstraints.NORTHWEST;
-		gbc_saobracajnaDozvola.insets = new Insets(0, 0, 5, 0);
+		gbc_saobracajnaDozvola.insets = new Insets(0, 0, 5, 5);
 		gbc_saobracajnaDozvola.gridx = 2;
 		gbc_saobracajnaDozvola.gridy = 1;
 		frame.getContentPane().add(saobracajnaDozvola, gbc_saobracajnaDozvola);
@@ -99,7 +100,7 @@ public class UnosNovogVozila {
 		vlasnickaDozvola.setColumns(10);
 		GridBagConstraints gbc_vlasnickaDozvola = new GridBagConstraints();
 		gbc_vlasnickaDozvola.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_vlasnickaDozvola.insets = new Insets(0, 0, 5, 0);
+		gbc_vlasnickaDozvola.insets = new Insets(0, 0, 5, 5);
 		gbc_vlasnickaDozvola.gridx = 2;
 		gbc_vlasnickaDozvola.gridy = 2;
 		frame.getContentPane().add(vlasnickaDozvola, gbc_vlasnickaDozvola);
@@ -116,7 +117,7 @@ public class UnosNovogVozila {
 		registracija.setColumns(10);
 		GridBagConstraints gbc_registracija = new GridBagConstraints();
 		gbc_registracija.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_registracija.insets = new Insets(0, 0, 5, 0);
+		gbc_registracija.insets = new Insets(0, 0, 5, 5);
 		gbc_registracija.gridx = 2;
 		gbc_registracija.gridy = 3;
 		frame.getContentPane().add(registracija, gbc_registracija);
@@ -133,7 +134,7 @@ public class UnosNovogVozila {
 		intervalMjeseci.setColumns(10);
 		GridBagConstraints gbc_intervalMjeseci = new GridBagConstraints();
 		gbc_intervalMjeseci.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_intervalMjeseci.insets = new Insets(0, 0, 5, 0);
+		gbc_intervalMjeseci.insets = new Insets(0, 0, 5, 5);
 		gbc_intervalMjeseci.gridx = 2;
 		gbc_intervalMjeseci.gridy = 4;
 		frame.getContentPane().add(intervalMjeseci, gbc_intervalMjeseci);
@@ -151,7 +152,7 @@ public class UnosNovogVozila {
 		intervalKilometara.setColumns(10);
 		GridBagConstraints gbc_intervalKilometara = new GridBagConstraints();
 		gbc_intervalKilometara.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_intervalKilometara.insets = new Insets(0, 0, 5, 0);
+		gbc_intervalKilometara.insets = new Insets(0, 0, 5, 5);
 		gbc_intervalKilometara.gridx = 2;
 		gbc_intervalKilometara.gridy = 5;
 		frame.getContentPane().add(intervalKilometara, gbc_intervalKilometara);
@@ -168,7 +169,7 @@ public class UnosNovogVozila {
 		nazivVozila.setColumns(10);
 		GridBagConstraints gbc_nazivVozila = new GridBagConstraints();
 		gbc_nazivVozila.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_nazivVozila.insets = new Insets(0, 0, 5, 0);
+		gbc_nazivVozila.insets = new Insets(0, 0, 5, 5);
 		gbc_nazivVozila.gridx = 2;
 		gbc_nazivVozila.gridy = 6;
 		frame.getContentPane().add(nazivVozila, gbc_nazivVozila);
@@ -185,7 +186,7 @@ public class UnosNovogVozila {
 		godinaProizvodnje.setColumns(10);
 		GridBagConstraints gbc_godinaProizvodnje = new GridBagConstraints();
 		gbc_godinaProizvodnje.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_godinaProizvodnje.insets = new Insets(0, 0, 5, 0);
+		gbc_godinaProizvodnje.insets = new Insets(0, 0, 5, 5);
 		gbc_godinaProizvodnje.gridx = 2;
 		gbc_godinaProizvodnje.gridy = 7;
 		frame.getContentPane().add(godinaProizvodnje, gbc_godinaProizvodnje);
@@ -202,7 +203,7 @@ public class UnosNovogVozila {
 		proizvodjac.setColumns(10);
 		GridBagConstraints gbc_proizvodjac = new GridBagConstraints();
 		gbc_proizvodjac.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_proizvodjac.insets = new Insets(0, 0, 5, 0);
+		gbc_proizvodjac.insets = new Insets(0, 0, 5, 5);
 		gbc_proizvodjac.gridx = 2;
 		gbc_proizvodjac.gridy = 8;
 		frame.getContentPane().add(proizvodjac, gbc_proizvodjac);
@@ -219,7 +220,7 @@ public class UnosNovogVozila {
 		opis.setColumns(10);
 		GridBagConstraints gbc_opis = new GridBagConstraints();
 		gbc_opis.fill = GridBagConstraints.BOTH;
-		gbc_opis.insets = new Insets(0, 0, 5, 0);
+		gbc_opis.insets = new Insets(0, 0, 5, 5);
 		gbc_opis.gridx = 2;
 		gbc_opis.gridy = 9;
 		frame.getContentPane().add(opis, gbc_opis);
@@ -239,9 +240,23 @@ public class UnosNovogVozila {
 			}
 		});
 		GridBagConstraints gbc_btnUnesi = new GridBagConstraints();
+		gbc_btnUnesi.insets = new Insets(0, 0, 5, 5);
 		gbc_btnUnesi.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnUnesi.gridx = 2;
 		gbc_btnUnesi.gridy = 10;
 		frame.getContentPane().add(btnUnesi, gbc_btnUnesi);
+		
+		JButton btnNewButton = new JButton("Pomoć");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Unesite sve potrebne podatke za uspješan unos novog vozila.");
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.gridx = 2;
+		gbc_btnNewButton.gridy = 11;
+		frame.getContentPane().add(btnNewButton, gbc_btnNewButton);
 	}
 }

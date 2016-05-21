@@ -33,6 +33,7 @@ public class PregledVozaca {
 	private JLabel lblOdaberiteVozaaZa;
 	private JButton btnNewButton_1;
 	private Vector<Vector<String>> data;
+	private JButton btnPomo;
 
 	/**
 	 * Launch the application.
@@ -119,6 +120,13 @@ public class PregledVozaca {
 				}
 			}
 		});
+		
+		btnPomo = new JButton("Pomoć");
+		btnPomo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozača u tabeli, te potom odaberite željenu opciju, prikaza aktivnosti ili prikaza podataka.");
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -132,13 +140,14 @@ public class PregledVozaca {
 							.addComponent(lblOdaberiteVozaaZa))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(144)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
-								.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(144, Short.MAX_VALUE))
+								.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnPomo))))
+					.addContainerGap(154, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -153,7 +162,9 @@ public class PregledVozaca {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnNewButton)
 						.addComponent(btnNewButton_1))
-					.addContainerGap(53, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnPomo)
+					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		
 		JLabel lblPodaciOVozau = new JLabel("Pregled vozača");

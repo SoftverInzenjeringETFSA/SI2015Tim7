@@ -45,7 +45,7 @@ public class VozacHomePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 583, 250);
+		frame.setBounds(100, 100, 583, 290);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
@@ -77,7 +77,6 @@ public class VozacHomePage {
 		JButton btnOdjaviSe = new JButton("Odjavi se");
 		btnOdjaviSe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.gc();
 				for (Window window : Window.getWindows()) {
 				    window.dispose();
 				}
@@ -98,6 +97,16 @@ public class VozacHomePage {
 		});
 		PregledSlobodnihVozila.setBounds(12, 157, 220, 25);
 		frame.getContentPane().add(PregledSlobodnihVozila);
+		
+		JButton btnHelp = new JButton("Pomoć");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Omogućen vam je pregled svih slobodnih vozila. Prijavite ili odjavite"
+						+ "vozilo koje namjeravate preuzeti/vratiti.");
+				
+			}
+		});
+		btnHelp.setBounds(477, 228, 80, 23);
+		frame.getContentPane().add(btnHelp);
 	}
-
 }

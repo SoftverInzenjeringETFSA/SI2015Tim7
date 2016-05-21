@@ -73,7 +73,7 @@ public class EvidencijaServisa {
 		frmPrijavaServisa.setResizable(false);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 564, 284);
+		tabbedPane.setBounds(10, 11, 564, 294);
 		frmPrijavaServisa.getContentPane().add(tabbedPane);
 
 		JPanel panel = new JPanel();
@@ -111,8 +111,17 @@ public class EvidencijaServisa {
 
 		JButton btnPotvrdi = new JButton("Potvrdi");
 
-		btnPotvrdi.setBounds(410, 207, 125, 23);
+		btnPotvrdi.setBounds(410, 167, 125, 23);
 		panel.add(btnPotvrdi);
+		
+		JButton btnPomo = new JButton("Pomoć");
+		btnPomo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo koje je trenutno slobodno, da bi isto prijavili na servis, te unesite sve potrebne podatke.");
+			}
+		});
+		btnPomo.setBounds(460, 207, 75, 23);
+		panel.add(btnPomo);
 
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Odjava vozila sa servisa", null, panel_1, null);
@@ -178,6 +187,15 @@ public class EvidencijaServisa {
 		textField_6.setBounds(410, 33, 125, 20);
 		panel_1.add(textField_6);
 		textField_6.setColumns(10);
+		
+		JButton btnPomo_1 = new JButton("Pomoć");
+		btnPomo_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo koje je trenutno na servisu da bi isto uspješno odjavili, te unesite sve potrebne parametre.");
+			}
+		});
+		btnPomo_1.setBounds(460, 243, 75, 23);
+		panel_1.add(btnPomo_1);
 
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Prikaz svih servisa za sva vozila", null, panel_2, null);

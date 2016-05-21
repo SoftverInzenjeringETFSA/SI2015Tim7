@@ -64,7 +64,7 @@ public class OdjavljivanjePreuzetogVozila {
 			}
 		});
 		frmOdjavljivanjePreuzetogVozila.setTitle("Odjavljivanje preuzetog vozila");
-		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 400);
+		frmOdjavljivanjePreuzetogVozila.setBounds(100, 100, 450, 430);
 		frmOdjavljivanjePreuzetogVozila.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().setLayout(null);
 		frmOdjavljivanjePreuzetogVozila.setResizable(false);
@@ -181,6 +181,15 @@ public class OdjavljivanjePreuzetogVozila {
 		textField_6.setBounds(218, 286, 185, 20);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(textField_6);
 		textField_6.setColumns(10);
+		
+		JButton btnHelp = new JButton("Pomoć");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo koje vraćate sa vožnje, te unesite sve potrebne podatke.");
+			}
+		});
+		btnHelp.setBounds(323, 368, 80, 23);
+		frmOdjavljivanjePreuzetogVozila.getContentPane().add(btnHelp);
 		
 		
 	}

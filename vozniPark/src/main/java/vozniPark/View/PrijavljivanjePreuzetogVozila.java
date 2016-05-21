@@ -96,7 +96,7 @@ public class PrijavljivanjePreuzetogVozila {
 			}
 		});
 		frmPrij.setTitle("Prijavljivanje preuzetog vozila");
-		frmPrij.setBounds(100, 100, 403, 212);
+		frmPrij.setBounds(100, 100, 385, 255);
 		frmPrij.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmPrij.getContentPane().setLayout(null);
 		frmPrij.setResizable(false);
@@ -148,6 +148,15 @@ public class PrijavljivanjePreuzetogVozila {
 		});
 		btnNewButton.setBounds(39, 134, 299, 23);
 		frmPrij.getContentPane().add(btnNewButton);		
+		
+		JButton btnHelp = new JButton("Pomoć");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Odaberite vozilo, te unesite datum i vrijeme preuzimanja istog.");
+			}
+		});
+		btnHelp.setBounds(263, 193, 75, 23);
+		frmPrij.getContentPane().add(btnHelp);
 		
 	}
 }
