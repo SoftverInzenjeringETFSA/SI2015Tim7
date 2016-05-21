@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -96,7 +97,16 @@ public class PregledVozilaController {
 		}
 		else
 		{
-			d1=new Date(Datum1.getText());
+			try
+			{
+				d1=new Date(Datum1.getText());
+			}
+			catch (Exception e) {
+				logger.info(e);
+				//e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Unesite datum(od) u ispravnom formatu!");
+				d1=new Date(1994-1900, 2, 2);
+			}
 		}
 		if(Datum2.getText().equals("".toString()))
 		{
@@ -104,7 +114,16 @@ public class PregledVozilaController {
 		}
 		else
 		{
-			d2=new Date(Datum2.getText());
+			try
+			{
+				d2=new Date(Datum2.getText());
+			}
+			catch (Exception e) {
+				logger.info(e);
+				//e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Unesite datum(do) u ispravnom formatu!");
+				d2=new Date(2090-1900, 2, 2);
+			}
 		}
 			
 			for(int i=0; i<listaVozila.size(); i++) 
@@ -152,7 +171,15 @@ public class PregledVozilaController {
 		}
 		else
 		{
-			d1=new Date(Datum1.getText());
+			try
+			{
+				d1=new Date(Datum1.getText());
+			}
+			catch (Exception e) {
+				logger.info(e);
+				//e.printStackTrace();
+				d1=new Date(1994-1900, 2, 2);
+			}
 		}
 		if(Datum2.getText().equals("".toString()))
 		{
@@ -160,7 +187,15 @@ public class PregledVozilaController {
 		}
 		else
 		{
-			d2=new Date(Datum2.getText());
+			try
+			{
+				d2=new Date(Datum2.getText());
+			}
+			catch (Exception e) {
+				logger.info(e);
+				//e.printStackTrace();
+				d2=new Date(2090-1900, 2, 2);
+			}
 		}
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
