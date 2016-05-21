@@ -86,7 +86,7 @@ public class OdjavljivanjePreuzetogVozila {
 		
 		JLabel lblBrojPreenihKilometara = new JLabel("Broj pre\u0111enih kilometara:");
 		lblBrojPreenihKilometara.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblBrojPreenihKilometara.setBounds(35, 137, 145, 25);
+		lblBrojPreenihKilometara.setBounds(12, 137, 168, 25);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(lblBrojPreenihKilometara);
 		
 		JLabel lblOpisKoritenjaVozila = new JLabel("Opis kori\u0161tenja vozila:");
@@ -96,7 +96,7 @@ public class OdjavljivanjePreuzetogVozila {
 		
 		JLabel lblPotronjaGorivaopcionalno = new JLabel("Potro\u0161nja goriva (opcionalno):");
 		lblPotronjaGorivaopcionalno.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPotronjaGorivaopcionalno.setBounds(10, 253, 171, 25);
+		lblPotronjaGorivaopcionalno.setBounds(0, 253, 181, 25);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(lblPotronjaGorivaopcionalno);
 		
 		textField_1 = new JTextField();
@@ -154,7 +154,7 @@ public class OdjavljivanjePreuzetogVozila {
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(comboBox);
 		
 		JLabel lblCijenaGoriva = new JLabel("Cijena goriva:");
-		lblCijenaGoriva.setBounds(108, 289, 73, 14);
+		lblCijenaGoriva.setBounds(101, 289, 80, 14);
 		frmOdjavljivanjePreuzetogVozila.getContentPane().add(lblCijenaGoriva);
 		
 		textField_6 = new JTextField();
