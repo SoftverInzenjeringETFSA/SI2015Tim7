@@ -83,7 +83,7 @@ public class UnosNovogVozacaController {
 			return false;
 		}
 
-		if (BrojTelefona.length() != 9 && BrojTelefona.length() != 10) {
+		if (!Username.matches("^[0][0][3][8][7][0-9]{8}[0-9]?$")) {
 			JOptionPane.showMessageDialog(null, "Niste pravilno unijeli broj telefona.");
 			return false;
 		}
