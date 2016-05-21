@@ -31,6 +31,7 @@ public class EvidencijaServisa {
 	private PregledServisaController psc;
 	private Vector<Vector<String>> data1;
 	private Vector<Vector<String>> data2;
+	private boolean ispravanDatum = true;
 
 	/**
 	 * Launch the application.
@@ -198,6 +199,7 @@ public class EvidencijaServisa {
 		
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ispravanDatum = true;
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
 				String datum = textField.getText();
 				String vrijeme = textField_1.getText();
@@ -213,6 +215,7 @@ public class EvidencijaServisa {
 					// TODO Auto-generated catch block
 					//e.printStackTrace(); nisi
 					logger.info(e);
+					ispravanDatum = false;
 					JOptionPane.showMessageDialog(null, "Datum i vrijeme nisu u ispravnom formatu!", "Info", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
@@ -220,7 +223,7 @@ public class EvidencijaServisa {
 				{
 					JOptionPane.showMessageDialog(null, "Vozilo nije izabrano", "Info", JOptionPane.INFORMATION_MESSAGE);
 				}
-				else {
+				else if(ispravanDatum){
 				psc.dodajNaServis(date,psc.dajIDVozila(data1.get(table.getSelectedRow()).get(0)));
 				frmPrijavaServisa.dispose();
 				EvidencijaServisa servis = new EvidencijaServisa();
@@ -232,7 +235,7 @@ public class EvidencijaServisa {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
-				String datumVrijeme = textField_2.getText() + textField_3.getText();
+				String datumVrijeme = textField_2.getText() + " " + textField_3.getText();
 				Date date = new Date();
 				try {
 					date = formatter.parse(datumVrijeme);
