@@ -213,12 +213,19 @@ public class EvidencijaServisa {
 					// TODO Auto-generated catch block
 					//e.printStackTrace(); nisi
 					logger.info(e);
+					JOptionPane.showMessageDialog(null, "Datum i vrijeme nisu u ispravnom formatu!", "Info", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
+				if(table.getSelectedRow()==-1)
+				{
+					JOptionPane.showMessageDialog(null, "Vozilo nije izabrano", "Info", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
 				psc.dodajNaServis(date,psc.dajIDVozila(data1.get(table.getSelectedRow()).get(0)));
 				frmPrijavaServisa.dispose();
 				EvidencijaServisa servis = new EvidencijaServisa();
-				servis.main(null); 				
+				servis.main(null); 	
+				}
 			}
 		});
 		
