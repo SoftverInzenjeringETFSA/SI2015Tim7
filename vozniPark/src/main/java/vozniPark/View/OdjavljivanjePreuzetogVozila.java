@@ -151,6 +151,11 @@ public class OdjavljivanjePreuzetogVozila {
 					return;
 				}
 				
+				if (!s5.matches("^\\d+(,\\d{1,2})?$")) {
+					JOptionPane.showMessageDialog(null,
+							"Cijena nije ispravno unesena");
+					return;
+				}
 				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), s, s1,Long.valueOf(s2), s4, Double.valueOf(s3),Double.valueOf(s5));
 				//zatvara prozor kad se klikne na dugme
 				frmOdjavljivanjePreuzetogVozila.dispatchEvent(new WindowEvent(frmOdjavljivanjePreuzetogVozila, WindowEvent.WINDOW_CLOSING));
