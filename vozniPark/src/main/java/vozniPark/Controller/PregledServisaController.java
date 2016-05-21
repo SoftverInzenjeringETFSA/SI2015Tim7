@@ -142,6 +142,8 @@ public class PregledServisaController {
 			return;
 		}
 		v.setStatus("Slobodan");
+		v.setZadnjiServisKilometri(0);
+		v.setDatumZadnjegServisa(datum);
 		v.getListaServisa().get(v.getListaServisa().size()-1).setDatumVracanja(datum);
 		v.getListaServisa().get(v.getListaServisa().size()-1).setCijena(Double.valueOf(cijena));
 		v.getListaServisa().get(v.getListaServisa().size()-1).setServisiranoKod(servisiranoKod);
@@ -149,6 +151,6 @@ public class PregledServisaController {
 
 		session.save(v);
 		t.commit();
-		JOptionPane.showMessageDialog(null, "Vozilo odjavljeno sa servisa");
+		JOptionPane.showMessageDialog(null, "Vozilo uspješno odjavljeno sa servisa");
 	}
 }
