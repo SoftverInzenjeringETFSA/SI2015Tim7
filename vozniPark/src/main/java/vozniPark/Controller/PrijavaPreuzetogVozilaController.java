@@ -53,7 +53,7 @@ public class PrijavaPreuzetogVozilaController {
 		cb.setModel(model);
 		t.commit();
 	}
-
+	
 	public void prijaviVoziloZauzetim(String registracija, String datum, String vrijeme) {
 		for (int i = 0; i < listaVozila.size(); i++) {
 			if (listaVozila.get(i).getRegistracija().contentEquals(registracija)) {
@@ -69,8 +69,8 @@ public class PrijavaPreuzetogVozilaController {
 					session.save(v);
 
 					Voznje voznje = new Voznje();
-					SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
-					String datumVrijeme = datum + vrijeme;
+					SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+					String datumVrijeme = datum + " " + vrijeme;
 					Date date = new Date();
 					try {
 						date = formatter.parse(datumVrijeme);
@@ -79,6 +79,7 @@ public class PrijavaPreuzetogVozilaController {
 						// e.printStackTrace();
 						logger.info(e);
 					}
+					date.setHours(date.getHours() + 2);
 					voznje.setDatumPreuzimanja(date);
 					voznje.setVozilo(v);
 

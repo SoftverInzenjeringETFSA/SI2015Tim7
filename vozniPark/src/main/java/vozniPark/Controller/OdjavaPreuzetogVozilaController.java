@@ -58,6 +58,7 @@ public class OdjavaPreuzetogVozilaController {
 		t.commit();
 	}
 	
+@SuppressWarnings("deprecation")
 public void odjaviVozilo(String registracija, String datum, String vrijeme, Long kilometri, String opis, double potrosnja,double cijena) {
 		
 		for(int i=0; i< listaVozila.size(); i++) 
@@ -72,8 +73,8 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 				session.save(v);
 				
 				
-				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
-				String datumVrijeme = datum + vrijeme;
+				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+				String datumVrijeme = datum + " " + vrijeme;
 				Date date = new Date();
 				try {
 					date = formatter.parse(datumVrijeme);
@@ -82,6 +83,7 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 					//e.printStackTrace();
 					logger.info(e);
 				}
+				date.setHours(date.getHours() + 2);
 				Voznje voznje = (Voznje) session.load(Voznje.class, idVozila);
 				voznje.setDatumVracanja(date);
 				voznje.setPredjeniKilometri(kilometri);
