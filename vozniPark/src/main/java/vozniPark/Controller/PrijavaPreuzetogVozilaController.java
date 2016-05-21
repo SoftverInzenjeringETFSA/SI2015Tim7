@@ -25,13 +25,34 @@ public class PrijavaPreuzetogVozilaController {
 
 	private List<Vozilo> listaVozila;
 	public Osoba vozac;
+	
+	private String imeVozaca;
+	private long idVozaca;
+	
+	public String getIme() {
+		return imeVozaca;
+	}
+	
+	public long getId() {
+		return idVozaca;
+	}
+	
+	public void setIme(String ime) {
+		this.imeVozaca = ime;
+	}
+	
+	public void setId(long id) {
+		this.idVozaca = id;
+	}
+	
 	public PrijavaPreuzetogVozilaController() {
 		listaVozila = new ArrayList<Vozilo>();
 	}
 	
-	public PrijavaPreuzetogVozilaController(Osoba o) {
+	public PrijavaPreuzetogVozilaController(String ime, long id) {
 		listaVozila = new ArrayList<Vozilo>();
-		this.vozac = o;
+		setIme(ime);
+		setId(id);
 	}
 
 	public List<Vozilo> getListaVozila() {
@@ -87,7 +108,8 @@ public class PrijavaPreuzetogVozilaController {
 					date.setHours(date.getHours() + 2);
 					voznje.setDatumPreuzimanja(date);
 					voznje.setVozilo(v);
-
+					Osoba ox = (Osoba) session.load(Osoba.class, getId());
+					voznje.setVozac(ox);
 					session.save(voznje);
 
 					t.commit();

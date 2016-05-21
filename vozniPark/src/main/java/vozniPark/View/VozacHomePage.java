@@ -12,13 +12,32 @@ import vozniPark.Model.Osoba;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class VozacHomePage {
 
 	final static Logger logger = Logger.getLogger(VozacHomePage.class);
 
 	private JFrame frame;
-	public Osoba vozac;
+	private String imeVozaca;
+	private long idVozaca;
+	
+	public String getIme() {
+		return imeVozaca;
+	}
+	
+	public long getId() {
+		return idVozaca;
+	}
+	
+	public void setIme(String ime) {
+		this.imeVozaca = ime;
+	}
+	
+	public void setId(long id) {
+		this.idVozaca = id;
+	}
 
 	/**
 	 * Launch the application.
@@ -27,7 +46,7 @@ public class VozacHomePage {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VozacHomePage window = new VozacHomePage();
+					VozacHomePage window = new VozacHomePage(getIme(),getId());
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					logger.info(e);
@@ -44,9 +63,10 @@ public class VozacHomePage {
 		initialize();
 	}
 	
-	public VozacHomePage(Osoba o) {
-		this.vozac = o;
+	public VozacHomePage(String ime, long id) {
 		initialize();
+		setIme(ime);
+		setId(id);
 	}
 
 	/**
@@ -54,19 +74,28 @@ public class VozacHomePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		final JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho");
+		lblDobroDoaoMeho.setBounds(12, 12, 153, 15);
+		frame.getContentPane().add(lblDobroDoaoMeho);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				lblDobroDoaoMeho.setText("Dobro došao, " + getIme() + "e");
+			}
+		});
 		frame.setBounds(100, 100, 583, 290);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
-		
+		/*
 		JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho");
 		lblDobroDoaoMeho.setBounds(12, 12, 153, 15);
-		frame.getContentPane().add(lblDobroDoaoMeho);
+		frame.getContentPane().add(lblDobroDoaoMeho); */
 		
 		JButton btnNewButton = new JButton("Prijava preuzetog vozila");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavljivanjePreuzetogVozila prijava = new PrijavljivanjePreuzetogVozila();
+				PrijavljivanjePreuzetogVozila prijava = new PrijavljivanjePreuzetogVozila(getIme(),getId());
 				prijava.main(null);
 			}
 		});

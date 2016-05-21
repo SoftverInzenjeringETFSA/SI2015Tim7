@@ -87,8 +87,11 @@ public class Login {
 						}
 						else if (controller.dajKorisnika() instanceof Vozac) {
 			                frmLogin.dispose();
+			                String imeVozaca = controller.dajKorisnika().getIme();
+			                long vozacId = controller.dajKorisnika().getId();
 			                
-			                VozacHomePage vozacHome = new VozacHomePage();
+			                VozacHomePage vozacHome = new VozacHomePage(imeVozaca, vozacId);
+			                
 			                vozacHome.main(null);
 						}
 						else {

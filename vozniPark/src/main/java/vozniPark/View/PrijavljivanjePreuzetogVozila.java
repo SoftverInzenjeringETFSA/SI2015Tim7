@@ -47,6 +47,25 @@ public class PrijavljivanjePreuzetogVozila {
 	private JTextField textField_2;
 	public Osoba vozac;
 	
+	private static String imeVozaca;
+	private static long idVozaca;
+	
+	public static String getIme() {
+		return imeVozaca;
+	}
+	
+	public static long getId() {
+		return idVozaca;
+	}
+	
+	public void setIme(String ime) {
+		this.imeVozaca = ime;
+	}
+	
+	public void setId(long id) {
+		this.idVozaca = id;
+	}
+	
 
 	/**
 	 * Launch the application.
@@ -56,7 +75,7 @@ public class PrijavljivanjePreuzetogVozila {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila();
+					PrijavljivanjePreuzetogVozila window = new PrijavljivanjePreuzetogVozila(getIme(),getId());
 					window.frmPrij.setVisible(true);
 				} catch (Exception e) {
 					//e.printStackTrace();
@@ -76,10 +95,11 @@ public class PrijavljivanjePreuzetogVozila {
 		ppvc = new PrijavaPreuzetogVozilaController();
 	}
 	
-	public PrijavljivanjePreuzetogVozila(Osoba o) {
+	public PrijavljivanjePreuzetogVozila(String ime, long id) {
 		initialize();
-		this.vozac = o;
-		ppvc = new PrijavaPreuzetogVozilaController(o);
+		setIme(ime);
+		setId(id);
+		ppvc = new PrijavaPreuzetogVozilaController(getIme(),getId());
 	}
 
 	/**

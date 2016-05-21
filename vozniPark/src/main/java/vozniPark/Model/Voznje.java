@@ -43,10 +43,10 @@ public class Voznje implements Serializable {
 	public void setVozilo(Vozilo vozilo) {
 		this.vozilo = vozilo;
 	}
-	public Vozac getVozac() {
+	public Osoba getVozac() {
 		return vozac;
 	}
-	public void setVozac(Vozac vozac) {
+	public void setVozac(Osoba vozac) {
 		this.vozac = vozac;
 	}
 	public TocenjeGoriva getTocenje() {
@@ -63,7 +63,8 @@ public class Voznje implements Serializable {
 	private long predjeniKilometri;
 	private String opisUpotrebe;
 	private Vozilo vozilo;
-	private Vozac vozac;
+	//private Vozac vozac;
+	private Osoba vozac;
 	private TocenjeGoriva tocenje;
 	
 	
