@@ -37,13 +37,16 @@ public class PregledServisaController {
 		listaServisa = session.createCriteria(Servisi.class).list();
 
 		Vector<Vector<String>> li=new Vector<Vector<String>>();
+		int brojac = 0;
 		
 		for(int i=0; i<listaServisa.size(); i++) 
 		{
 			Vector<String> row = new Vector<String>();
 			for(int j=0; j<listaVozila.size(); j++)
 			{
-				if(listaServisa.get(i).getBroj() == listaVozila.get(j).getId())
+				JOptionPane.showMessageDialog(null,listaServisa.get(i).getBroj());
+				JOptionPane.showMessageDialog(null,listaVozila.get(j).getNaziv());
+				if((listaServisa.get(i).getBroj() + brojac) == listaVozila.get(j).getId())
 				{	
 					row.addElement(listaVozila.get(j).getNaziv());
 					row.addElement(listaVozila.get(j).getRegistracija());
@@ -55,6 +58,7 @@ public class PregledServisaController {
 				}
 			}
 			li.add(row);
+			brojac++;
 		}
 		t.commit();
 		return li;
