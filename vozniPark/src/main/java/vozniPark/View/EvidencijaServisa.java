@@ -217,7 +217,7 @@ public class EvidencijaServisa {
 		btnPotvrdi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ispravanDatum = true;
-				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 				String datum = textField.getText();
 				String vrijeme = textField_1.getText();
 				if (datum.length() <= 0 || vrijeme.length() <= 0) {
@@ -226,7 +226,7 @@ public class EvidencijaServisa {
 				}
 
 				if (!datum.matches(
-						"^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+						"^(?:(?:31(\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
 					JOptionPane.showMessageDialog(null, "Datum nije ispravno unesen");
 					return;
 				}
@@ -261,7 +261,7 @@ public class EvidencijaServisa {
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 				String datum = textField_2.getText();
 				String vrijeme = textField_3.getText();
 				if (datum.length() <= 0 || vrijeme.length() <= 0 || textField_4.getText().length() <= 0 || textField_5.getText().length() <= 0 || textField_6.getText().length() <= 0) {
@@ -270,7 +270,7 @@ public class EvidencijaServisa {
 				}
 
 				if (!datum.matches(
-						"^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+						"^(?:(?:31(\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
 					JOptionPane.showMessageDialog(null, "Datum nije ispravno unesen");
 					return;
 				}
