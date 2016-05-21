@@ -45,7 +45,7 @@ public class PrijavljivanjePreuzetogVozila {
 	private JFrame frmPrij;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	
+	public Osoba vozac;
 	
 
 	/**
@@ -74,6 +74,12 @@ public class PrijavljivanjePreuzetogVozila {
 	public PrijavljivanjePreuzetogVozila() {
 		initialize();
 		ppvc = new PrijavaPreuzetogVozilaController();
+	}
+	
+	public PrijavljivanjePreuzetogVozila(Osoba o) {
+		initialize();
+		this.vozac = o;
+		ppvc = new PrijavaPreuzetogVozilaController(o);
 	}
 
 	/**

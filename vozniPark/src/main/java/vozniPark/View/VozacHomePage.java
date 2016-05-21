@@ -7,6 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import org.apache.log4j.Logger;
+
+import vozniPark.Model.Osoba;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -15,6 +18,7 @@ public class VozacHomePage {
 	final static Logger logger = Logger.getLogger(VozacHomePage.class);
 
 	private JFrame frame;
+	public Osoba vozac;
 
 	/**
 	 * Launch the application.
@@ -39,6 +43,11 @@ public class VozacHomePage {
 	public VozacHomePage() {
 		initialize();
 	}
+	
+	public VozacHomePage(Osoba o) {
+		this.vozac = o;
+		initialize();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -50,7 +59,7 @@ public class VozacHomePage {
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
-		JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho!");
+		JLabel lblDobroDoaoMeho = new JLabel("Dobro došao, Meho");
 		lblDobroDoaoMeho.setBounds(12, 12, 153, 15);
 		frame.getContentPane().add(lblDobroDoaoMeho);
 		

@@ -24,9 +24,14 @@ public class PrijavaPreuzetogVozilaController {
 	final static Logger logger = Logger.getLogger(PrijavaPreuzetogVozilaController.class);
 
 	private List<Vozilo> listaVozila;
-
+	public Osoba vozac;
 	public PrijavaPreuzetogVozilaController() {
 		listaVozila = new ArrayList<Vozilo>();
+	}
+	
+	public PrijavaPreuzetogVozilaController(Osoba o) {
+		listaVozila = new ArrayList<Vozilo>();
+		this.vozac = o;
 	}
 
 	public List<Vozilo> getListaVozila() {

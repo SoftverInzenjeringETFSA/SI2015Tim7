@@ -84,7 +84,21 @@ public void odjaviVozilo(String registracija, String datum, String vrijeme, Long
 					logger.info(e);
 				}
 				date.setHours(date.getHours() + 2);
-				Voznje voznje = (Voznje) session.load(Voznje.class, idVozila);
+				
+				List<Voznje> listaVoznji = new ArrayList<Voznje>();
+				listaVoznji = session.createCriteria(Voznje.class).list();
+				Voznje voznje = new Voznje();
+				for(int j=0; j<listaVoznji.size(); j++) 
+				{
+					if(listaVoznji.get(j).getVozilo().getId() == idVozila && listaVoznji.get(j).getDatumVracanja()==null)
+					{
+					    
+					   voznje = listaVoznji.get(j);
+					  
+					}
+				}
+				
+				//Voznje voznje = (Voznje) session.load(Voznje.class, idVozila);
 				voznje.setDatumVracanja(date);
 				voznje.setPredjeniKilometri(kilometri);
 				voznje.setOpisUpotrebe(opis);

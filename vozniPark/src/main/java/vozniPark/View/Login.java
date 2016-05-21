@@ -87,6 +87,7 @@ public class Login {
 						}
 						else if (controller.dajKorisnika() instanceof Vozac) {
 			                frmLogin.dispose();
+			                
 			                VozacHomePage vozacHome = new VozacHomePage();
 			                vozacHome.main(null);
 						}
