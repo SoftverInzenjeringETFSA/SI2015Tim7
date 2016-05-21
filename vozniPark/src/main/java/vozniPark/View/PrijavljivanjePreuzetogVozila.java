@@ -136,7 +136,6 @@ public class PrijavljivanjePreuzetogVozila {
 							"Datum nije ispravno unesen");
 					return;
 				}
-
 				if (!textField_2.getText().matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")) {
 					JOptionPane.showMessageDialog(null,
 							"Vrijeme nije ispravno uneseno");
