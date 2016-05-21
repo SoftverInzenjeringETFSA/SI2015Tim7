@@ -128,6 +128,8 @@ public class OdjavljivanjePreuzetogVozila {
 				String s3 = textField_4.getText();
 				String s4 = textField_5.getText();
 				String s5 = textField_6.getText();
+				
+				
 				if(s.length() == 0 || s1.length() == 0 ||s2.length() == 0 ||s4.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Nisu svi podaci uneseni.");
 					return;
@@ -136,6 +138,19 @@ public class OdjavljivanjePreuzetogVozila {
 					s3 = "0";
 					s5 = "0";
 				}
+				
+				if (!s.matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+					JOptionPane.showMessageDialog(null,
+							"Datum nije ispravno unesen");
+					return;
+				}
+
+				if (!s1.matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")) {
+					JOptionPane.showMessageDialog(null,
+							"Vrijeme nije ispravno uneseno");
+					return;
+				}
+				
 				opvc.odjaviVozilo(comboBox.getSelectedItem().toString(), s, s1,Long.valueOf(s2), s4, Double.valueOf(s3),Double.valueOf(s5));
 				//zatvara prozor kad se klikne na dugme
 				frmOdjavljivanjePreuzetogVozila.dispatchEvent(new WindowEvent(frmOdjavljivanjePreuzetogVozila, WindowEvent.WINDOW_CLOSING));
