@@ -22,8 +22,10 @@ public class HibernateUtil {
 
 	    private static SessionFactory buildSessionFactory() {
 	        try {
+				java.util.Properties properties = new Properties();
+				properties.load(new FileInputStream("db.properties"));
 	            // Create the SessionFactory from hibernate.cfg.xml
-	            return new Configuration().configure().buildSessionFactory();
+	            return new Configuration().addProperties(properties).configure().buildSessionFactory();
 	        }
 	        catch (Exception ex) {
 	            // Make sure you log the exception, as it might be swallowed
