@@ -96,6 +96,14 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Unesite naziv vozila");
 			return false;
 		}
+		else {
+			if(!nazivVozila.matches("^[a-zA-Z0-9_ ]*$")) 
+			{
+				JOptionPane.showMessageDialog(null, "Naziv vozila može sadržavati samo slova i brojeve");
+				return false;
+			}
+		}
+		
 		if(this.praznoPolje(godinaProizvodnje)){
 			JOptionPane.showMessageDialog(null, "Unesite godinu proizvodnje");
 			return false;
@@ -118,6 +126,13 @@ public class UnosNovogVozilaController {
 		if(this.praznoPolje(proizvodjac)){
 			JOptionPane.showMessageDialog(null, "Unesite proizvođača vozila");
 			return false;
+		}
+		else {
+			if(!proizvodjac.matches("^[a-zA-Z0-9_ ]*$")) 
+			{
+				JOptionPane.showMessageDialog(null, "Naziv proizvođača može sadržavati samo slova i brojeve");
+				return false;
+			}
 		}
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
