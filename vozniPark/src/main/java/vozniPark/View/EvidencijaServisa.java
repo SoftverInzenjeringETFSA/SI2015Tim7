@@ -220,7 +220,7 @@ public class EvidencijaServisa {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
 				String datum = textField.getText();
 				String vrijeme = textField_1.getText();
-				if (datum.length() <= 0 || vrijeme.length() <= 0 || textField_4.getText().length() <= 0 || textField_5.getText().length() <= 0 || textField_6.getText().length() <= 0) {
+				if (datum.length() <= 0 || vrijeme.length() <= 0) {
 					JOptionPane.showMessageDialog(null, "Nisu uneseni svi parametri");
 					return;
 				}
@@ -264,7 +264,7 @@ public class EvidencijaServisa {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
 				String datum = textField_2.getText();
 				String vrijeme = textField_3.getText();
-				if (datum.length() <= 0 || vrijeme.length() <= 0) {
+				if (datum.length() <= 0 || vrijeme.length() <= 0 || textField_4.getText().length() <= 0 || textField_5.getText().length() <= 0 || textField_6.getText().length() <= 0) {
 					JOptionPane.showMessageDialog(null, "Nisu uneseni svi parametri");
 					return;
 				}
