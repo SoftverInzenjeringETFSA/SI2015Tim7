@@ -2,6 +2,7 @@ package vozniPark.View;
 
 import java.awt.EventQueue;
 import vozniPark.Controller.OdjavaPreuzetogVozilaController;
+import vozniPark.Model.Osoba;
 
 import javax.swing.*;
 
@@ -26,6 +27,28 @@ public class OdjavljivanjePreuzetogVozila {
 	private JTextField textField_5;
 	private JComboBox comboBox;
 	private JTextField textField_6;
+	public Osoba vozac;
+	
+	private static String imeVozaca;
+	public static String getImeVozaca() {
+		return imeVozaca;
+	}
+
+	public static void setImeVozaca(String imeVozaca) {
+		OdjavljivanjePreuzetogVozila.imeVozaca = imeVozaca;
+	}
+
+	public static long getIdVozaca() {
+		return idVozaca;
+	}
+
+	public static void setIdVozaca(long idVozaca) {
+		OdjavljivanjePreuzetogVozila.idVozaca = idVozaca;
+	}
+
+	private static long idVozaca;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -34,7 +57,7 @@ public class OdjavljivanjePreuzetogVozila {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OdjavljivanjePreuzetogVozila window = new OdjavljivanjePreuzetogVozila();
+					OdjavljivanjePreuzetogVozila window = new OdjavljivanjePreuzetogVozila(getImeVozaca(),getIdVozaca());
 					window.frmOdjavljivanjePreuzetogVozila.setVisible(true);
 				} catch (Exception e) {
 					//e.printStackTrace();
@@ -49,7 +72,14 @@ public class OdjavljivanjePreuzetogVozila {
 	 */
 	public OdjavljivanjePreuzetogVozila() {
 		initialize();
-		opvc = new OdjavaPreuzetogVozilaController();
+		opvc = new OdjavaPreuzetogVozilaController(getImeVozaca(),getIdVozaca());
+	}
+	
+	public OdjavljivanjePreuzetogVozila(String ime, long id) {
+		initialize();
+		setImeVozaca(ime);
+		setIdVozaca(id);
+		opvc = new OdjavaPreuzetogVozilaController(ime, id);
 	}
 
 	/**

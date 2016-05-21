@@ -214,13 +214,16 @@ public class PregledVozilaController {
 					if((listaVoznji.get(i).getDatumPreuzimanja().after(d1) && listaVoznji.get(i).getDatumPreuzimanja().before(d2)) ||
 					   (listaVoznji.get(i).getDatumVracanja().after(d1) && listaVoznji.get(i).getDatumVracanja().before(d2)))
 					{
-						vp.add(String.valueOf(listaVoznji.get(i).getPredjeniKilometri()));
-						vp.add(String.valueOf(listaVoznji.get(i).getTocenje().getCijena()));
-						vp.add(String.valueOf(listaVoznji.get(i).getTocenje().getKolicina()));
-						kilometri=kilometri+listaVoznji.get(i).getPredjeniKilometri();
-						cijena = cijena +listaVoznji.get(i).getTocenje().getCijena();
-						litri=litri+listaVoznji.get(i).getTocenje().getKolicina();
-						v.addElement(vp);
+						if(listaVoznji.get(i).getTocenje() != null)
+						{
+							vp.add(String.valueOf(listaVoznji.get(i).getPredjeniKilometri()));
+							vp.add(String.valueOf(listaVoznji.get(i).getTocenje().getCijena()));
+							vp.add(String.valueOf(listaVoznji.get(i).getTocenje().getKolicina()));
+							kilometri=kilometri+listaVoznji.get(i).getPredjeniKilometri();
+							cijena = cijena +listaVoznji.get(i).getTocenje().getCijena();
+							litri=litri+listaVoznji.get(i).getTocenje().getKolicina();
+							v.addElement(vp);
+						}
 					}
 			}		
 		}

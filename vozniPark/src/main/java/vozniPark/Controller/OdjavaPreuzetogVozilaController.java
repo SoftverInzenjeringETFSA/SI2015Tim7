@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import vozniPark.Model.Osoba;
 import vozniPark.Model.TocenjeGoriva;
 import vozniPark.Model.Vozilo;
 import vozniPark.Model.Voznje;
@@ -26,9 +27,35 @@ public class OdjavaPreuzetogVozilaController {
 	final static Logger logger = Logger.getLogger(OdjavaPreuzetogVozilaController.class);
 	
 	private List<Vozilo> listaVozila;
+	public Osoba vozac;
+	
+	private String imeVozaca;
+	private long idVozaca;
+	
+	public String getIme() {
+		return imeVozaca;
+	}
+	
+	public long getId() {
+		return idVozaca;
+	}
+	
+	public void setIme(String ime) {
+		this.imeVozaca = ime;
+	}
+	
+	public void setId(long id) {
+		this.idVozaca = id;
+	}
 	
 	public OdjavaPreuzetogVozilaController() {
 		listaVozila = new ArrayList<Vozilo>();
+	}
+	
+	public OdjavaPreuzetogVozilaController(String ime, long id) {
+		listaVozila = new ArrayList<Vozilo>();
+		setIme(ime);
+		setId(id);
 	}
 	
 	public List<Vozilo> getListaVozila() {
@@ -42,15 +69,32 @@ public class OdjavaPreuzetogVozilaController {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		
+		List<Voznje> listaVoznji = new ArrayList<Voznje>();
+		listaVoznji = session.createCriteria(Voznje.class).list();
+		List<Voznje> voznje = new ArrayList<Voznje>();
+		for(int j=0; j<listaVoznji.size(); j++) 
+		{
+			if(listaVoznji.get(j).getDatumVracanja()==null)
+			{
+			    
+			   voznje.add(listaVoznji.get(j));
+			}
+		}
 		listaVozila = session.createCriteria(Vozilo.class).list();
 		
 		for(int i=0; i<listaVozila.size(); i++) 
 		{
-			if(listaVozila.get(i).getStatus().contentEquals("Zauzet"))
+			for(int j=0; j<voznje.size(); j++) 
 			{
+				if(voznje.get(j).getVozilo().getId() == listaVozila.get(i).getId() && voznje.get(j).getVozac().getId() == idVozaca)
+				{
+					if(listaVozila.get(i).getStatus().contentEquals("Zauzet"))
+					{
 			    
-			    v.addElement(listaVozila.get(i).getRegistracija());
+						v.addElement(listaVozila.get(i).getRegistracija());
 			  
+					}
+				}
 			}
 		}
 

@@ -105,7 +105,7 @@ public class VozacHomePage {
 		JButton btnOdjavaPreuzetogVozila = new JButton("Odjava preuzetog vozila");
 		btnOdjavaPreuzetogVozila.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				OdjavljivanjePreuzetogVozila odjava = new OdjavljivanjePreuzetogVozila();
+				OdjavljivanjePreuzetogVozila odjava = new OdjavljivanjePreuzetogVozila(getIme(),getId());
 				odjava.main(null);
 			}
 		});
