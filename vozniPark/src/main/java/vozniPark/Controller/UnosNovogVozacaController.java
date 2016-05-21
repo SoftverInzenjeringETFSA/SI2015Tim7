@@ -97,7 +97,7 @@ public class UnosNovogVozacaController {
 			return false;
 		}
 
-		if (Sifra.length() < 2) {
+		if (Sifra.length() <= 4) {
 			JOptionPane.showMessageDialog(null, "Sifra mora imati minimalno 4 slova.");
 			return false;
 		}
