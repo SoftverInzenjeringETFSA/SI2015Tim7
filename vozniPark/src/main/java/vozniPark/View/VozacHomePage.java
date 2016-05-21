@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import org.apache.log4j.Logger;
 import java.awt.event.ActionListener;
@@ -76,6 +77,7 @@ public class VozacHomePage {
 		btnOdjaviSe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				JOptionPane.showMessageDialog(null, "Uspješno ste odjavljeni!");
 				Login login = new Login();
 				login.main();
 			}

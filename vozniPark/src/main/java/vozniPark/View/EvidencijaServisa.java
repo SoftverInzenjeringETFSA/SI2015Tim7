@@ -225,7 +225,8 @@ public class EvidencijaServisa {
 					date = formatter.parse(datumVrijeme);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					logger.info(e);
 				}
 
 				if (table.getSelectedRow() == -1) {
@@ -243,6 +244,23 @@ public class EvidencijaServisa {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy 'u' HH:mm:ss");
+				String datum = textField_2.getText();
+				String vrijeme = textField_3.getText();
+				if (datum.length() <= 0 || vrijeme.length() <= 0) {
+					JOptionPane.showMessageDialog(null, "Nisu uneseni svi parametri");
+					return;
+				}
+
+				if (!datum.matches(
+						"^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+					JOptionPane.showMessageDialog(null, "Datum nije ispravno unesen");
+					return;
+				}
+
+				if (!vrijeme.matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")) {
+					JOptionPane.showMessageDialog(null, "Vrijeme nije ispravno uneseno");
+					return;
+				}
 				String datumVrijeme = textField_2.getText() + " " + textField_3.getText();
 				Date date = new Date();
 				try {
@@ -252,11 +270,17 @@ public class EvidencijaServisa {
 					// e.printStackTrace();
 					logger.info(e);
 				}
+				if (table_1.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(null, "Vozilo nije izabrano", "Info",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+				else{
 				psc.dodajDovrsenServis(psc.dajIDVozila(data2.get(table_1.getSelectedRow()).get(0)), date,
 						textField_6.getText(), textField_4.getText(), textField_5.getText());
 				frmPrijavaServisa.dispose();
 				EvidencijaServisa servis = new EvidencijaServisa();
 				servis.main(null);
+				}
 			}
 		});
 	}
