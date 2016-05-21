@@ -53,8 +53,8 @@ public class UnosNovogVozacaController {
 			return false;
 		}
 
-		if (BrojVozacke.length() != 9) {
-			JOptionPane.showMessageDialog(null, "Neispravno unesen broj vozacke");
+		if (!BrojVozacke.matches("[0-9]{2}[A-Za-z]{3}[0-9]{4}")) {
+			JOptionPane.showMessageDialog(null, "Neispravno unesen broj vozacke (dva broja, tri slova, cetiri broja");
 			return false;
 		}
 		else {
