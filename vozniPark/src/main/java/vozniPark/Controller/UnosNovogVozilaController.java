@@ -51,7 +51,7 @@ public class UnosNovogVozilaController {
 			final Vector<String> v = new Vector<String>();
 			Session sesija = HibernateUtil.getSessionFactory().openSession();
 
-			listaVozila = sesija.createCriteria(Vozac.class).list();
+			listaVozila = sesija.createCriteria(Vozilo.class).list();
 			for (int i = 0; i < listaVozila.size(); i++)
 				v.addElement(listaVozila.get(i).getBrojSaobracajneDozvole());
 
@@ -75,7 +75,7 @@ public class UnosNovogVozilaController {
 			final Vector<String> v = new Vector<String>();
 			Session sesija = HibernateUtil.getSessionFactory().openSession();
 
-			listaVozila = sesija.createCriteria(Vozac.class).list();
+			listaVozila = sesija.createCriteria(Vozilo.class).list();
 			for (int i = 0; i < listaVozila.size(); i++)
 				v.addElement(listaVozila.get(i).getBrojVlasnickeDozvole());
 
@@ -116,12 +116,40 @@ public class UnosNovogVozilaController {
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (mjeseci)");
 			return false;
 		}
+		try
+		{
+			if(Integer.parseInt(intervalMjeseci) > 2400)
+			{
+				JOptionPane.showMessageDialog(null, "Unesite interval servisa (mjeseci) koji je manji ili jednak 2400!");
+				return false;
+			}
+		}
+		catch (Exception e) {
+			logger.info(e);
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Unesite interval servisa (mjeseci) koji je manji ili jednak 2400!");
+			return false;
+		}		
 		if(this.praznoPolje(intervalKilometara)){
 			JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri)");
 			return false;
 		}
 		if(!intervalKilometara.matches("^[0-9]+$")){
 			JOptionPane.showMessageDialog(null, "Nepravilan unos za interval servisa (kilometri)");
+			return false;
+		}
+		try
+		{
+			if(Integer.parseInt(intervalKilometara) > 100000)
+			{
+				JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri) koji je manji ili jednak 100000!");
+				return false;
+			}
+		}
+		catch (Exception e) {
+			logger.info(e);
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Unesite interval servisa (kilometri) koji je manji ili jednak 100000!");
 			return false;
 		}
 		if(this.praznoPolje(nazivVozila)){
